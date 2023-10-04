@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'homes/top'
-  end
+  # namespace :admin do
+  #   get 'homes/top'
+  # end
+  # namespace :public do
+  #   get 'homes/top'
+  # end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -14,6 +17,12 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
-  root to: 'public/homes#top'
+  root 'public/homes#top'
+
+  #ゲストログイン機能のroot
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
