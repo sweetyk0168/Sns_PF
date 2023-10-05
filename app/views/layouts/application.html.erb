@@ -24,7 +24,7 @@
           <li><%= link_to "グッズ情報" %></li>
           <li><%= link_to "イベントレポート" %></li>
           <li><%= link_to "アンケート" %></li>
-          <li><%= link_to "マイページ" %></li>
+          <li><%= link_to "マイページ", customers_path %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "NEWS" %></li>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Special Event</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class ="container">
+        <nav class="nav navbar-nav navbar-left" >
+
+        </nav>
+        <% if admin_signed_in? %>
+          <li><%= link_to "イベント一覧" %></li>
+          <li><%= link_to "グッズ一覧" %></li>
+          <li><%= link_to "イベントRepo" %></li>
+          <li><%= link_to "アンケート" %></li>
+          <li><%= link_to "ジャンル一覧" %></li>
+          <li><%= link_to "会員一覧", admin_customers_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "イベント一覧" %></li>
+          <li><%= link_to 'グッズ一覧' %></li>
+          <li><%= link_to "新規登録" %></li>
+          <li><%= link_to "ログイン", admin_session_path %></li>
+        <% end %>
+      </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>
