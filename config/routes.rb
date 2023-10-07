@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/edit'
+  end
   # namespace :admin do
   #   get 'customers/show'
   #   get 'customers/edit'
@@ -31,6 +35,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
   end
 
   #ゲストログイン機能のroot

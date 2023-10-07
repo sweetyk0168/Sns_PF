@@ -1,33 +1,41 @@
 <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
-<div>
-  <label>会員ID</label>
-  <%= @customer.id %>
-</div>
-<div>
-  <label>氏名</label>
-  <%= @customer.last_name %><%= @customer.first_name %>
-</div>
-<div>
-  <label>フリガナ</label>
-  <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
-</div>
-<div>
-  <label>郵便番号</label>
-  <%= @customer.postal_code %>
-</div>
-<div>
-  <label>住所</label>
-  <%= @customer.address %>
-</div>
-<div>
-  <label>電話番号</label>
-  <%= @customer.telephone_number %>
-</div>
-<div>
-  <label>メールアドレス</label>
-  <%= @customer.email %>
-</div>
-<div>
-  <label>会員ステータス</label>
-  <%= @customer.email %>
-</div>
+<%= form_for(@customer, url: admin_customer_path) do |f| %>
+  <div>
+    <%= f.label :会員ID %>
+    <%= @customer.id %>
+  </div>
+  <div>
+    <%= f.label :氏名 %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+  <div>
+    <%= f.label :フリガナ %>
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+  </div>
+  <div>
+    <%= f.label:郵便番号 %>
+    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+  </div>
+  <div>
+    <%= f.label:住所 %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+  <div>
+    <%= f.label:電話番号 %>
+    <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+  </div>
+  <div>
+    <%= f.label:メールアドレス %>
+    <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div>
+    <%= f.label:会員ステータス %>
+    <label><%= f.radio_button :is_deleted, "有効", checked:"checked" %>有効</label>
+    <label><%= f.radio_button :is_deleted, "無効" %>退会</label>
+  </div>
+
+  <div><%= f.submit '変更を保存' %></div>
+<% end %>
+
