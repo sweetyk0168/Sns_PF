@@ -1,30 +1,4 @@
 Rails.application.routes.draw do
-
-  namespace :customer do
-    get 'events/index'
-    get 'events/show'
-  end
-  namespace :admin do
-    get 'events/new'
-    get 'events/index'
-    get 'events/show'
-    get 'events/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  # namespace :admin do
-  #   get 'customers/show'
-  #   get 'customers/edit'
-  #   get 'customers/index'
-  # end
-  # namespace :admin do
-  #   get 'homes/top'
-  # end
-  # namespace :public do
-  #   get 'homes/top'
-  # end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -56,7 +30,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resource :customers, only: [:show]
-
+    resources :events, only: [:index, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

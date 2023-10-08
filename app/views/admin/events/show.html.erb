@@ -1,2 +1,19 @@
-<h1>Admin::Events#show</h1>
-<p>Find me in app/views/admin/events/show.html.erb</p>
+<h3>イベント情報詳細</h3>
+<div>
+  <label>イベント名</label>
+  <%= @event.name %><br>
+  <label>イベント説明</label>
+  <%= @event.introduction %><br>
+  <label>ジャンル</label>
+  <%= @event.genre.name %><br>
+  <label>投稿ステータス</label>
+  <% if @event.post_status %><br>
+    投稿中
+  <% else %>
+    投稿完了
+  <% end %>
+  <div>
+    <%= link_to '編集する', edit_admin_event_path(@event.id) %>
+  </div>
+</div>
+

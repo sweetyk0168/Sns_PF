@@ -7,7 +7,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.page(params[:page])
   end
 
   def create
@@ -20,14 +20,25 @@ class Admin::EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to admin_event_path(@event)
+    else
+      render 'edit'
+    end
   end
 
   private
 
   def event_params
-    params.require(:item).permit(:genre_id, :name, :introduction, :post_status)
+    params.require(:event).permit(:genre_id, :name, :introduction, :post_status)
   end
 end

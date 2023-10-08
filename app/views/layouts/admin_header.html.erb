@@ -17,7 +17,7 @@
 
         </nav>
         <% if admin_signed_in? %>
-          <li><%= link_to "イベント一覧" %></li>
+          <li><%= link_to "イベント一覧",  admin_events_path %></li>
           <li><%= link_to "グッズ一覧" %></li>
           <li><%= link_to "イベントRepo" %></li>
           <li><%= link_to "アンケート" %></li>
@@ -25,7 +25,7 @@
           <li><%= link_to "会員一覧", admin_customers_path %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to "イベント一覧" %></li>
+          <li><%= link_to "イベント一覧",  admin_events_path %></li>
           <li><%= link_to 'グッズ一覧' %></li>
           <li><%= link_to "新規登録" %></li>
           <li><%= link_to "ログイン", admin_session_path %></li>
