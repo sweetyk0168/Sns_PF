@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  # namespace :public do
+  #   get 'goods/index'
+  #   get 'goods/show'
+  # end
+  # namespace :admin do
+  #   get 'goods/new'
+  #   get 'goods/index'
+  #   get 'goods/show'
+  #   get 'goods/edit'
+  # end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -21,6 +31,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :events, only:[:new, :create, :index, :show, :edit, :update]
+    resources :goods, only:[:new, :create, :index, :show, :edit, :update]
   end
 
   #ゲストログイン機能のroot
@@ -31,6 +42,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resource :customers, only: [:show]
     resources :events, only: [:index, :show]
+    resources :goods, only: [:index, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

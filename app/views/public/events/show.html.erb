@@ -1,2 +1,4 @@
-<h1>Public::Events#show</h1>
-<p>Find me in app/views/public/events/show.html.erb</p>
+<h3><%= @event.name %>概要</h3><br>
+<%= safe_join(@event.introduction.split("\n"),tag(:br)) %><br>
+
+<%= link_to '戻る', root_path %><br>

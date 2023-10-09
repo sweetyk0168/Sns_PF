@@ -1,0 +1,20 @@
+<h1>■グッズ情報新規投稿</h1>
+<%= form_for(@good, url:admin_goods_path) do |f| %>
+  <label>グッズ画像</label>
+  <%= f.file_field :image, accept: "image/*" %><br>
+  <label>グッズ名</label>
+  <%= f.text_field:name, autofocus:true, autocomplete: "name" %><br>
+
+  <label>グッズ説明文</label>
+  <%= f.text_area:introduction, autofocus:true, autocomplete: "introduction" %><br>
+
+  <label>ジャンル</label>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %><br>
+
+  <label>投稿ステータス</label>
+  <%= f.radio_button :post_status, true %>
+  <%= f.label :post_status, "投稿中", {value: :true,style: "display: inline-block;"} %>
+  <%= f.radio_button :post_status, false %>
+  <%= f.label :post_status, "投稿完了", {value: false,style: "display: inline-block;"} %><br>
+  <%= f.submit '新規投稿' %>
+<% end %>

@@ -5,6 +5,7 @@ class Public::EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
     def event_params
