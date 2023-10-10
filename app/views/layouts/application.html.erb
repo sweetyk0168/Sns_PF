@@ -20,7 +20,7 @@
           <li>ようこそ！</li><br>
 
           <li><%= link_to "イベントNEWS", events_path %></li>
-          <li><%= link_to "グッズ情報" %></li>
+          <li><%= link_to "グッズ情報",goods_path %></li>
           <li><%= link_to "イベントレポート" %></li>
           <li><%= link_to "アンケート" %></li>
           <li><%= link_to "マイページ", customers_path %></li>
@@ -38,7 +38,7 @@
       <footer>
         <% if customer_signed_in? %>
           <li><%= link_to "イベントNEWS", events_path %></li>
-          <li><%= link_to "グッズ情報" %></li>
+          <li><%= link_to "グッズ情報", goods_path %></li>
           <li><%= link_to "イベントレポート" %></li>
           <li><%= link_to "アンケート" %></li>
         <% else %>
@@ -47,7 +47,7 @@
           <li><%= link_to "ログイン", customer_session_path %></li>
           <li><%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %></li>
         <% end %>
-    </footer>  
+    </footer>
     </div>
   </body>
 </html>

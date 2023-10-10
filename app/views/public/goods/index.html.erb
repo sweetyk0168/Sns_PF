@@ -1,2 +1,5 @@
-<h1>Public::Goods#index</h1>
-<p>Find me in app/views/public/goods/index.html.erb</p>
+<h3>〇〇イベントグッズ</h3>
+<% @goods.each do |good| %>
+  <%= image_tag good.get_image(100,100) %>
+  <%= good.name %>
+<% end %>

@@ -6,7 +6,8 @@ class Good < ApplicationRecord
   validates :introduction, presence: true
   validates :post_status, inclusion:[true, false]
   # validates :image, presence: true
-
+  # validates :price, presence:true
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
