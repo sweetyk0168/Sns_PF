@@ -1,2 +1,7 @@
-<h1>Public::Goods#show</h1>
-<p>Find me in app/views/public/goods/show.html.erb</p>
+<h3><%= @good.name %></h3>
+<%= image_tag @good.get_image(100,100) %><br>
+￥<%= @good.price.to_s(:delimited, delimiter: ',') %><br>
+<%= @good.genre.name %><br>
+<%= @good.introduction %><br>
+
+<%= link_to '戻る', goods_path %>

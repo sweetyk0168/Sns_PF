@@ -5,6 +5,8 @@
       <%= f.text_field :name %><br>
       <%= f.label :"イベント説明" %>
       <%= f.text_area :introduction %><br>
+      <%= f.label :"イベントURL" %>
+      <%= f.text_field :url_strings %><br>
       <%= f.label :"ジャンル" %>
       <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %><br>
       <%= f.label :"投稿ステータス" %>

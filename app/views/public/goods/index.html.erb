@@ -1,5 +1,8 @@
 <h3>〇〇イベントグッズ</h3>
 <% @goods.each do |good| %>
-  <%= image_tag good.get_image(100,100) %>
+  <%= link_to good_path(good.id) do %>
+    <%= image_tag good.get_image(100,100) %>
+  <% end %><br>
+
   <%= good.name %>
 <% end %>

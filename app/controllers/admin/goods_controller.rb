@@ -26,7 +26,7 @@ class Admin::GoodsController < ApplicationController
   def edit
     @good = Good.find(params[:id])
   end
-  
+
   def update
     @good = Good.find(params[:id])
     if @good.update(good_params)
@@ -39,6 +39,6 @@ class Admin::GoodsController < ApplicationController
   private
 
   def good_params
-    params.require(:good).permit(:genre_id, :name, :introduction, :post_status, :image)
+    params.require(:good).permit(:genre_id, :name, :introduction, :post_status, :image, :price)
   end
 end

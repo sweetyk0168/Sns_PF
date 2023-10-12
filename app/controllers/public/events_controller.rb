@@ -9,6 +9,6 @@ class Public::EventsController < ApplicationController
   end
 
     def event_params
-      params.require(:event).permit(:genre_id, :name, :introduction, :post_status)
+      params.require(:event).permit(:genre_id, :name, :introduction, :post_status, :url_strings)
     end
 end

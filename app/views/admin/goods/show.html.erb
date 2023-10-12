@@ -1,10 +1,12 @@
 <h3>■グッズ情報詳細</h3>
 
-  <label>グッズ名</label>
-  <%= @good.name %>
   <div>
-  <%= image_tag @good.get_image(100,100) %>
-</div>
+    <%= image_tag @good.get_image(100,100) %>
+  </div>
+  <label>グッズ名</label>
+  <%= @good.name %><br>
+  <label>価格</label>
+  ￥<%= @good.price.to_s(:delimited, delimiter: ',') %><br>
   <label>グッズ説明</label>
   <%= @good.introduction %><br>
   <label>ジャンル</label>
