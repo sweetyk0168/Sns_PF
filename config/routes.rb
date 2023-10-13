@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   # namespace :public do
+  #   get 'posts/new'
+  #   get 'posts/index'
+  #   get 'posts/edit'
+  # end
+  # namespace :public do
   #   get 'goods/index'
   #   get 'goods/show'
   # end
@@ -41,8 +46,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resource :customers, only: [:show]
-    resources :events, only: [:index, :show]
+    resources :events, only: [:new, :create, :index, :show]
     resources :goods, only: [:index, :show]
+    resources :posts, only: [:create, :new, :index]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

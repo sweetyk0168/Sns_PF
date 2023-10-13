@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_12_113903) do
+ActiveRecord::Schema.define(version: 2023_10_13_113647) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2023_10_12_113903) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "url_strings", default: "", null: false
+    t.integer "customer_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -96,6 +97,15 @@ ActiveRecord::Schema.define(version: 2023_10_12_113903) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price", default: 0, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "body", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title", default: "", null: false
+    t.integer "event_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
