@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :genre
+  has_many :post
   has_one_attached :image
 
   validates :name, presence: true

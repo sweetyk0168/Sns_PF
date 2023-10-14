@@ -1,5 +1,7 @@
 <h1>test</h1>
 <% @posts.each do |post| %>
   <p>タイトル：<%= post.title %></p>
-  <%= post.event.introduction %>
+  <% post.events.each do |event| %>
+    <%= event.introduction %>
+  <% end %>
 <% end %>
