@@ -1,7 +1,21 @@
-<h1>test</h1>
+<h1>■イベント一覧</h1>
 <% @posts.each do |post| %>
   <p>タイトル：<%= post.title %></p>
+  <%= image_tag post.get_image(100,100) %><br>
   <% post.events.each do |event| %>
-    <%= event.introduction %>
+    <%= safe_join(event.introduction.split("\n"),tag(:br)) %><br>
+    <%= link_to event.url_strings %>
+  <% end %>
+  <% if post.favorited?(current_customer) %>
+      <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
+      <%= button_to post_favorites_path(post.id), method: :delete do %>
+          <span style="color:red;">❤︎</span>
+      <% end %>
+  <% else %>
+      <!-- # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ -->
+      <%= button_to post_favorites_path(post.id), method: :post do %>
+          <span>❤︎</span>
+      <% end %>
   <% end %>
 <% end %>
+<%#= paginate @posts %>

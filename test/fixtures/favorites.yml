@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  post: one
-  event: one
+  post_id: 1
+  customer_id: 1
 
 two:
-  post: two
-  event: two
+  post_id: 1
+  customer_id: 1

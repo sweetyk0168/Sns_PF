@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Public::PostEventsControllerTest < ActionDispatch::IntegrationTest
+class FavoriteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

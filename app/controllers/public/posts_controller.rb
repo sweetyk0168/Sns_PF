@@ -11,13 +11,13 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      byebug
       render 'new'
     end
   end
 
   def index
-    @posts = Post.page(params[:page])
+    # @posts = Post.page(params[:page])
+    @posts = Post.order(id: "DESC")
     @customer = current_customer
   end
 
@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :customer_id, :event_id, :introduction)
+    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, event_ids: [])
   end
 
   def correct_customer

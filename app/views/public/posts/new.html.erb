@@ -5,7 +5,7 @@
   <label>■画像選択</label>
   <%= f.file_field :image, accept:"image/*" %><br>
   <label>■本文</label>
-  <%= f.collection_select :event_id, Event.all, :id, :introduction, include_blank: "選択してください" %><br>
+  <%= f.collection_select :event_ids, Event.all, :id, :introduction, {}, {name: "post[event_ids][]", include_blank: "選択してください"} %><br>
 
   <%= f.submit '投稿' %>
 <% end %>

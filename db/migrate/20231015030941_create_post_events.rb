@@ -1,8 +1,9 @@
 class CreatePostEvents < ActiveRecord::Migration[6.1]
   def change
     create_table :post_events do |t|
-      t.integer :event_id
-      t.integer :post_id
+      t.references :post, null: false, foreign_key: true
+      t.references :event, null: false, foreign_key: true
+
       t.timestamps
     end
   end

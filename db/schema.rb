@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_14_131036) do
+ActiveRecord::Schema.define(version: 2023_10_15_061009) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,13 @@ ActiveRecord::Schema.define(version: 2023_10_14_131036) do
     t.integer "customer_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "customer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -100,10 +107,12 @@ ActiveRecord::Schema.define(version: 2023_10_14_131036) do
   end
 
   create_table "post_events", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "post_id"
+    t.integer "post_id", null: false
+    t.integer "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_post_events_on_event_id"
+    t.index ["post_id"], name: "index_post_events_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -116,4 +125,6 @@ ActiveRecord::Schema.define(version: 2023_10_14_131036) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_events", "events"
+  add_foreign_key "post_events", "posts"
 end
