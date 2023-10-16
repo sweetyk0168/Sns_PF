@@ -45,13 +45,17 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resource :customers, only: [:show]
+    resources :customers, only: [:index, :show] do
+      member do
+        get :follows, :followers
+      end
+      resource :relationships, only: [:create, :destroy]
+    end
     resources :events, only: [:new, :create, :index, :show]
     resources :goods, only: [:index, :show]
-    resources :posts, only: [:create, :new, :index] do
+    resources :posts, only: [:create, :new, :index, :show] do
       resource :favorites, only: [:create, :destroy]
     end
   end
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

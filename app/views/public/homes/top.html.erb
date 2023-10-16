@@ -1,8 +1,21 @@
 <% @posts.each do |post| %>
   <p>タイトル：<%= post.title %></p>
-  <%= image_tag post.get_image(100,100) %><br>
+  <%= link_to post_path(post.id) do %>
+    <%= image_tag post.get_image(100,100) %><br>
+  <% end %>
   <% post.events.each do |event| %>
-  <%= safe_join(event.introduction.split("\n"),tag(:br)) %>
-  <%= link_to event.url_strings %>
+    <%= safe_join(event.introduction.split("\n"),tag(:br)) %>
+    <%= link_to event.url_strings %>
+  <% end %>
+  <% if post.favorited?(current_customer) %>
+  <!-- 一致するレコードが存在する＝既にいいね済の場合はdestroyアクションへ-->
+    <%= link_to post_favorites_path(post.id), method: :delete do %>
+      <span style="color:red;">❤︎</span>
+    <% end %>
+  <% else %>
+  <!-- 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+    <%= link_to post_favorites_path(post.id), method: :post do %>
+      <span>❤︎</span>
+    <% end %>
   <% end %>
 <% end %>

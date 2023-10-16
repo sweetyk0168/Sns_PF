@@ -21,6 +21,10 @@ class Public::PostsController < ApplicationController
     @customer = current_customer
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def edit
   end
 
