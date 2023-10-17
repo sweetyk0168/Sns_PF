@@ -19,10 +19,13 @@ class Public::PostsController < ApplicationController
     # @posts = Post.page(params[:page])
     @posts = Post.order(id: "DESC")
     @customer = current_customer
+    @post_comments = PostComment.all
   end
 
   def show
     @post = Post.find(params[:id])
+    @post_comments = @post.post_comments
+    @post_comment = @post.post_comments.build
   end
 
   def edit
@@ -31,7 +34,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, event_ids: [])
+    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, event_ids: [])
   end
 
   def correct_customer

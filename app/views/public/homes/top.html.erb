@@ -8,7 +8,7 @@
     <%= link_to event.url_strings %>
   <% end %>
   <% if post.favorited?(current_customer) %>
-  <!-- 一致するレコードが存在する＝既にいいね済の場合はdestroyアクションへ-->
+   <!--一致するレコードが存在する＝既にいいね済の場合はdestroyアクションへ-->
     <%= link_to post_favorites_path(post.id), method: :delete do %>
       <span style="color:red;">❤︎</span>
     <% end %>

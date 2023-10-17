@@ -15,3 +15,19 @@
     <span>❤︎</span>
   <% end %>
 <% end %>
+<div>
+  <p>コメント一覧</p>
+  <% @post_comments.each do |post_comment| %>
+    <div>
+      <%= post_comment.customer.last_name unless post_comment.customer.blank? %>
+      <br />
+      <%= post_comment.comment %>
+    </div>
+  <% end %>
+  <% if customer_signed_in? %>
+      <%= form_with(model: [@post, @post_comment], local: true) do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %><br>
+        <%= f.submit "送信" %>
+      <% end %>
+  <% end %>
+</div>

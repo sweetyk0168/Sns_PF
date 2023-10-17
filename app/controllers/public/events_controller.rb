@@ -1,4 +1,5 @@
 class Public::EventsController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     # @event = Event.find(params[:id])

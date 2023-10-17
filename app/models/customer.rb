@@ -7,15 +7,17 @@ class Customer < ApplicationRecord
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+  #コメント機能モデルとの関連付け
+  has_many :post_comments, dependent: :destroy
+
   #フォローをした、されたの関係
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followerds, class_name: "Relationship", foreign_key: "followerd_id", dependent: :destroy
-  
+
   #一覧画面で使う
   has_many :following_customers, through: :followers, source: :followerd
   has_many :follower_customers, through: :followerds, source: :follower
-  
+
   #バリデーション
    validates :last_name, presence: true
    validates :first_name, presence: true

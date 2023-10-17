@@ -1,7 +1,9 @@
 <h1>■イベント一覧</h1>
 <% @posts.each do |post| %>
   <p>タイトル：<%= post.title %></p>
-  <%= image_tag post.get_image(100,100) %><br>
+  <%= link_to post_path(post.id) do %>
+    <%= image_tag post.get_image(100,100) %><br>
+  <% end %>
   <% post.events.each do |event| %>
     <%= safe_join(event.introduction.split("\n"),tag(:br)) %><br>
     <%= link_to event.url_strings %><br>
@@ -17,5 +19,6 @@
           <span>❤︎</span>
       <% end %>
   <% end %>
+  <p>コメント数: <%= post.post_comments.count %></p>
 <% end %>
 <%#= paginate @posts %>

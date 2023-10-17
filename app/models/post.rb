@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :events, through: :post_events, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_one_attached :image
+  has_many :post_comments, dependent: :destroy
 
   validates :title, presence: true
   # validates :body, presence: true
@@ -15,7 +16,7 @@ class Post < ApplicationRecord
     end
       image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def favorited?(customer)
     favorites.exists?(customer_id: customer.id)
   end
