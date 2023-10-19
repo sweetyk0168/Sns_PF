@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'event_tickets/new'
+    get 'event_tickets/index'
+    get 'event_tickets/show'
+    get 'event_tickets/edit'
+  end
   # namespace :public do
   #   get 'posts/new'
   #   get 'posts/index'
@@ -37,6 +43,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
     resources :events, only:[:new, :create, :index, :show, :edit, :update]
     resources :goods, only:[:new, :create, :index, :show, :edit, :update]
+    resources :event_tickets, only:[:create, :new, :index, :show, :edit, :update]
   end
 
   #ゲストログイン機能のroot

@@ -1,10 +1,11 @@
 class Post < ApplicationRecord
   belongs_to :customer
+  belongs_to :event_ticket
   has_many :post_events, dependent: :destroy
   has_many :events, through: :post_events, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_one_attached :image
   has_many :post_comments, dependent: :destroy
+  has_one_attached :image
 
   validates :title, presence: true
   # validates :body, presence: true

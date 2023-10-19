@@ -1,0 +1,20 @@
+<div>
+  <h3>イベントチケット詳細</h3>
+  <label>イベントチケット名</label>
+  <%= @eventticket.ticket_name %><br>
+  <label>チケット説明文</label>
+  <%= @eventticket.ticket_introduction %><br>
+  <label>税込価格（税抜価格）</label>
+  <%= @eventticket.add_tax_ticket_price.to_s(:delimited) %>(<%= @eventticket.ticket_price.to_s(:delimited) %>)円<br>
+  <label>ジャンル名</label>
+  <%= @eventticket.genre.name %><br>
+  <label>販売ステータス</label>
+  <% if @eventticket.sales_status == true %>
+    販売中
+  <% else %>
+  　販売終了
+  <% end %><br>
+  <div>
+    <%= link_to '編集する', edit_admin_event_ticket_path(@eventticket.id) %>
+  </div>
+</div>
