@@ -1,0 +1,33 @@
+<h3>〇〇イベント</h3>
+<p>一般販売</p>
+<label>チケット情報</label>
+<table>
+  <thead>
+    <tr>
+      <th>公演名</th>
+      <th>ジャンル名</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @eventtickets.each do |event_tickets| %>
+      <tr>
+        <td><%= event_tickets.ticket_name %></td>
+        <td><%= event_tickets.genre.name %></td>
+        <td>
+          <% if event_tickets.sales_status == true %>
+            販売中
+          <% else %>
+            販売終了
+          <% end %>
+        </td>
+        <td>
+          <%= link_to '詳細へ',  event_ticket_path(event_tickets.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @eventtickets %>

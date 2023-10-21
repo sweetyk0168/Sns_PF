@@ -29,8 +29,8 @@ class Admin::EventTicketsController < ApplicationController
 
   def update
     @eventticket = EventTicket.find(params[:id])
-    if @event_ticket.update(event_ticket_params)
-      redirect_to admin_event_ticket_path(@event_ticket)
+    if @eventticket.update(event_ticket_params)
+      redirect_to admin_event_ticket_path(@eventticket)
     else
       render 'edit'
     end

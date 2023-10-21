@@ -1,2 +1,19 @@
-<h1>Admin::EventTickets#edit</h1>
-<p>Find me in app/views/admin/event_tickets/edit.html.erb</p>
+<div>
+  <h3>イベントチケット情報編集</h3>
+  <%= form_for(@eventticket, url: admin_event_ticket_path) do |f| %>
+    <%= f.label :"イベントチケット名" %>
+    <%= f.text_field:ticket_name %><br>
+    <%= f.label :"チケット説明文" %>
+    <%= f.text_area:ticket_introduction %><br>
+    <%= f.label :"税込価格（税抜価格）" %>
+    <%= f.text_field :ticket_price %><br>
+    <%= f.label :"ジャンル名" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %><br>
+    <%= f.label :"販売ステータス" %>
+    <%= f.radio_button :sales_status, true %>
+    <%= f.label :sales_status, "販売中", {value: :true, style: "display: inline-block;" } %>
+    <%= f.radio_button :sales_status, false %>
+    <%= f.label :sales_status, "販売停止中", {value: :false,style: "display: inline-block" } %><br>
+    <%= f.submit '変更を保存' %>
+  <% end %>
+</div>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'event_tickets/index'
+    get 'event_tickets/show'
+  end
   namespace :admin do
     get 'event_tickets/new'
     get 'event_tickets/index'
@@ -64,6 +68,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resource :post_comments, only: [:create, :destroy]
     end
+    resources :event_tickets, only:[:index, :show, :new]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_19_081457) do
+ActiveRecord::Schema.define(version: 2023_10_21_102430) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -74,8 +74,6 @@ ActiveRecord::Schema.define(version: 2023_10_19_081457) do
 
   create_table "event_tickets", force: :cascade do |t|
     t.integer "genre_id"
-    t.integer "post_id"
-    t.integer "event_id"
     t.string "ticket_name", null: false
     t.text "ticket_introduction", null: false
     t.integer "ticket_price", null: false

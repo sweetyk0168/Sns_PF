@@ -5,7 +5,7 @@
   <% end %>
   <% post.events.each do |event| %>
     <%= safe_join(event.introduction.split("\n"),tag(:br)) %>
-    <%= link_to event.url_strings %>
+    <%= link_to event.url_strings, event_tickets_path  %>
   <% end %>
   <% if post.favorited?(current_customer) %>
    <!--一致するレコードが存在する＝既にいいね済の場合はdestroyアクションへ-->
