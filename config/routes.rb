@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'cart_tickets/index'
+  end
+  namespace :public do
     get 'event_tickets/index'
     get 'event_tickets/show'
   end
@@ -69,6 +72,7 @@ Rails.application.routes.draw do
       resource :post_comments, only: [:create, :destroy]
     end
     resources :event_tickets, only:[:index, :show, :new]
+    resources :cart_tickets, only:[:create, :index, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

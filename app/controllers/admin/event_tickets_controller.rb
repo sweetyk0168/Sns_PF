@@ -39,6 +39,6 @@ class Admin::EventTicketsController < ApplicationController
   private
 
   def event_ticket_params
-    params.require(:event_ticket).permit(:genre_id, :post_id, :event_id, :ticket_name, :ticket_introduction, :ticket_price, :sales_status)
+    params.require(:event_ticket).permit(:genre_id, :post_id, :event_id, :event_title, :ticket_startday, :ticket_endday, :ticket_place, :ticket_name, :ticket_introduction, :ticket_price, :sales_status)
   end
 end

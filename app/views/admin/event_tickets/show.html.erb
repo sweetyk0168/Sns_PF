@@ -1,7 +1,15 @@
 <div>
   <h3>イベントチケット詳細</h3>
+  <label>イベントタイトル名</label>
+  <%= @eventticket.event_title %><br>
   <label>イベントチケット名</label>
   <%= @eventticket.ticket_name %><br>
+  <label>イベントチケット販売開始日</label>
+  <%= @eventticket.ticket_startday %><br>
+  <label>イベントチケット販売終了日</label>
+  <%= @eventticket.ticket_endday %><br>
+  <label>イベント会場名</label>
+  <%= @eventticket.ticket_place %><br>
   <label>チケット説明文</label>
   <%= @eventticket.ticket_introduction %><br>
   <label>税込価格（税抜価格）</label>

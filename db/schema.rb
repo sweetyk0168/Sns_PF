@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_21_102430) do
+ActiveRecord::Schema.define(version: 2023_10_22_092227) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2023_10_21_102430) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cart_tickets", force: :cascade do |t|
+    t.integer "event_ticket_id"
+    t.integer "customer_id"
+    t.integer "amount", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -80,7 +88,10 @@ ActiveRecord::Schema.define(version: 2023_10_21_102430) do
     t.boolean "sales_status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "genre_name", default: "", null: false
+    t.string "ticket_startday", null: false
+    t.string "ticket_endday", null: false
+    t.string "ticket_place", null: false
+    t.string "event_title", default: "", null: false
   end
 
   create_table "events", force: :cascade do |t|

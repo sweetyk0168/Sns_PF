@@ -1,8 +1,20 @@
 <h3>■イベントチケット新規登録</h3>
 <div>
   <%= form_for(@eventticket, url:admin_event_tickets_path) do |f| %>
+    <label>イベントタイトル名</label>
+    <%= f.text_field:event_title, autofocus: true, autocomplete: "event_title", placeholder: "イベントタイトル名" %><br>
+
     <label>イベントチケット名</label>
     <%= f.text_field:ticket_name, autofocus: true, autocomplete: "ticket_name", placeholder: "イベントチケット名" %><br>
+
+    <label>イベントチケット販売開始日</label>
+    <%= f.text_field:ticket_startday, autofocus: true, autocomplete: "ticket_startday", placeholder: "イベント開始日" %><br>
+
+    <label>イベントチケット販売終了日</label>
+    <%= f.text_field:ticket_endday, autofocus: true, autocomplete: "ticket_endday", placeholder: "イベント終了日" %><br>
+
+    <label>イベント会場名</label>
+    <%= f.text_field:ticket_place, autofocus: true, autocomplete: "ticket_place", placeholder: "イベント会場名" %><br>
 
     <label>イベントチケット説明文</label>
     <%= f.text_area:ticket_introduction, autofocus: true, autocomplete: "ticket_introduction", placeholder: "イベントチケット説明文" %><br>

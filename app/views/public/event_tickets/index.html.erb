@@ -1,11 +1,12 @@
 <h3>〇〇イベント</h3>
 <p>一般販売</p>
-<label>チケット情報</label>
+<label>■イベントチケット情報</label>
 <table>
   <thead>
     <tr>
       <th>公演名</th>
-      <th>ジャンル名</th>
+      <th>公演期間</th>
+      <th>公演会場</th>
       <th></th>
       <th></th>
     </tr>
@@ -14,7 +15,8 @@
     <% @eventtickets.each do |event_tickets| %>
       <tr>
         <td><%= event_tickets.ticket_name %></td>
-        <td><%= event_tickets.genre.name %></td>
+        <td><%= event_tickets.ticket_startday %>～<%= event_tickets.ticket_endday %></td>
+        <td><%= event_tickets.ticket_place %></td>
         <td>
           <% if event_tickets.sales_status == true %>
             販売中
