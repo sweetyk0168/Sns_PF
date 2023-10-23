@@ -1,6 +1,8 @@
 class EventTicket < ApplicationRecord
   belongs_to :genre
   has_many :cart_tickets, dependent: :destroy
+  has_many :ticket_orders, through: :ticket_order_details
+  has_many :ticket_order_details, dependent: :destroy
 
   validates :event_title, presence: true
   validates :ticket_startday, presence: true

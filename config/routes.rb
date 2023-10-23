@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'ticket_orders/index'
+    get 'ticket_orders/show'
+    get 'ticket_orders/new'
+  end
+  namespace :public do
+    get 'ticket_orders/new'
+    get 'ticket_orders/index'
+    get 'ticket_orders/confirm'
+    get 'ticket_orders/complete'
+    get 'ticket_orders/create'
+    get 'ticket_orders/show'
+  end
   namespace :public do
     get 'cart_tickets/index'
   end
@@ -51,6 +64,8 @@ Rails.application.routes.draw do
     resources :events, only:[:new, :create, :index, :show, :edit, :update]
     resources :goods, only:[:new, :create, :index, :show, :edit, :update]
     resources :event_tickets, only:[:create, :new, :index, :show, :edit, :update]
+    resources :ticket_orders, only:[:index, :show, :update]
+    resources :ticket_order_details, only:[:update]
   end
 
   #ゲストログイン機能のroot
@@ -72,7 +87,17 @@ Rails.application.routes.draw do
       resource :post_comments, only: [:create, :destroy]
     end
     resources :event_tickets, only:[:index, :show, :new]
-    resources :cart_tickets, only:[:create, :index, :update, :destroy]
+    resources :cart_tickets, only:[:create, :index, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    resources :ticket_orders, only:[:new, :index, :show, :create] do
+      collection do
+        post 'confirm'
+        get 'complete'
+      end
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_22_092227) do
+ActiveRecord::Schema.define(version: 2023_10_23_114636) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2023_10_22_092227) do
   end
 
   create_table "cart_tickets", force: :cascade do |t|
-    t.integer "event_ticket_id"
-    t.integer "customer_id"
+    t.integer "event_ticket_id", null: false
+    t.integer "customer_id", null: false
     t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2023_10_22_092227) do
   end
 
   create_table "event_tickets", force: :cascade do |t|
-    t.integer "genre_id"
+    t.integer "genre_id", null: false
     t.string "ticket_name", null: false
     t.text "ticket_introduction", null: false
     t.integer "ticket_price", null: false
@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(version: 2023_10_22_092227) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "customer_id"
+    t.integer "post_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 2023_10_22_092227) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "post_id"
+    t.integer "customer_id", null: false
+    t.integer "post_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2023_10_22_092227) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "customer_id", null: false
     t.string "body", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -156,6 +156,29 @@ ActiveRecord::Schema.define(version: 2023_10_22_092227) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followerd_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ticket_order_details", force: :cascade do |t|
+    t.integer "event_ticket_id", null: false
+    t.integer "ticketorder_id", null: false
+    t.integer "amount", null: false
+    t.integer "price", null: false
+    t.integer "ticket_status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ticket_orders", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.string "postcode", null: false
+    t.text "address", null: false
+    t.string "name", null: false
+    t.integer "postage", null: false
+    t.integer "payment", null: false
+    t.integer "payment_method", default: 0
+    t.integer "order_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

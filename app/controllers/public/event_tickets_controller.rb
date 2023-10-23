@@ -9,7 +9,7 @@ class Public::EventTicketsController < ApplicationController
   end
 
   private
-  def item_params
-    params.require(:item).permit(:genre_id, :ticket_name, :introduction, :price, :sales_status, :image, :event_id)
+  def event_ticket_params
+    params.require(:event_ticket).permit(:genre_id, :ticket_name, :introduction, :price, :sales_status, :image)
   end
 end

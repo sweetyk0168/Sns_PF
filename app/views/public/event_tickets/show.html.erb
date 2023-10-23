@@ -14,7 +14,7 @@
 <div>
   <% if @eventticket.sales_status == true %>
     <%= form_for(@cart_ticket, url: cart_tickets_path) do |f| %>
-      <%= f.hidden_field :eventticket_id, value: @eventticket.id %>
+      <%= f.hidden_field :event_ticket_id, value: @eventticket.id %>
       <%= f.number_field :amount, placeholder: "枚数選択", min: 1, max: 4 %>
       <%= f.submit 'カートに入れる' %>
     <% end %>
