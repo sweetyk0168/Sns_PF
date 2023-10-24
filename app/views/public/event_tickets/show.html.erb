@@ -1,7 +1,7 @@
 
 <%= @eventticket.event_title %><br>
 <%= @eventticket.ticket_startday %>～<br>
-<%= @eventticket.ticket_introduction %><br>
+<%= safe_join(@eventticket.ticket_introduction.split("\n"),tag(:br)) %><br>
 
 <h3>公演日時・座席</h3>
 <%= @eventticket.ticket_name %><br>

@@ -1,11 +1,16 @@
 class Public::TicketOrdersController < ApplicationController
-  before_action :autherticate_customer!
+  before_action :authenticate_customer!
 
   def new
     @ticketorder = TicketOrder.new
   end
 
   def confirm
+    @cart_tickets = current_customer.cart_tickets
+
+    @ticketorder = TicketOrder.new(
+      payment_method:params[:ticketorder][:paymetn_method])
+      @ticketorder.postage = 800
   end
 
   def complete
@@ -41,6 +46,8 @@ class Public::TicketOrdersController < ApplicationController
   end
 
   def show
+    @ticketorder = TickertOrder.find(params[:id])
+    @ticket_order_details = @ticketorder.ticket_order_details.all
   end
 
   private
