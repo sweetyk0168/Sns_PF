@@ -1,45 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'ticket_orders/index'
-    get 'ticket_orders/show'
-    get 'ticket_orders/new'
-  end
-  namespace :public do
-    get 'ticket_orders/new'
-    get 'ticket_orders/index'
-    get 'ticket_orders/confirm'
-    get 'ticket_orders/complete'
-    get 'ticket_orders/create'
-    get 'ticket_orders/show'
-  end
-  namespace :public do
-    get 'cart_tickets/index'
-  end
-  namespace :public do
-    get 'event_tickets/index'
-    get 'event_tickets/show'
-  end
-  namespace :admin do
-    get 'event_tickets/new'
-    get 'event_tickets/index'
-    get 'event_tickets/show'
-    get 'event_tickets/edit'
-  end
-  # namespace :public do
-  #   get 'posts/new'
-  #   get 'posts/index'
-  #   get 'posts/edit'
-  # end
-  # namespace :public do
-  #   get 'goods/index'
-  #   get 'goods/show'
-  # end
-  # namespace :admin do
-  #   get 'goods/new'
-  #   get 'goods/index'
-  #   get 'goods/show'
-  #   get 'goods/edit'
-  # end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
