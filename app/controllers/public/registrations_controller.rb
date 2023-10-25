@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  before_aciton :ensure_normal_user, only: [:destroy]
+  before_action :ensure_normal_user, only: [:destroy]
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -47,6 +47,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
     if resource.email == 'guest@example.com'
       flash.now[:notice] = "ゲストユーザーの削除はできません。"
       redirect_to root_path
+    end
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'event_repos/new'
+    get 'event_repos/index'
+    get 'event_repos/edit'
+    get 'event_repos/show'
+  end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -25,6 +31,7 @@ Rails.application.routes.draw do
     resources :event_tickets, only:[:create, :new, :index, :show, :edit, :update]
     resources :ticket_orders, only:[:index, :show, :update]
     resources :ticket_order_details, only:[:update]
+    resources :event_repos, only:[:create, :new, :index, :show, :edit, :update]
   end
 
   #ゲストログイン機能のroot
