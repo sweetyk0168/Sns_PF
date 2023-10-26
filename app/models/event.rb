@@ -11,5 +11,4 @@ class Event < ApplicationRecord
   validates :post_status, inclusion:[true, false]
   validates :url_strings, presence: true
 
-
 end

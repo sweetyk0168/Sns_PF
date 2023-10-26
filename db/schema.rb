@@ -81,9 +81,10 @@ ActiveRecord::Schema.define(version: 2023_10_25_112340) do
   end
 
   create_table "event_repos", force: :cascade do |t|
-    t.integer "customer_id", null: false
+    t.integer "genre_id", null: false
     t.string "event_repos_title", null: false
     t.text "event_repos_body", null: false
+    t.boolean "post_status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

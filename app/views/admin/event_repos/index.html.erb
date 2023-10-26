@@ -1,2 +1,34 @@
-<h1>Admin::EventRepos#index</h1>
-<p>Find me in app/views/admin/event_repos/index.html.erb</p>
+<h3>■イベントレポート情報一覧</h3>
+<div>
+  <%= link_to  new_admin_event_repo_path do %>
+    <button type= "button">+</button>
+  <% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>イベント名</th>
+        <th>ジャンル</th>
+        <th>投稿状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @eventrepos.each do |eventrepos| %>
+        <tr>
+          <td><%= eventrepos.id %></td>
+          <td><%= link_to eventrepos.event_repos_title, admin_event_repo_path(eventrepos) %></td>
+          <td><%= eventrepos.genre.name %></td>
+          <td>
+            <% if eventrepos.post_status %>
+              投稿中
+            <% else %>
+              投稿完了
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% paginate @eventrepos %>

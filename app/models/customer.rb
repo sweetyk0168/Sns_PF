@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :cart_tickets, dependent: :destroy
   has_many :ticket_orders, dependent: :destroy
+  has_many :event_repos,  dependent: :destroy
   #コメント機能モデルとの関連付け
   has_many :post_comments, dependent: :destroy
 
