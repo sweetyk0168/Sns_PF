@@ -1,2 +1,23 @@
-<h1>Admin::EventRepos#edit</h1>
-<p>Find me in app/views/admin/event_repos/edit.html.erb</p>
+<div>
+  <h3>イベントレポート編集</h3>
+  <%= form_for(@eventrepo, url:admin_event_repo_path) do |f| %>
+    <div>
+      <label>イベントレポート画像</label>
+      <%= f.file_field :image, accept: "image/*" %><br>
+    </div>
+    <div>
+      <%= f.label :"イベントレポート名" %>
+      <%= f.text_field :event_repos_title %><br>
+      <%= f.label :"イベントレポート内容" %>
+      <%= f.text_area :event_repos_body %><br>
+      <%= f.label :"ジャンル" %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %><br>
+      <%= f.label :"投稿ステータス" %>
+      <%= f.radio_button :post_status, true %>
+      <%= f.label :post_status, "投稿中" ,{value: :true, style: "display: inline-block;" } %>
+      <%= f.radio_button :post_status, false %>
+      <%= f.label :post_status, "投稿完了", {value: :false, style: "display: inline-block"} %><br>
+      <%= f.submit '変更を保存' %>
+    </div>
+  <% end %>
+</div>

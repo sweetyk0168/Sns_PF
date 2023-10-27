@@ -1,2 +1,19 @@
-<h1>Admin::EventRepos#show</h1>
-<p>Find me in app/views/admin/event_repos/show.html.erb</p>
+<h3>イベントレポート詳細</h3>
+<div>
+  <%= image_tag @eventrepo.get_image(100,100) %>
+</div>
+<label>イベントレポート名</label>
+<%= @eventrepo.event_repos_title %><br>
+<label>イベントレポート内容</label>
+<%= @eventrepo.event_repos_body %><br>
+<label>ジャンル</label>
+<%= @eventrepo.genre.name %><br>
+<label>投稿ステータス</label>
+<% if @eventrepo.post_status == true %>
+  投稿中
+<% else %>
+  投稿完了
+<% end %>
+<div>
+  <%= link_to '編集する', edit_admin_event_repo_path(@eventrepo.id) %>
+</div>
