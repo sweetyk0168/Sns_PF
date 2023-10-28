@@ -1,10 +1,5 @@
-<div>
   <h3>イベントレポート編集</h3>
   <%= form_for(@eventrepo, url:admin_event_repo_path) do |f| %>
-    <div>
-      <label>イベントレポート画像</label>
-      <%= f.file_field :image, accept: "image/*" %><br>
-    </div>
     <div>
       <%= f.label :"イベントレポート名" %>
       <%= f.text_field :event_repos_title %><br>
@@ -17,7 +12,16 @@
       <%= f.label :post_status, "投稿中" ,{value: :true, style: "display: inline-block;" } %>
       <%= f.radio_button :post_status, false %>
       <%= f.label :post_status, "投稿完了", {value: :false, style: "display: inline-block"} %><br>
-      <%= f.submit '変更を保存' %>
     </div>
+    <div>
+      <label>イベントレポート画像</label>
+      <%= f.file_field :images, multiple: true %><br>
+      <% if @eventrepo.images.present? %>
+        <% @eventrepo.images.each do |image| %>
+          <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
+          <%= image_tag image, size:"100x100" %>
+        <% end %>
+      <% end %>
+    </div>
+      <%= f.submit '変更を保存' %>
   <% end %>
-</div>

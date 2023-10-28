@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'event_repos/new'
-    get 'event_repos/index'
-    get 'event_repos/edit'
-    get 'event_repos/show'
-  end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -64,6 +58,7 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
+    resources :event_repos, only:[:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

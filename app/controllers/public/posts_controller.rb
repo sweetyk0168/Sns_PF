@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
+    #byebug
     if @post.save
       redirect_to posts_path
     else
@@ -34,7 +35,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, event_ids: [])
+    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, :event_id)
   end
 
   def correct_customer

@@ -31,6 +31,12 @@ class Admin::EventReposController < ApplicationController
     else
       render 'edit'
     end
+    if params[:event_repo][:image_ids]
+      params[:event_repo][:image_ids].each do |image_id|
+        image = @event_repo.images.find(image_id)
+        image.purge
+      end
+    end
   end
 
   def show
@@ -40,6 +46,6 @@ class Admin::EventReposController < ApplicationController
   private
 
   def event_repo_params
-    params.require(:event_repo).permit(:event_repos_title, :event_repos_body, :genre_id, :post_status, :image)
+    params.require(:event_repo).permit(:event_repos_title, :event_repos_body, :genre_id, :post_status, images: [])
   end
 end

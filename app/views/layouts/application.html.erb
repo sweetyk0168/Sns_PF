@@ -22,7 +22,7 @@
           <li><%= link_to "投稿フォーム", new_post_path %></li>
           <li><%= link_to "イベントNEWS", events_path %></li>
           <li><%= link_to "グッズ情報",goods_path %></li>
-          <li><%= link_to "イベントレポート" %></li>
+          <li><%= link_to "イベントレポート", event_repos_path %></li>
           <li><%= link_to "アンケート" %></li>
           <li><%= link_to "マイページ", customers_path %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
@@ -35,20 +35,6 @@
       </div>
     </header>
     <%= yield %>
-    <!--<div class="box">-->
-    <!--  <footer>-->
-    <!--    <% if customer_signed_in? %>-->
-    <!--      <li><%= link_to "イベントNEWS", events_path %></li>-->
-    <!--      <li><%= link_to "グッズ情報", goods_path %></li>-->
-    <!--      <li><%= link_to "イベントレポート" %></li>-->
-    <!--      <li><%= link_to "アンケート" %></li>-->
-    <!--    <% else %>-->
-    <!--      <li><%= link_to "イベントNEWS", events_path %></li>-->
-    <!--      <li><%= link_to "新規登録", new_customer_registration_path %></li>-->
-    <!--      <li><%= link_to "ログイン", customer_session_path %></li>-->
-    <!--      <li><%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %></li>-->
-    <!--    <% end %>-->
-    <!--</footer>-->
     </div>
   </body>
 </html>

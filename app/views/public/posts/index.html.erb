@@ -4,10 +4,10 @@
   <%= link_to post_path(post.id) do %>
     <%= image_tag post.get_image(100,100) %><br>
   <% end %>
-  <% post.events.each do |event| %>
-    <%= safe_join(event.introduction.split("\n"),tag(:br)) %><br>
-    <%= link_to event.url_strings, event_tickets_path %><br>
-  <% end %>
+
+    <%= post.event.introduction %><br>
+    <%= link_to post.event.url_strings, events_path %><br>
+
   <% if post.favorited?(current_customer) %>
       <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
       <%= link_to post_favorites_path(post.id), method: :delete do %>

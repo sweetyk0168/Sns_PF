@@ -2,7 +2,7 @@
   <h3>■イベントレポート新規登録</h3>
   <%= form_for(@eventrepo, url:admin_event_repos_path) do |f| %>
     <label>イベントレポート画像</label>
-    <%= f.file_field :image, accept: "image/*" %><br>
+    <%= f.file_field :images, multiple: true %><br>
     <div>
       <label>イベントレポートタイトル名</label>
       <%= f.text_field:event_repos_title, autofocus: true, autocomplete: "event_repo_title", placeholder: "イベントレポートタイトル名" %><br>

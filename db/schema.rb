@@ -148,9 +148,11 @@ ActiveRecord::Schema.define(version: 2023_10_25_112340) do
   create_table "post_events", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "event_id", null: false
+    t.integer "good_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_post_events_on_event_id"
+    t.index ["good_id"], name: "index_post_events_on_good_id"
     t.index ["post_id"], name: "index_post_events_on_post_id"
   end
 
@@ -160,6 +162,7 @@ ActiveRecord::Schema.define(version: 2023_10_25_112340) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title", default: "", null: false
+    t.integer "event_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -195,5 +198,6 @@ ActiveRecord::Schema.define(version: 2023_10_25_112340) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "post_events", "events"
+  add_foreign_key "post_events", "goods"
   add_foreign_key "post_events", "posts"
 end

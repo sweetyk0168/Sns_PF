@@ -4,6 +4,10 @@
   <%= safe_join(event.introduction.split("\n"),tag(:br)) %><br>
   <%= link_to event.url_strings %><br>
 <% end %>
+<% @post.goods.each do |good| %>
+  <%= safe_join(good.introduction.split("\n"),tag(:br)) %><br>
+  <%#= link_to event.url_strings %><br>
+<% end %>
 <% if @post.favorited?(current_customer) %>
   <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
   <%= link_to post_favorites_path(@post.id), method: :delete do %>

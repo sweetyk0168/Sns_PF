@@ -1,11 +1,11 @@
 class EventRepo < ApplicationRecord
   belongs_to :genre
-
+  has_many_attached :images
+  
   validates :event_repos_title,presence: true
   validates :event_repos_body,presence: true
   validates :post_status, inclusion:[true, false]
-  has_one_attached :image
-
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

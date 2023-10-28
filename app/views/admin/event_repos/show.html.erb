@@ -1,7 +1,4 @@
 <h3>イベントレポート詳細</h3>
-<div>
-  <%= image_tag @eventrepo.get_image(100,100) %>
-</div>
 <label>イベントレポート名</label>
 <%= @eventrepo.event_repos_title %><br>
 <label>イベントレポート内容</label>
@@ -14,6 +11,11 @@
 <% else %>
   投稿完了
 <% end %>
+<div>
+    <% @eventrepo.images.each do |images| %>
+      <%= image_tag(images, heght:100, width:100) %>
+    <% end %>
+</div>
 <div>
   <%= link_to '編集する', edit_admin_event_repo_path(@eventrepo.id) %>
 </div>
