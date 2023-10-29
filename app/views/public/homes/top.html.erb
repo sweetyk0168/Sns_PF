@@ -1,11 +1,15 @@
+<h3>■投稿一覧</h3>
 <% @posts.each do |post| %>
   <p>タイトル：<%= post.title %></p>
   <%= link_to post_path(post.id) do %>
     <%= image_tag post.get_image(100,100) %><br>
   <% end %>
+ <% if post.event.present? %>
     <%= safe_join(post.event.introduction.split("\n"),tag(:br)) %>
     <%= link_to post.event.url_strings, events_path  %>
+<% end %>
 
+<%= post.event_repos.event_repos_body %><br>
   <% if post.favorited?(current_customer) %>
    <!--一致するレコードが存在する＝既にいいね済の場合はdestroyアクションへ-->
     <%= link_to post_favorites_path(post.id), method: :delete do %>

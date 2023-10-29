@@ -9,9 +9,25 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     #byebug
+    if params[:post][:event_id].blank?
+      @post.event_id = nil  # もしくは適切なデフォルト値
+    end
+
+    #@post.event_id ||= Event.first.id
+
+    if @post.body.blank?
+      @post.body = ""  # 空文字列を設定
+    end
+
     if @post.save
+      PostEventRepo.create(post_id: @post.id, event_repo_id: params[:post][:event_repo_ids])
+
       redirect_to posts_path
     else
+      # if @post.errors.include?(:event_id)
+      #   flash[:error] = 'イベントを選択してください。'
+      # end
+      logger.error "Post 保存エラー: #{@post.errors.full_messages.join(', ')}"
       render 'new'
     end
   end
@@ -35,7 +51,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, :event_id)
+    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, :event_id, :good_id, :event_repo_ids)
   end
 
   def correct_customer

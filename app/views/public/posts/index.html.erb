@@ -1,13 +1,20 @@
-<h1>■イベント一覧</h1>
+<h1>■投稿一覧</h1>
 <% @posts.each do |post| %>
   <p>タイトル：<%= post.title %></p>
   <%= link_to post_path(post.id) do %>
     <%= image_tag post.get_image(100,100) %><br>
   <% end %>
-
+  <% if post.event.present? %>
     <%= post.event.introduction %><br>
     <%= link_to post.event.url_strings, events_path %><br>
-
+  <% end %>
+  <% if post.event_repos.present? %>
+    <label>▽イベントレポート情報はこちらから</label>
+    <% post.event_repos.each do |event_repo| %>
+      <%= link_to event_repo.event_repos_title, event_repos_path %><br>
+    <% end %>
+  <% end %>
+    <%#= link_to post.event.url_strings, events_path %><br>
   <% if post.favorited?(current_customer) %>
       <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
       <%= link_to post_favorites_path(post.id), method: :delete do %>

@@ -8,7 +8,6 @@ class Admin::EventReposController < ApplicationController
 
   def create
     @eventrepo = EventRepo.new(event_repo_params)
-      #byebug
     if @eventrepo.save
       redirect_to admin_event_repos_path
     else
