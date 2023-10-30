@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_29_064712) do
+ActiveRecord::Schema.define(version: 2023_10_30_021950) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -78,6 +78,21 @@ ActiveRecord::Schema.define(version: 2023_10_29_064712) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "event_questionnaires", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "gender", null: false
+    t.text "chance", null: false
+    t.integer "satisfaction", null: false
+    t.text "reason_for_satisfaction", null: false
+    t.integer "participation", null: false
+    t.text "impressions", null: false
+    t.boolean "post_status", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "event_repos", force: :cascade do |t|
