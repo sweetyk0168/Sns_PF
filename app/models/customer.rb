@@ -12,6 +12,7 @@ class Customer < ApplicationRecord
   has_many :event_repos,  dependent: :destroy
   #コメント機能モデルとの関連付け
   has_many :post_comments, dependent: :destroy
+  has_many :event_questionnaires_answers
 
   #フォローをした、されたの関係
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

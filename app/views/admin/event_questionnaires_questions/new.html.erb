@@ -1,0 +1,14 @@
+<h3>アンケート質問の新規作成</h3>
+<%= form_with model: @event_questionnaires_question, url: admin_event_questionnaires_questions_path do |form| %>
+  <p>
+    <%= form.label :'イベントアンケート名' %>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :'イベントアンケート説明文' %>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+    <%= form.submit '新規登録'%>
+  </p>
+<% end %>

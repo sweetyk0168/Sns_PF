@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_30_021950) do
+ActiveRecord::Schema.define(version: 2023_10_31_022621) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,17 +80,22 @@ ActiveRecord::Schema.define(version: 2023_10_30_021950) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "event_questionnaires", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.string "name", null: false
-    t.text "introduction", null: false
+  create_table "event_questionnaires_answers", force: :cascade do |t|
+    t.integer "event_questionnaires_question_id", null: false
     t.integer "gender", null: false
-    t.text "chance", null: false
+    t.text "reason", default: "", null: false
     t.integer "satisfaction", null: false
-    t.text "reason_for_satisfaction", null: false
+    t.text "reason_for_satisfaction", default: "", null: false
     t.integer "participation", null: false
-    t.text "impressions", null: false
-    t.boolean "post_status", default: true, null: false
+    t.text "impressions", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_questionnaires_question_id"], name: "answer"
+  end
+
+  create_table "event_questionnaires_questions", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -169,17 +174,6 @@ ActiveRecord::Schema.define(version: 2023_10_30_021950) do
     t.index ["post_id"], name: "index_post_event_repos_on_post_id"
   end
 
-  create_table "post_events", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "event_id", null: false
-    t.integer "good_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_post_events_on_event_id"
-    t.index ["good_id"], name: "index_post_events_on_good_id"
-    t.index ["post_id"], name: "index_post_events_on_post_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "body", default: "", null: false
@@ -221,9 +215,7 @@ ActiveRecord::Schema.define(version: 2023_10_30_021950) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "event_questionnaires_answers", "event_questionnaires_questions"
   add_foreign_key "post_event_repos", "event_repos"
   add_foreign_key "post_event_repos", "posts"
-  add_foreign_key "post_events", "events"
-  add_foreign_key "post_events", "goods"
-  add_foreign_key "post_events", "posts"
 end

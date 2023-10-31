@@ -9,8 +9,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, allow_blank: true
-  attr_accessor :event_repo_ids
-  attr_accessor :event_id
+  # attr_accessor :event_repo_ids
+  # attr_accessor :event_id
 
   # before_save :set_default_event_id
 

@@ -8,12 +8,14 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
-    #byebug
-    if params[:post][:event_id].blank?
-      @post.event_id = nil  # もしくは適切なデフォルト値
-    end
 
-    #@post.event_id ||= Event.first.id
+    if post_params[:event_id].blank?
+      @post.event_id = nil  # もしくは適切なデフォルト値
+    else
+      @post.event_id = post_params[:event_id]
+    end
+    # byebug
+    # @post.event_id ||= Event.first.id
 
     if @post.body.blank?
       @post.body = ""  # 空文字列を設定

@@ -1,0 +1,21 @@
+<h3>■アンケート回答情報一覧</h3>
+<div>
+  <%= link_to 'アンケート回答情報の新規作成', new_admin_event_questionnaires_answer_path %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events_questionnaires_answers.each do |answers| %>
+        <tr>
+          <td><%= answers.id %></td>
+          <td><%= link_to 'アンケート回答情報詳細画面へ', admin_event_questionnaires_answer_path(answers) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% paginate @events_questionnaires_answers %>

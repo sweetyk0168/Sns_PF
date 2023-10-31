@@ -1,2 +1,0 @@
-module Admin::EventQuestionnairesHelper
-end

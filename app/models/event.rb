@@ -1,10 +1,10 @@
 class Event < ApplicationRecord
   belongs_to :genre
-
+  belongs_to :event
   has_many :post_events, dependent: :destroy
   has_many :posts, through: :post_events, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-   has_one_attached :image
+  has_one_attached :image
 
 
   validates :name, presence: true

@@ -5,8 +5,12 @@
     <%= image_tag post.get_image(100,100) %><br>
   <% end %>
   <% if post.event.present? %>
-    <%= post.event.introduction %><br>
-    <%= link_to post.event.url_strings, events_path %><br>
+    <%# post.event.each do |event| %>
+      <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
+      <%= link_to '〇〇イベント開催決定！！', event_path(post.event.id) %>
+
+      <%= image_tag post.event.get_image(100,100) %>
+    <%# end %>
   <% end %>
   <% if post.event_repos.present? %>
     <label>▽イベントレポート情報はこちらから</label>
