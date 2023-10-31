@@ -9,8 +9,6 @@
   ￥<%= @good.price.to_s(:delimited, delimiter: ',') %><br>
   <label>グッズ説明</label>
   <%= @good.introduction %><br>
-  <label>ジャンル</label>
-  <%= @good.genre.name %><br>
   <label>投稿ステータス</label>
   <% if @good.post_status == true %>
     投稿中

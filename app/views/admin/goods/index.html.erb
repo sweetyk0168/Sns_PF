@@ -9,7 +9,6 @@
     <tr>
       <th>ID</th>
       <th>グッズ名</th>
-      <th>ジャンル</th>
       <th>投稿状況</th>
     </tr>
   </thead>
@@ -18,7 +17,6 @@
       <tr>
         <td><%= good.id %></td>
         <td><%= link_to good.name, admin_good_path(good) %></td>
-        <td><%= good.genre.name %></td>
         <td><% if good.post_status %>
               投稿中
             <% else %>
