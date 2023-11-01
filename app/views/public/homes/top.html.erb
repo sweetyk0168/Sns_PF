@@ -8,7 +8,7 @@
     <%= post.event.introduction %>
     <%= link_to post.event.url_strings, events_path %>
   <% end %>
- <% if post.event_repos.present? %>
+ <% if post.event_repo.present? %>
     <label>▽イベントレポート情報はこちらから</label>
     <%# post.event_repos.each do |event_repo| %>
       <%= post.event_repo.event_repos_body %><br>

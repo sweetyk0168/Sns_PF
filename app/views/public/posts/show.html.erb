@@ -8,7 +8,7 @@
     <%= link_to "グッズ情報", goods_path %><br>
   <%# end %>
 <% end %>
-<% if @post.event_repos.present? %>
+<% if @post.event_repo.present? %>
   <label>▽イベントレポート情報はこちらから</label>
   <%# @post.event_repos.each do |event_repo| %>
     <%= link_to @post.event_repo.event_repos_title, event_repos_path %><br>
