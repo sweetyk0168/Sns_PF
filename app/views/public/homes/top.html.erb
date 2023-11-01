@@ -10,10 +10,10 @@
   <% end %>
  <% if post.event_repos.present? %>
     <label>▽イベントレポート情報はこちらから</label>
-    <% post.event_repos.each do |event_repo| %>
-      <%= event_repo.event_repos_body %><br>
-       <%= link_to event_repo.event_repos_title, event_repos_path %><br>
-      <% end %>
+    <%# post.event_repos.each do |event_repo| %>
+      <%= post.event_repo.event_repos_body %><br>
+       <%= link_to post.event_repo.event_repos_title, event_repos_path %><br>
+      <%# end %>
  <% end %>
   <% if post.favorited?(current_customer) %>
    <!--一致するレコードが存在する＝既にいいね済の場合はdestroyアクションへ-->

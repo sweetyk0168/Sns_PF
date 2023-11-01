@@ -1,11 +1,11 @@
 class Post < ApplicationRecord
   belongs_to :customer
   belongs_to :event, optional: true
+  belongs_to :event_repo, optional: true
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_one_attached :image
-  has_many :post_event_repos, dependent: :destroy
-  has_many :event_repos, through: :post_event_repos
+
 
   validates :title, presence: true
   validates :body, presence: true, allow_blank: true

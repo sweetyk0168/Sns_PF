@@ -14,16 +14,21 @@ class Public::PostsController < ApplicationController
     else
       @post.event_id = post_params[:event_id]
     end
-    # byebug
-    # @post.event_id ||= Event.first.id
+
+    if post_params[:event_repo_id].blank?
+      @post.event_repo_id = nil  # もしくは適切なデフォルト値
+    else
+      @post.event_repo_id = post_params[:event_repo_id]
+    end
+
 
     if @post.body.blank?
       @post.body = ""  # 空文字列を設定
     end
 
     if @post.save
-      PostEventRepo.create(post_id: @post.id, event_repo_id: params[:post][:event_repo_ids])
-
+        byebug
+      # PostEventRepo.create(post_id: @post.id, event_repo_id: params[:post][:event_repo_ids])
       redirect_to posts_path
     else
       # if @post.errors.include?(:event_id)
@@ -53,7 +58,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, :event_id, :good_id, :event_repo_ids)
+    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, :event_id, :good_id, :event_repo_id)
   end
 
   def correct_customer

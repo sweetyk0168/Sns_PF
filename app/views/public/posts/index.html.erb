@@ -9,14 +9,14 @@
       <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
       <%= link_to '〇〇イベント開催決定！！', event_path(post.event.id) %>
 
-      <%= image_tag post.event.get_image(100,100) %>
+      <%#= image_tag post.event.get_image(100,100) %>
     <%# end %>
   <% end %>
-  <% if post.event_repos.present? %>
+  <% if post.event_repo.present? %>
     <label>▽イベントレポート情報はこちらから</label>
-    <% post.event_repos.each do |event_repo| %>
-      <%= link_to event_repo.event_repos_title, event_repos_path %><br>
-    <% end %>
+    <%# post.event_repos.each do |event_repo| %>
+      <%= link_to post.event_repo.event_repos_title, event_repos_path %><br>
+    <%# end %>
   <% end %>
     <%#= link_to post.event.url_strings, events_path %><br>
   <% if post.favorited?(current_customer) %>
