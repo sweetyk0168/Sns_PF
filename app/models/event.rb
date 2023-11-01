@@ -1,7 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :genre
-  # belongs_to :event_repo
+  has_many :event_repos, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :goods, dependent: :destroy
   has_one_attached :image
 
 

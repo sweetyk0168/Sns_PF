@@ -17,8 +17,8 @@ class Admin::EventQuestionnairesAnswersController < ApplicationController
 
   def index
     if params[:event_questionnaires_question_id] != nil then
-        @events_questionnaires_answer = params[:event_questionnaires_question_id]
-        @events_questionnaires_answers = EventQuestionnairesAnswer.page(params[:page])
+        @event_questionnaires_question = Event_Questionnaires_Question.find(params[:event_questionnaires_question_id])
+        @events_questionnaires_answers = Event_Questionnaires_Answer.page(params[:page])
     end
   end
 
@@ -27,6 +27,6 @@ class Admin::EventQuestionnairesAnswersController < ApplicationController
   end
 
   def event_questionnaires_answer_params
-    params.require(:event_questionnaires_answer).permit(:gender, :reason, :satisfaction, :reason_for_satisfaction, :participation, :impressions)
+    params.require(:event_questionnaires_answer).permit(:gender, :reason, :satisfaction, :reason_for_satisfaction, :participation, :impressions, :event_questionnaires_question_id)
   end
 end

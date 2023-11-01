@@ -9,13 +9,14 @@
       </tr>
     </thead>
     <tbody>
-      <% @events_questionnaires_answers.each do |answers| %>
+      <%= @events_questionnaires_answers.each do |answers| %>
+        <%= f.hidden_field :event_questionnaires_question_id, :value => @event_questionnaires_question.id %>
         <tr>
-          <td><%= answers.id %></td>
-          <td><%= link_to 'アンケート回答情報詳細画面へ', admin_event_questionnaires_answer_path(answers) %></td>
+          <td><%= answers %></td>
+          <td><%#= link_to 'アンケート回答情報詳細画面へ', admin_event_questionnaires_answer_path(events_questionnaires_answer) %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<% paginate @events_questionnaires_answers %>
+<%# paginate @events_questionnaires_answers %>

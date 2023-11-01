@@ -21,6 +21,7 @@ class Admin::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @goods = @event.goods.page(params[:page])
   end
 
   def edit

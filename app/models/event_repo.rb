@@ -1,10 +1,10 @@
 class EventRepo < ApplicationRecord
   belongs_to :genre
   belongs_to :customer
+  belongs_to :event
   has_many_attached :images
-  # has_many :events, dependent: :destroy
-  has_many :posts, dependent: :destroy
 
+  has_many :posts, dependent: :destroy
 
   validates :event_repos_title,presence: true
   validates :event_repos_body,presence: true

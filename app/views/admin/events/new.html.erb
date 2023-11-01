@@ -1,18 +1,18 @@
 <h3>■イベント情報新規投稿</h3>
-<%= form_for(@event, url:admin_events_path) do |f| %>
-  <label>イベント名</label>
+<%= form_with model: @event, url:admin_events_path do |f| %>
+  <%= f.label :'イベント名' %>
   <%= f.text_field:name, autofocus:true, autocomplete: "name" %><br>
 
-  <label>イベント説明文</label>
+  <%= f.label :'イベント説明文' %>
   <%= f.text_area:introduction, autofocus:true, autocomplete: "introduction" %><br>
 
-  <label>イベントURL</label>
+  <%= f.label :'イベントURL' %>
   <%= f.text_field:url_strings, autofocus:true, autocomplete: "url_strings" %><br>
-  
-  <label>ジャンル</label>
+
+  <%= f.label :'ジャンル' %>
   <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %><br>
 
-  <label>投稿ステータス</label>
+  <%= f.label :'投稿ステータス' %>
   <%= f.radio_button :post_status, true %>
   <%= f.label :post_status,"投稿中",{value: :true,style: "display: inline-block;"} %>
   <%= f.radio_button :post_status, false %>

@@ -18,3 +18,69 @@
     <%= link_to '編集する', edit_admin_event_path(@event.id) %>
   </div>
 </div>
+
+<h3>■グッズ情報一覧</h3>
+<div>
+  <%= link_to new_admin_event_good_path(@event) do %>
+    <button type="button">+</button>
+  <% end %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>グッズ名</th>
+      <th>投稿状況</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @goods.each do |good| %>
+      <tr>
+        <td><%= good.id %></td>
+        <td><%= link_to good.name, admin_event_good_path(good) %></td>
+        <td><% if good.post_status %>
+              投稿中
+            <% else %>
+              投稿完了
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @goods %>
+
+<!--<h3>■イベントレポート情報一覧</h3>-->
+<!--<div>-->
+  <!--<%#= link_to  new_admin_event_repo_path do %>-->
+  <!--  <button type= "button">+</button>-->
+  <!--<%# end %>-->
+
+<!--  <table>-->
+<!--    <thead>-->
+<!--      <tr>-->
+<!--        <th>ID</th>-->
+<!--        <th>イベント名</th>-->
+<!--        <th>ジャンル</th>-->
+<!--        <th>投稿状況</th>-->
+<!--      </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--      <%# @eventrepos.each do |eventrepos| %>-->
+<!--        <tr>-->
+<!--          <td><%#= eventrepos.id %></td>-->
+<!--          <td><%#= link_to eventrepos.event_repos_title, admin_event_repo_path(eventrepos) %></td>-->
+<!--          <td><%#= eventrepos.genre.name %></td>-->
+<!--          <td>-->
+<!--            <%# if eventrepos.post_status %>-->
+<!--              投稿中-->
+<!--            <%# else %>-->
+<!--              投稿完了-->
+<!--            <%# end %>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--      <%# end %>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->
+<!--<%# paginate @eventrepos %>-->

@@ -1,6 +1,6 @@
 class EventQuestionnairesAnswer < ApplicationRecord
-  belongs_to :event_questionnaires_question
-  belongs_to :customer
+  belongs_to :event_questionnaires_question, optional: true
+  belongs_to :customer, optional: true
 
   # validates :gender, presence: true
   # validates :reason, presence: true

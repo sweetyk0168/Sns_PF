@@ -2,18 +2,18 @@ class Admin::EventReposController < ApplicationController
   before_action :authenticate_admin!
   layout 'admin_header'
 
-  def new
-    @eventrepo = EventRepo.new
-  end
+  # def new
+  #   @eventrepo = EventRepo.new
+  # end
 
-  def create
-    @eventrepo = EventRepo.new(event_repo_params)
-    if @eventrepo.save
-      redirect_to admin_event_repos_path
-    else
-      render 'new'
-    end
-  end
+  # def create
+  #   @eventrepo = EventRepo.new(event_repo_params)
+  #   if @eventrepo.save!
+  #     redirect_to admin_event_repos_path
+  #   else
+  #     render 'new'
+  #   end
+  # end
 
   def index
     @eventrepos = EventRepo.page(params[:page])

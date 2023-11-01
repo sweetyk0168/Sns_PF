@@ -20,12 +20,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
-    resources :events, only:[:new, :create, :index, :show, :edit, :update]
-    resources :goods, only:[:new, :create, :index, :show, :edit, :update]
+    resources :events, only:[:new, :create, :index, :show, :edit, :update] do
+      resources :goods, only:[:new, :create, :index, :show, :edit, :update]
+      resources :event_repos, only:[:index, :show, :edit, :update]
+    end
     resources :event_tickets, only:[:create, :new, :index, :show, :edit, :update]
     resources :ticket_orders, only:[:index, :show, :update]
     resources :ticket_order_details, only:[:update]
-    resources :event_repos, only:[:create, :new, :index, :show, :edit, :update]
     resources :event_questionnaires_questions, only:[:create, :new, :index, :show]
     resources :event_questionnaires_answers, only:[:create, :new, :index, :show]
   end
@@ -60,7 +61,7 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
-    resources :event_repos, only:[:index, :show]
+    resources :event_repos, only:[:new, :create, :index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

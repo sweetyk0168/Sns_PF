@@ -18,17 +18,17 @@
         </nav>
         <% if admin_signed_in? %>
           <li><%= link_to "イベント一覧",  admin_events_path %></li>
-          <li><%= link_to "グッズ一覧",  admin_goods_path %></li>
+          <!--<li><%#= link_to "グッズ一覧",  admin_goods_path %></li>-->
           <li><%= link_to "イベントチケット一覧", admin_event_tickets_path %></li>
           <li><%= link_to "チケット注文履歴一覧", admin_ticket_orders_path %></li>
-          <li><%= link_to "イベントRepo", admin_event_repos_path %></li>
+          <!--<li><%#= link_to "イベントRepo", admin_event_repos_path %></li>-->
           <li><%= link_to "アンケート一覧", admin_event_questionnaires_questions_path %></li>
           <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
           <li><%= link_to "会員一覧", admin_customers_path %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "イベント一覧",  admin_events_path %></li>
-          <li><%= link_to 'グッズ一覧',  admin_goods_path %></li>
+          <!--<li><%#= link_to "グッズ一覧",  admin_goods_path %></li>-->
           <li><%= link_to "新規登録", new_customer_registration_path %></li>
           <li><%= link_to "ログイン", admin_session_path %></li>
         <% end %>

@@ -7,9 +7,12 @@ class Admin::GoodsController < ApplicationController
   end
 
   def create
+    @event = Event.find(params[:event_id])
     @good = Good.new(good_params)
+    @good.event_id = @event.id
     if @good.save
-      redirect_to admin_goods_path(@good)
+        # byebug
+      redirect_to admin_event_path(@event)
     else
       render 'new'
     end
@@ -30,7 +33,7 @@ class Admin::GoodsController < ApplicationController
   def update
     @good = Good.find(params[:id])
     if @good.update(good_params)
-      redirect_to admin_good_path(@good)
+      redirect_to admin_event_good_path(@good)
     else
       render 'edit'
     end
@@ -39,6 +42,6 @@ class Admin::GoodsController < ApplicationController
   private
 
   def good_params
-    params.require(:good).permit(:genre_id, :name, :introduction, :post_status, :image, :price)
+    params.require(:good).permit(:name, :introduction, :post_status, :image, :price)
   end
 end

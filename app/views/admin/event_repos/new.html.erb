@@ -1,19 +1,19 @@
 <div>
   <h3>■イベントレポート新規登録</h3>
-  <%= form_for(@eventrepo, url:admin_event_repos_path) do |f| %>
-    <label>イベントレポート画像</label>
+  <%= form_with model: @eventrepo, url:admin_event_repos_path do |f| %>
+    <%= f.label :'イベントレポート画像' %>
     <%= f.file_field :images, multiple: true %><br>
     <div>
-      <label>イベントレポートタイトル名</label>
+      <%= f.label :'イベントレポートタイトル名' %>
       <%= f.text_field:event_repos_title, autofocus: true, autocomplete: "event_repo_title", placeholder: "イベントレポートタイトル名" %><br>
 
-      <label>イベントレポート内容</label>
+      <%= f.label :'イベントレポート内容' %>
       <%= f.text_area:event_repos_body, autofocus:true, autocomplete: "event_repos_body", placeholder: "イベントレポート内容" %><br>
 
-      <label>ジャンル</label>
+      <%= f.label :'ジャンル' %>
       <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %><br>
 
-      <label>投稿ステータス</label>
+      <%= f.label :'投稿ステータス' %>
       <%= f.radio_button :post_status, true %>
       <%= f.label :post_status, "投稿中",  {value: :false, style: "display: inline-block;"} %>
       <%= f.radio_button :post_status, false %>
