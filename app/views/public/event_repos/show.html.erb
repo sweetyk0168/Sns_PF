@@ -1,9 +1,0 @@
-<div>
-  <%= @eventrepo.event_repos_title %>
-  <%= safe_join(@eventrepo.event_repos_body.split("\n"),tag(:br)) %>
-</div>
-<div>
-  <% @eventrepo.images.each do |image| %>
-      <%= image_tag(image, height:100, width:100) %>
-  <% end %>
-</div>

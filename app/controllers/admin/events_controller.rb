@@ -22,6 +22,9 @@ class Admin::EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @goods = @event.goods.page(params[:page])
+    @posts = @event.posts.page(params[:page])
+    # @posts = Post.where(event_id: @event.id).page(params[:page])
+    # @eventrepos = EventRepo.where(id: @posts.pluck(:event_repo_id)).page(params[:page])
   end
 
   def edit
@@ -36,6 +39,15 @@ class Admin::EventsController < ApplicationController
       render 'edit'
     end
   end
+
+  # def destroy
+  #   @posts = @event.posts.find(params[:id])
+  #   if @posts.destroy
+  #     redirect_to admin_event_repo_path(@posts)
+  #   else
+  #     render 'edit'
+  #   end
+  # end
 
   private
 

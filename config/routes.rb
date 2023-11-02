@@ -20,10 +20,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
-    resources :events, only:[:new, :create, :index, :show, :edit, :update] do
+    resources :events, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :goods, only:[:new, :create, :index, :show, :edit, :update]
-      resources :event_repos, only:[:index, :show, :edit, :update]
+    #   resources :event_repos, only:[:index, :show, :edit, :update, :destroy]
     end
+    resources :posts, only: [:destroy]
     resources :event_tickets, only:[:create, :new, :index, :show, :edit, :update]
     resources :ticket_orders, only:[:index, :show, :update]
     resources :ticket_order_details, only:[:update]

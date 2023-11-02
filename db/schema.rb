@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_01_024128) do
+ActiveRecord::Schema.define(version: 2023_11_02_122309) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -100,15 +100,6 @@ ActiveRecord::Schema.define(version: 2023_11_01_024128) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "event_repos", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.string "event_repos_title", null: false
-    t.text "event_repos_body", null: false
-    t.boolean "post_status", default: true, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "event_tickets", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.string "ticket_name", null: false
@@ -172,7 +163,6 @@ ActiveRecord::Schema.define(version: 2023_11_01_024128) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title", default: "", null: false
     t.integer "event_id"
-    t.integer "event_repo_id"
   end
 
   create_table "relationships", force: :cascade do |t|

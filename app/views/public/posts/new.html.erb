@@ -6,7 +6,8 @@
   <%= f.file_field :image, accept:"image/*" %><br>
   <label>■本文</label>
   <%= f.collection_select :event_id, Event.all, :id, :introduction, {include_blank: "選択してください"} %><br>
-  <%= f.collection_select :event_repo_id, EventRepo.all, :id, :event_repos_body, {include_blank: "選択してください"} %><br>
+  <%= f.text_area :body %>
+  <%#= f.collection_select :event_repo_id, EventRepo.all, :id, :event_repos_body, {include_blank: "選択してください"} %><br>
   <%# if flash[:error].present? %>
   <!--<div class="alert alert-danger">-->
   <!--  <%#= flash[:error] %>-->

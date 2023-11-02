@@ -15,11 +15,11 @@ class Public::PostsController < ApplicationController
       @post.event_id = post_params[:event_id]
     end
 
-    if post_params[:event_repo_id].blank?
-      @post.event_repo_id = nil  # もしくは適切なデフォルト値
-    else
-      @post.event_repo_id = post_params[:event_repo_id]
-    end
+    # if post_params[:event_repo_id].blank?
+    #   @post.event_repo_id = nil  # もしくは適切なデフォルト値
+    # else
+    #   @post.event_repo_id = post_params[:event_repo_id]
+    # end
 
 
     if @post.body.blank?
@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
     end
 
     if @post.save
-        byebug
+        # byebug
       # PostEventRepo.create(post_id: @post.id, event_repo_id: params[:post][:event_repo_ids])
       redirect_to posts_path
     else

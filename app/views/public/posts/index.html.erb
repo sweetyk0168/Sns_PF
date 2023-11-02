@@ -17,7 +17,9 @@
     <%# post.event_repos.each do |event_repo| %>
       <%= link_to post.event_repo.event_repos_title, event_repos_path %><br>
     <%# end %>
+
   <% end %>
+     <%= post.body %>
     <%#= link_to post.event.url_strings, events_path %><br>
   <% if post.favorited?(current_customer) %>
       <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->

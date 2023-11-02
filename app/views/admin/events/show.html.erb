@@ -50,37 +50,31 @@
 </table>
 <%= paginate @goods %>
 
-<!--<h3>■イベントレポート情報一覧</h3>-->
-<!--<div>-->
-  <!--<%#= link_to  new_admin_event_repo_path do %>-->
-  <!--  <button type= "button">+</button>-->
-  <!--<%# end %>-->
+<h3>■イベントレポート情報一覧</h3>
+<%#= @post.body %>
+<div>
+  <%#= link_to  new_admin_event_repo_path do %>
+    <!--<button type= "button">+</button>-->
+  <%# end %>
 
-<!--  <table>-->
-<!--    <thead>-->
-<!--      <tr>-->
-<!--        <th>ID</th>-->
-<!--        <th>イベント名</th>-->
-<!--        <th>ジャンル</th>-->
-<!--        <th>投稿状況</th>-->
-<!--      </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--      <%# @eventrepos.each do |eventrepos| %>-->
-<!--        <tr>-->
-<!--          <td><%#= eventrepos.id %></td>-->
-<!--          <td><%#= link_to eventrepos.event_repos_title, admin_event_repo_path(eventrepos) %></td>-->
-<!--          <td><%#= eventrepos.genre.name %></td>-->
-<!--          <td>-->
-<!--            <%# if eventrepos.post_status %>-->
-<!--              投稿中-->
-<!--            <%# else %>-->
-<!--              投稿完了-->
-<!--            <%# end %>-->
-<!--          </td>-->
-<!--        </tr>-->
-<!--      <%# end %>-->
-<!--    </tbody>-->
-<!--  </table>-->
-<!--</div>-->
-<!--<%# paginate @eventrepos %>-->
+  <table>
+    <thead>
+      <tr>
+        <th>イベントレポートタイトル</th>
+        <th>イベントレポート内容</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do | post | %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+          <td><%= link_to '削除する', admin_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <!--<td><%#= event_repos.genre.name %></td>-->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% paginate @posts %>

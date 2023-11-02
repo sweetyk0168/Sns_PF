@@ -8,12 +8,14 @@
     <%= link_to "グッズ情報", goods_path %><br>
   <%# end %>
 <% end %>
-<% if @post.event_repo.present? %>
+<% if @post.present? %>
   <label>▽イベントレポート情報はこちらから</label>
   <%# @post.event_repos.each do |event_repo| %>
-    <%= link_to @post.event_repo.event_repos_title, event_repos_path %><br>
+    <%#= link_to @post.event_repos_title, event_repos_path %><br>
   <%# end %>
+  <%= @post.body %>
 <% end %>
+
 <% if @post.favorited?(current_customer) %>
   <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
   <%= link_to post_favorites_path(@post.id), method: :delete do %>
