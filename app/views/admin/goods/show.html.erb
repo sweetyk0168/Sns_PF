@@ -17,4 +17,5 @@
   <% end %><br>
   <div>
     <%= link_to '編集する',  edit_admin_event_good_path(@good.id) %>
+    <%= link_to '削除する', admin_post_path(@good.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   </div>

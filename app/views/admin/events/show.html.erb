@@ -34,7 +34,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @goods.each do |good| %>
+    <% @event.goods.each do | good | %>
       <tr>
         <td><%= good.id %></td>
         <td><%= link_to good.name, admin_event_good_path(good) %></td>
