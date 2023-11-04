@@ -2,12 +2,18 @@
 <%= image_tag @post.get_image(100,100) %><br>
 <% if @post.event.present? %>
   <%# @post.events.each do |event| %>
-    <%= safe_join(@post.event.introduction.split("\n"),tag(:br)) %><br>
-    <%= link_to @post.event.url_strings,event_tickets_path %><br>
-    <p>▼グッズ情報はこちらから</p>
-    <%#= link_to "グッズ情報", goods_path %>
-  <%# end %>
+  <%= safe_join(@post.event.introduction.split("\n"),tag(:br)) %><br>
+  <%= link_to @post.event.url_strings,event_tickets_path %><br>
+  <p>▼グッズ情報はこちらから</p>
+  <%= link_to "グッズ情報", goods_path %>
+  <% end %>
+
+<% if @post.event.event_questionnaires_question.present? %>
+  <label>▽イベントレポートアンケートはこちらから</label>
+  <%= link_to @post.event.event_questionnaires_question.name %>
 <% end %>
+  <%# end %>
+
 <% if @post.present? %>
   <!--<label>▽イベントレポート情報はこちらから</label>-->
   <%# @post.event_repos.each do |event_repo| %>
@@ -15,6 +21,8 @@
   <%# end %>
   <%= @post.body %>
 <% end %>
+
+
 
 <% if @post.favorited?(current_customer) %>
   <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->

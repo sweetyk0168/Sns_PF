@@ -8,19 +8,25 @@
     <%# post.event.each do |event| %>
       <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
       <%= link_to post.event.name, event_path(post.event.id) %>
-
+      <% if post.event.event_questionnaires_question.present? %>
+        <label>▽イベントレポートアンケートはこちらから</label>
+        <%= link_to post.event.event_questionnaires_question.name %>
+      <% end %>
       <%#= image_tag post.event.get_image(100,100) %>
     <%# end %>
   <% end %>
-  <% if post.event_repo.present? %>
-    <label>▽イベントレポート情報はこちらから</label>
-    <%# post.event_repos.each do |event_repo| %>
-      <%= link_to post.event_repo.event_repos_title, event_repos_path %><br>
-    <%# end %>
 
-  <% end %>
-     <%= post.body %>
-    <%#= link_to post.event.url_strings, events_path %><br>
+  <% if post.present? %>
+    <!--<label>▽イベントレポート情報はこちらから</label>-->
+    <br>
+    <%# post.event_repos.each do |event_repo| %>
+      <%= post.body %><br>
+    <%# end %>
+  <% end %><br>
+
+
+    <%#= link_to post.event.url_strings, events_path %>
+
   <% if post.favorited?(current_customer) %>
       <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
       <%= link_to post_favorites_path(post.id), method: :delete do %>

@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :goods, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_one :event_questionnaires_question, dependent: :destroy
   has_one_attached :image
 
 
