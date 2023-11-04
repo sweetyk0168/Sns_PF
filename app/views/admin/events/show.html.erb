@@ -31,13 +31,14 @@
       <th>ID</th>
       <th>グッズ名</th>
       <th>投稿状況</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @event.goods.each do | good | %>
+    <% @goods.each do | good | %>
       <tr>
         <td><%= good.id %></td>
-        <td><%= link_to good.name, admin_event_good_path(good) %></td>
+        <td><%= link_to good.name, admin_event_good_path(@event, good) %></td>
         <td><% if good.post_status %>
               投稿中
             <% else %>
@@ -48,7 +49,7 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @event.goods %>
+<%= paginate @goods %>
 
 <h3>■イベントレポート情報一覧</h3>
 <%#= @post.body %>

@@ -9,18 +9,20 @@ class Admin::EventQuestionnairesAnswersController < ApplicationController
   def create
     @event_questionnaires_answer = EventQuestionnairesAnswer.new(event_questionnaires_answer_params)
     if @event_questionnaires_answer.save!
-      redirect_to admin_event_questionnaires_answers_path
+      redirect_to admin_event_questionnaires_answers_index_path
     else
       render 'new'
     end
   end
 
-  def index
-    if params[:event_questionnaires_question_id] != nil then
-        @event_questionnaires_question = Event_Questionnaires_Question.find(params[:event_questionnaires_question_id])
-        @events_questionnaires_answers = Event_Questionnaires_Answer.page(params[:page])
-    end
-  end
+  # def index
+  #   if params[:event_questionnaires_question_id] != nil then
+  #       @event_questionnaires_question = EventQuestionnairesQuestion.find(params[:event_questionnaires_question_id])
+  #       @events_questionnaires_answers = EventQuestionnairesAnswer.all
+
+  #       # @events_questionnaires_answers = EventQuestionnairesAnswer.all.page(params[:page])
+  #   end
+  # end
 
   def show
     @events_questionnaires_answer = EventQuestionnairesAnswer.find(params[:id])

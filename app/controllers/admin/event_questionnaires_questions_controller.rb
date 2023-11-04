@@ -14,12 +14,26 @@ class Admin::EventQuestionnairesQuestionsController < ApplicationController
     end
   end
 
+  def index
+    @event_questionnaires_questions = EventQuestionnairesQuestion.all
+  end
+
   def show
+    @event_questionnaires_question = EventQuestionnairesQuestion.find(params[:id])
+    @event_questionnaires_answers = @event_questionnaires_question.event_questionnaires_answers
+  end
+
+  def edit
     @event_questionnaires_question = EventQuestionnairesQuestion.find(params[:id])
   end
 
-  def index
-    @event_questionnaires_questions = EventQuestionnairesQuestion.all
+  def update
+    @event_questionnaires_question = EventQuestionnairesQuestion.find(params[:id])
+    if @event_questionnaires_question.update(event_questionnaires_question_params)
+      redirect_to admin_event_questionnaires_question_path(@event_questionnaires_question)
+    else
+      render 'edit'
+    end
   end
 
   private

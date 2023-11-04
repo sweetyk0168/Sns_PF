@@ -23,6 +23,7 @@ class Admin::GoodsController < ApplicationController
   end
 
   def show
+    # @event = Event.find(params[:event_id])
     @good = Good.find(params[:id])
   end
 

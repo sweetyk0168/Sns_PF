@@ -1,9 +1,41 @@
-<h3>アンケート質問内容の表示</h3>
-  <p>
-    <text>イベントアンケート名:</text>
-    <%= @event_questionnaires_question.title %>
-  </p>
-  <p>
-    <text>イベントアンケート説明文:</text>
-    <%= @event_questionnaires_question.content %>
-  </p>
+<div>
+  <h3>アンケート質問内容の表示</h3>
+  <label>イベントアンケート名:</label>
+  <%= @event_questionnaires_question.title %><br>
+  <label>イベントアンケート説明文:</label>
+  <%= @event_questionnaires_question.content %><br>
+  <div>
+    <%= link_to '編集する', edit_admin_event_questionnaires_question_path(@event_questionnaires_question.id) %>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>イベントアンケート質問ID</th>
+        <th>性別</th>
+        <th>〇〇イベントに参加したきっかけ</th>
+        <th>満足度</th>
+        <th>満足度の理由</th>
+        <th>参加決意</th>
+        <th>イベントの感想</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @event_questionnaires_answers.present? %>
+        <% @event_questionnaires_answers.each do |answer| %>
+          <tr>
+            <td><%= @event_questionnaires_question.id %></td>
+            <td><%= answer.gender %></td>
+            <td><%= answer.reason %></td>
+            <td><%= answer.satisfaction %></td>
+            <td><%= answer.reason_for_satisfaction %></td>
+            <td><%= answer.participation %></td>
+            <td><%= answer.impressions %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <p>まだ回答がありません</p>
+      <% end %>
+    </tbody>
+  </table>
+</div>

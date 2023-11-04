@@ -40,15 +40,6 @@ class Admin::EventsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @posts = @event.posts.find(params[:id])
-  #   if @posts.destroy
-  #     redirect_to admin_event_repo_path(@posts)
-  #   else
-  #     render 'edit'
-  #   end
-  # end
-
   private
 
   def event_params

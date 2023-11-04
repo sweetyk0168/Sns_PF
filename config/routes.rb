@@ -15,12 +15,13 @@ Rails.application.routes.draw do
   patch '/customers/information' => 'public/customers#update'
   get '/customers/confirm_withdraw' => 'public/customers#confirm_withdraw'
   patch '/customers/withdraw' => 'public/customers#withdraw'
+  # get '/admin/event_questionnaires_answers/index' => '/admin/event_questionnaires_answers/event_questionnaires_questions_id'
 
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
-    resources :events, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :events, only:[:new, :create, :index, :show, :edit, :update] do
       resources :goods, only:[:new, :create, :index, :show, :edit, :update]
     #   resources :event_repos, only:[:index, :show, :edit, :update, :destroy]
     end
@@ -28,8 +29,8 @@ Rails.application.routes.draw do
     resources :event_tickets, only:[:create, :new, :index, :show, :edit, :update]
     resources :ticket_orders, only:[:index, :show, :update]
     resources :ticket_order_details, only:[:update]
-    resources :event_questionnaires_questions, only:[:create, :new, :index, :show]
-    resources :event_questionnaires_answers, only:[:create, :new, :index, :show]
+    resources :event_questionnaires_questions, only:[:create, :new, :index, :show, :edit, :update]
+    resources :event_questionnaires_answers, only:[:create, :new, :show]
   end
 
   #ゲストログイン機能のroot
