@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :customer
   belongs_to :event, optional: true
-  belongs_to :event_repo, optional: true
+  belongs_to :event_questionnaires_question, optional: true
+  # belongs_to :event_repo, optional: true
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_one_attached :image

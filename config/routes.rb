@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'event_questionnaires_question/new'
-    get 'event_questionnaires_question/index'
-    get 'event_questionnaires_question/show'
-  end
+  # namespace :public do
+  #   get 'event_questionnaires_question/new'
+  #   get 'event_questionnaires_question/index'
+  #   get 'event_questionnaires_question/show'
+  # end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -68,7 +68,11 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
-    # resources :event_repos, only:[:new, :create, :index, :show]
+    resources :event_questionnaires_questions, only:[:new, :create, :index, :show] do
+      collection do
+        get 'complete'
+      end
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

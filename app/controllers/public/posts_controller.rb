@@ -15,11 +15,11 @@ class Public::PostsController < ApplicationController
       @post.event_id = post_params[:event_id]
     end
 
-    # if post_params[:event_repo_id].blank?
-    #   @post.event_repo_id = nil  # もしくは適切なデフォルト値
-    # else
-    #   @post.event_repo_id = post_params[:event_repo_id]
-    # end
+    if post_params[:event_questionnaires_question_id].blank?
+       @post.event_questionnaires_question_id = nil  # もしくは適切なデフォルト値
+    else
+       @post.event_questionnaires_question_id = post_params[:event_questionnaires_question_id]
+    end
 
 
     if @post.body.blank?
@@ -58,7 +58,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, :event_id, :good_id, :event_repo_id)
+    params.require(:post).permit(:title, :body, :customer_id, :introduction, :image, :post_comment, :event_id, :good_id, :event_questionnaires_question_id)
   end
 
   def correct_customer

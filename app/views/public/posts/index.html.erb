@@ -8,12 +8,13 @@
     <%# post.event.each do |event| %>
       <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
       <%= link_to post.event.name, event_path(post.event.id) %>
-      <% if post.event.event_questionnaires_question.present? %>
-        <label>▽イベントレポートアンケートはこちらから</label>
-        <%= link_to post.event.event_questionnaires_question.name %>
-      <% end %>
       <%#= image_tag post.event.get_image(100,100) %>
     <%# end %>
+  <% end %>
+  <%#イベントアンケート情報の投稿内容の表示について %>
+  <% if post.event_questionnaires_question.present? %>
+    <label>▽イベントアンケートはこちらから</label>
+    <%= link_to post.event_questionnaires_question.title, new_event_questionnaires_question_path %>
   <% end %>
 
   <% if post.present? %>

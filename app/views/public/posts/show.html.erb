@@ -8,9 +8,9 @@
   <%= link_to "グッズ情報", goods_path %>
   <% end %>
 
-<% if @post.event.event_questionnaires_question.present? %>
+<% if @post.event_questionnaires_question.present? %>
   <label>▽イベントレポートアンケートはこちらから</label>
-  <%= link_to @post.event.event_questionnaires_question.name %>
+  <%= link_to @post.event_questionnaires_question.title, new_event_questionnaires_question_path %>
 <% end %>
   <%# end %>
 
