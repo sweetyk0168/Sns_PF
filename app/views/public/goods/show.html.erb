@@ -1,7 +1,12 @@
-<h3><%= @good.name %></h3>
-<%= image_tag @good.get_image(100,100) %><br>
-￥<%= @good.price.to_s(:delimited, delimiter: ',') %><br>
-<%= @good.genre.name %><br>
-<%= @good.introduction %><br>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <h3><%= @good.name %></h3>
+      <%= image_tag @good.get_image(100,100) %><br>
+      ￥<%= @good.price.to_s(:delimited, delimiter: ',') %><br>
+      <%= @good.introduction %><br>
 
-<%= link_to '戻る', goods_path %>
+      <%= link_to '戻る', goods_path %>
+    </div>
+  </div>
+</div>

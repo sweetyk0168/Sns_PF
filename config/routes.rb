@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  # namespace :public do
-  #   get 'event_questionnaires_question/new'
-  #   get 'event_questionnaires_question/index'
-  #   get 'event_questionnaires_question/show'
-  # end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -44,7 +39,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :customers, only: [:index, :show] do
+    resources :customers, only: [:index, :show, :edit] do
       member do
         get :follows, :followers
       end
@@ -68,8 +63,14 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
-    resources :event_questionnaires_questions, only:[:new, :create, :index, :show] do
+    # resources :event_questionnaires_questions, only:[:new, :create, :index, :show] do
+    #   collection do
+    #     get 'complete'
+    #   end
+    # end
+    resources :event_questionnaires_answers, only:[:new, :create] do
       collection do
+        post 'confirm'
         get 'complete'
       end
     end

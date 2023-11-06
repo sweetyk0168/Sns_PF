@@ -1,60 +1,68 @@
-<h3>カートチケット一覧</h3>
-<div>
-    <%= link_to "チケットを選びなおす", destroy_all_cart_tickets_path, method: :delete %>
-</div>
-<!-- カートチケット一覧 -->
-<div>
-    <h4><%= notice %></h4>
-    <table>
-        <thead>
-            <tr>
-                <th>チケット名</th>
-                <th>単価（税込）</th>
-                <th>枚数</th>
-                <th>小計</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @cart_tickets.each do |cart_ticket| %>
+<div><%= flash[:notice] %></div>
+<div class="container px-5 px-sm-0">
+	<div class="row">
+		<div class="col-md-3">
+            <h3>カートチケット一覧</h3>
+			<div>
+    			<%= link_to "チケットを選びなおす", destroy_all_cart_tickets_path, method: :delete %>
+			</div>
+			<!-- カートチケット一覧 -->
+			<div>
+    			<h4><%= notice %></h4>
+				<table>
+        			<thead>
+            			<tr>
+                			<th>チケット名</th>
+                			<th>単価（税込）</th>
+                			<th>枚数</th>
+                			<th>小計</th>
+                			<th></th>
+            			</tr>
+        			</thead>
+        			<tbody>
+            			<% @cart_tickets.each do |cart_ticket| %>
+                		<tr>
+                    		<td><%= cart_ticket.event_ticket.ticket_name %></td>
+                    		<td><%= (cart_ticket.event_ticket.ticket_price * 1.1).floor %>円</td>
+                    		<td>
+                        		<%= form_for(cart_ticket) do |f| %>
+                            		<%= f.select :amount, {１:1, ２:2, ３:3, ４:4} %>
+                            		<%= f.submit "変更" %>
+                        		<% end %>
+                    		</td>
+                    		<td>
+                        		<%= ((cart_ticket.event_ticket.ticket_price * 1.1).floor * cart_ticket.amount) %>
+                        		<% @total+= ((cart_ticket.event_ticket.ticket_price * 1.1).floor * cart_ticket.amount) %>
+                    		</td>
+                    		<td>
+                        		<div>
+                            		<%= link_to "削除する", cart_ticket_path(cart_ticket.id), method: :delete %>
+                        		</div>
+                    		</td>
+                		</tr>
+            			<% end %>
+        			</tbody>
+    			</table>
+			</div>
 
-                <tr>
-                    <td><%= cart_ticket.event_ticket.ticket_name %></td>
-                    <td><%= (cart_ticket.event_ticket.ticket_price * 1.1).floor %>円</td>
-                    <td>
-                        <%= form_for(cart_ticket) do |f| %>
-                            <%= f.select :amount, {１:1, ２:2, ３:3, ４:4} %>
-                            <%= f.submit "変更" %>
-                        <% end %>
-                    </td>
-                    <td>
-                        <%= ((cart_ticket.event_ticket.ticket_price * 1.1).floor * cart_ticket.amount) %>
-                        <% @total+= ((cart_ticket.event_ticket.ticket_price * 1.1).floor * cart_ticket.amount) %>
-                    </td>
-                    <td>
-                        <div>
-                            <%= link_to "削除する", cart_ticket_path(cart_ticket.id), method: :delete %>
-                        </div>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-</div>
-<!-- 合計金額 -->
-<div>
-    <%= link_to "買い物を続ける", event_tickets_path %>
-</div>
-<tabel>
-    <tbody>
-        <div>
-            <th>合計金額</th>
-            <td><%= @total %>円</td>
+			<!-- 合計金額 -->
+			<div>
+    			<%= link_to "買い物を続ける", event_tickets_path %>
+			</div>
+
+			<table>
+    			<tbody>
+        			<div>
+            			<th>合計金額</th>
+            			<td><%= @total %>円</td>
+        			</div>
+    			</tbody>
+			</table>
+			<% if current_customer.cart_tickets.present? %>
+    			<div>
+        			<%= link_to "情報入力に進む", new_ticket_order_path %>
+    			</div>
+			<% end %>
         </div>
-    </tbody>
-</tabel>
-<% if current_customer.cart_tickets.present? %>
-    <div>
-        <%= link_to "情報入力に進む", new_ticket_order_path %>
     </div>
-<% end %>
+</div>

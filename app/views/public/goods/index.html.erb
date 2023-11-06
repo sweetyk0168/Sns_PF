@@ -1,8 +1,21 @@
-<h3>〇〇イベントグッズ</h3>
-<% @goods.each do |good| %>
-  <%= link_to good_path(good.id) do %>
-    <%= image_tag good.get_image(100,100) %>
-  <% end %><br>
-
-  <%= good.name %>
-<% end %>
+<div class="container height">
+  <div class="row">
+    <div class="col-xs-1"></div>
+      <div class="col-xs-9">
+        <h3><i class="fas fa-cookie-bite"></i>〇〇イベントグッズ一覧</h3>(全<%= @quantity %>件)
+        <div class="row">
+          <% @goods.each do |good| %>
+          <div>
+            <%= link_to good_path(good.id) do %>
+              <div class="box">
+                <%= image_tag good.get_image(100,100) %>
+                <% end %>
+                <p><%= good.name %></p>
+                <p>￥<%= good.price.to_s(:delimited, delimiter: ',') %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

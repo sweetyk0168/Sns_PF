@@ -1,26 +1,15 @@
-<% if @event.present? %>
-<h3><%= @event.name %>概要</h3><br>
-<%= safe_join(@event.introduction.split("\n"),tag(:br)) %><br>
-<%= link_to "チケット情報", event_tickets_path %><br><br>
-    <p>▼グッズ情報はこちらから</p>
-<%= link_to "グッズ情報", goods_path %>
-<%= link_to '戻る', root_path %><br>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <% if @event.present? %>
+        <h3><%= @event.name %>概要</h3><br>
+        <%= safe_join(@event.introduction.split("\n"),tag(:br)) %><br>
+        <%= link_to "チケット情報", event_tickets_path %><br><br>
 
-<!--<h1>■投稿一覧</h1>-->
-<%# @posts.each do |post| %>
-  <!--<p>タイトル：<%#= post.title %></p>-->
-  <%#= link_to post_path(post.id) do %>
-    <%#= image_tag post.get_image(100,100) %><br>
-  <%# end %>
-
-    <%# post.event.each do |event| %>
-      <%#= @event.created_at.strftime("%Y/%m/%d") %><br>
-      <%#= link_to @event.name %>
-      <%#= link_to @event.name, event_path(post.event.id) %>
-      <%# if @event.event_questionnaires_question.present? %>
-        <!--<label>▽イベントレポートアンケートはこちらから</label>-->
-        <%#= link_to @event.event_questionnaires_question.name, new_event_questionnaires_question_path %>
-      <%# end %>
-      <%#= image_tag post.event.get_image(100,100) %>
-    <%# end %>
-  <% end %>
+        <p>▼グッズ情報はこちらから</p>
+        <%= link_to "グッズ情報", goods_path %><br>
+        <%= link_to '戻る', root_path %>
+      <% end %>
+    </div>
+  </div>
+</div>

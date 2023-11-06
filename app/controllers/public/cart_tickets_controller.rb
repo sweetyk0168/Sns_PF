@@ -35,7 +35,7 @@ class Public::CartTicketsController < ApplicationController
       flash[:notice] = "個数の変更に失敗しました。"
       render 'index'
     end
-  end
+ end
 
   def destroy
     @cart_tickets = CartTicket.find(params[:id])

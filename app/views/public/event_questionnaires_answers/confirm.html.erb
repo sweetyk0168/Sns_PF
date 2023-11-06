@@ -1,0 +1,62 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="text-right" style="width: 30%;">性別</td>
+            <td><%= @event_questionnaires_answer.gender %></td>
+          </tr>
+          <tr>
+            <td class="text-right mt-3" style="width: 30%;">〇〇イベントに参加したきっかけ</td>
+            <td><%= @event_questionnaires_answer.reason %></td>
+          </tr>
+          <tr>
+            <td class="text-right mt-3" style="width: 30%;">満足度</td>
+            <td><%= @event_questionnaires_answer.satisfaction %></td>
+          </tr>
+          <tr>
+            <td class="text-right mt-3">満足度の理由</td>
+            <td style="white-space: pre-wrap;"><%= @event_questionnaires_answer.reason_for_satisfaction %></td>
+          </tr>
+          <tr>
+            <td class="text-right mt-3">参加決意</td>
+            <td style="white-space: pre-wrap;"><%= @event_questionnaires_answer.participation %></td>
+          </tr>
+          <tr>
+            <td class="text-right mt-3">イベントの感想</td>
+            <td style="white-space: pre-wrap;"><%= @event_questionnaires_answer.impressions %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="d-flex">
+        <div class="mr-3">
+        <%= form_with model: @event_questionnaires_answer do |f| %>
+          <%= f.hidden_field :gender %>
+          <%= f.hidden_field :reason %>
+          <%= f.hidden_field :satisfaction %>
+          <%= f.hidden_field :reason_for_satisfaction %>
+          <%= f.hidden_field :participation %>
+          <%= f.hidden_field :impressions %>
+          <%= f.hidden_field :event_questionnaires_question_id %>
+          <div><%= f.submit '送信', class: "btn btn-success" %></div>
+        <% end %>
+        </div>
+
+        <div>
+        <%#= form_with model: @event_questionnaires_answer, url: new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) do |f| %>
+          <%#= f.hidden_field :gender %>
+          <%#= f.hidden_field :reason %>
+          <%#= f.hidden_field :satisfaction %>
+          <%#= f.hidden_field :reason_for_satisfaction %>
+          <%#= f.hidden_field :participation %>
+          <%#= f.hidden_field :impressions %>
+          <div><%#= f.submit '入力画面に戻る', class: "btn btn-info" %></div>
+        <%# end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

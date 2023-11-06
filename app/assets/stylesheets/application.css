@@ -14,7 +14,26 @@
  *= require_self
  */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  height: 450px;
+  width: 550px;
+}
+
+.height {
+  min-height: 74vh;
+}
+
+p {
+  line-height: 240%;
+}
+
 .box {
-  border: #4e7bcc 1px solid;
-  padding: 10px;
+  float:left;
+  margin-right: 20px;
 }

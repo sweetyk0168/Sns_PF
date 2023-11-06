@@ -10,7 +10,7 @@
 
 <% if @post.event_questionnaires_question.present? %>
   <label>▽イベントレポートアンケートはこちらから</label>
-  <%= link_to @post.event_questionnaires_question.title, new_event_questionnaires_question_path %>
+  <%= link_to @post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: @post.event_questionnaires_question.id) %>
 <% end %>
   <%# end %>
 

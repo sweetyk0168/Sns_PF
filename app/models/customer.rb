@@ -15,12 +15,12 @@ class Customer < ApplicationRecord
   has_many :event_questionnaires_answers
 
   #フォローをした、されたの関係
-  has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :followerds, class_name: "Relationship", foreign_key: "followerd_id", dependent: :destroy
+  # has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  # has_many :followerds, class_name: "Relationship", foreign_key: "followerd_id", dependent: :destroy
 
   #一覧画面で使う
-  has_many :following_customers, through: :followers, source: :followerd
-  has_many :follower_customers, through: :followerds, source: :follower
+  # has_many :following_customers, through: :followers, source: :followerd
+  # has_many :follower_customers, through: :followerds, source: :follower
 
   #バリデーション
    validates :last_name, presence: true

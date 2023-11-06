@@ -3,6 +3,7 @@ class Admin::EventQuestionnairesAnswersController < ApplicationController
   layout 'admin_header'
 
   def new
+    @event_questionnaires_question = EventQuestionnairesQuestion.find(params[:question_id])
     @event_questionnaires_answer = EventQuestionnairesAnswer.new
   end
 

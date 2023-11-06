@@ -1,33 +1,33 @@
-<h2>フォロワー</h2>
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>name</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customer.each do |customer| %>
-      <tr>
-        <td>
+<!--<h2>フォロワー</h2>-->
+<!--<table class='table'>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Image</th>-->
+<!--      <th>name</th>-->
+<!--      <th></th>-->
+<!--      <th></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    <%# @customer.each do |customer| %>-->
+<!--      <tr>-->
+<!--        <td>-->
           <%#= link_to user_path(user) do %>
             <%#= image_tag user.get_profile_image(50,50) %>
           <%# end %>
-        </td>
-        <td><%= customer.last_name %></td>
-        <td>
-          <%= link_to follows_customer_path(customer) do %>
-            <p>フォロー<%= customer.followers.count %></p>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to followers_customer_path(customer) do %>
-            <p>フォロワー<%= customer.followeds.count %></p>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!--        </td>-->
+<!--        <td><%#= customer.last_name %></td>-->
+<!--        <td>-->
+<!--          <%#= link_to follows_customer_path(customer) do %>-->
+<!--            <p>フォロー<%#= customer.followers.count %></p>-->
+<!--          <%# end %>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--          <%#= link_to followers_customer_path(customer) do %>-->
+<!--            <p>フォロワー<%#= customer.followeds.count %></p>-->
+<!--          <%# end %>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    <%# end %>-->
+<!--  </tbody>-->
+<!--</table>-->

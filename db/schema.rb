@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_05_080104) do
+ActiveRecord::Schema.define(version: 2023_11_06_051753) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 2023_11_05_080104) do
   end
 
   create_table "event_questionnaires_answers", force: :cascade do |t|
-    t.integer "event_questionnaires_question_id", null: false
     t.integer "gender", null: false
     t.text "reason", default: "", null: false
     t.integer "satisfaction", null: false
@@ -90,7 +89,7 @@ ActiveRecord::Schema.define(version: 2023_11_05_080104) do
     t.text "impressions", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_questionnaires_question_id"], name: "answer"
+    t.integer "event_questionnaires_question_id"
   end
 
   create_table "event_questionnaires_questions", force: :cascade do |t|
@@ -199,5 +198,4 @@ ActiveRecord::Schema.define(version: 2023_11_05_080104) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "event_questionnaires_answers", "event_questionnaires_questions"
 end

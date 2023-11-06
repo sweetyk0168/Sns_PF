@@ -1,23 +1,27 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= @eventticket.event_title %><br>
+	  <%= @eventticket.ticket_startday %>～<br>
+      <%= safe_join(@eventticket.ticket_introduction.split("\n"),tag(:br)) %><br>
 
-<%= @eventticket.event_title %><br>
-<%= @eventticket.ticket_startday %>～<br>
-<%= safe_join(@eventticket.ticket_introduction.split("\n"),tag(:br)) %><br>
+	  <h3>公演日時・座席</h3>
+	  <%= @eventticket.ticket_name %><br>
+	  <% if @eventticket.sales_status == true %>
+  		<%= @eventticket.add_tax_ticket_price.to_s(:delimited) %>（税込）
+	  <% else %>
+    	soldout
+	  <% end %>
 
-<h3>公演日時・座席</h3>
-<%= @eventticket.ticket_name %><br>
-<% if @eventticket.sales_status == true %>
-  <%= @eventticket.add_tax_ticket_price.to_s(:delimited) %>（税込）
-<% else %>
-    soldout
-<% end %>
-
-<div>
-  <% if @eventticket.sales_status == true %>
-    <%= form_for(@cart_ticket, url: cart_tickets_path) do |f| %>
-      <%= f.hidden_field :event_ticket_id, value: @eventticket.id %>
-      <%= f.number_field :amount, placeholder: "枚数選択", min: 1, max: 4 %>
-      <%= f.submit 'カートに入れる' %>
-    <% end %>
-  <% end %>
+	  <div>
+  		<% if @eventticket.sales_status == true %>
+    		<%= form_for(@cart_ticket, url: cart_tickets_path) do |f| %>
+      			<%= f.hidden_field :event_ticket_id, value: @eventticket.id %>
+      			<%= f.number_field :amount, placeholder: "枚数選択", min: 1, max: 4 %>
+      			<%= f.submit 'カートに入れる' %>
+    		<% end %>
+  		<% end %>
+	  </div>
+    </div>
+  </div>
 </div>
-
