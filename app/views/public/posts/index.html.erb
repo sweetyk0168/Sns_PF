@@ -1,44 +1,38 @@
-<h1>■投稿一覧</h1>
-<% @posts.each do |post| %>
-  <p>タイトル：<%= post.title %></p>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image(100,100) %><br>
-  <% end %>
-  <% if post.event.present? %>
-    <%# post.event.each do |event| %>
-      <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
-      <%= link_to post.event.name, event_path(post.event.id) %>
-      <%#= image_tag post.event.get_image(100,100) %>
-    <%# end %>
-  <% end %>
-  <%#イベントアンケート情報の投稿内容の表示について %>
-  <% if post.event_questionnaires_question.present? %>
-    <label>▽イベントアンケートはこちらから</label>
-    <%= link_to post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) %>
-  <% end %>
+<div class="container height">
+  <div class="row">
+    <h1>■投稿一覧</h1>
+	  <% @posts.each do |post| %>
+  		<p>タイトル：<%= post.title %></p>
+  		<%= link_to post_path(post.id) do %>
+    		<%= image_tag post.get_image(100,100) %><br>
+  		<% end %>
+  		<% if post.event.present? %>
+      	<%= post.event.created_at.strftime("%Y/%m/%d") %><br>
+      	<%= link_to post.event.name, event_path(post.event.id) %>
+  		<% end %>
 
-  <% if post.present? %>
-    <!--<label>▽イベントレポート情報はこちらから</label>-->
-    <br>
-    <%# post.event_repos.each do |event_repo| %>
-      <%= post.body %><br>
-    <%# end %>
-  <% end %><br>
+  		<%#イベントアンケート情報の投稿内容の表示について %>
+  		<% if post.event_questionnaires_question.present? %>
+    		<label>▽イベントアンケートはこちらから</label>
+    		<%= link_to post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) %>
+  		<% end %>
 
+  		<% if post.present? %>
+      	<%= post.body %><br>
+  		<% end %><br>
 
-    <%#= link_to post.event.url_strings, events_path %>
-
-  <% if post.favorited?(current_customer) %>
-      <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
-      <%= link_to post_favorites_path(post.id), method: :delete do %>
-          <span style="color:red;">❤︎</span>
-      <% end %>
-  <% else %>
-      <!-- # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ -->
-      <%= link_to post_favorites_path(post.id), method: :post do %>
+  		<% if post.favorited?(current_customer) %>
+      	<!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
+      	<%= link_to post_favorites_path(post.id), method: :delete do %>
+          	<span style="color:red;">❤︎</span>
+      	<% end %>
+  		<% else %>
+      	<!-- # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ -->
+      	<%= link_to post_favorites_path(post.id), method: :post do %>
           <span>❤︎</span>
-      <% end %>
-  <% end %>
-  <p>コメント数: <%= post.post_comments.count %></p>
-<% end %>
-<%#= paginate @posts %>
+      	<% end %>
+  	  <% end %>
+      <p>コメント数: <%= post.post_comments.count %></p>
+    <% end %>
+  </div>
+</div>

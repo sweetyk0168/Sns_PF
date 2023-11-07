@@ -52,9 +52,6 @@ class Public::PostsController < ApplicationController
     @post_comment = @post.post_comments.build
   end
 
-  def edit
-  end
-
   private
 
   def post_params

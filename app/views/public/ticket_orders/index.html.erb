@@ -1,33 +1,39 @@
-<h3>注文一覧履歴</h3>
-<table>
-  <thead>
-    <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>注文チケット</th>
-      <th>支払金額</th>
-      <th>ステータス</th>
-      <th>注文詳細</th>
-    </tr>
-  </thead>
-  <% @ticketorder.each do |ticketorder| %>
-    <tbody>
-      <% total = 0 %>
-      <tr>
-        <td><%= ticketorder.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-        <td><%= ticketorder.postcode %><%= ticketorder.address %><%= ticketorder.customer.lastname %><%= ticketorder.firstname %></td>
-        <td>
-          <% ticketorder.ticket_order_details.each do | ticket_order_detail | %>
-            <%= ticket_order_detail.event_ticket.event_title %>
-          <% end %>
-        </td>
-        <td>
-          <%= ticketorder.payment.to_s(:delimited) %>
-        </td>
-        <td><%= ticketorder.sales_status %></td>
-        <td><%= link_to '表示する', ticket_order_path(ticketorder.id) %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
-<%= paginate @ticketorders %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>注文一覧履歴</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文チケット</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+          </tr>
+        </thead>
+        <% @ticketorder.each do |ticketorder| %>
+          <tbody>
+            <% total = 0 %>
+            <tr>
+              <td><%= ticketorder.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+              <td><%= ticketorder.postcode %><%= ticketorder.address %><%= ticketorder.customer.lastname %><%= ticketorder.firstname %></td>
+              <td>
+                <% ticketorder.ticket_order_details.each do | ticket_order_detail | %>
+                  <%= ticket_order_detail.event_ticket.event_title %>
+                <% end %>
+              </td>
+              <td>
+                <%= ticketorder.payment.to_s(:delimited) %>
+              </td>
+              <td><%= ticketorder.sales_status %></td>
+              <td><%= link_to '表示する', ticket_order_path(ticketorder.id) %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+     <%= paginate @ticketorders %>
+    </div>
+  </div>
+</div>

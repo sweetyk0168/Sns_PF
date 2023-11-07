@@ -12,13 +12,6 @@ class Public::EventQuestionnairesQuestionsController < ApplicationController
     end
   end
 
-  # def index
-  #   @event_questionnaires_questions = EventQuestionnairesQuestion.all
-  # end
-
-  # def show
-  #   @event_questionnaires_question = EventQuestionnairesQuestion.find(params[:id])
-  # end
 
   def event_questionnaires_question_params
     params.require(:event_questionnaires_question).permit(:title, :content)

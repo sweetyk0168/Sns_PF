@@ -1,7 +1,6 @@
 <div class="container p-5">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-
       <table class="table">
         <tbody>
           <tr>
@@ -33,30 +32,21 @@
 
       <div class="d-flex">
         <div class="mr-3">
-        <%= form_with model: @event_questionnaires_answer do |f| %>
-          <%= f.hidden_field :gender %>
-          <%= f.hidden_field :reason %>
-          <%= f.hidden_field :satisfaction %>
-          <%= f.hidden_field :reason_for_satisfaction %>
-          <%= f.hidden_field :participation %>
-          <%= f.hidden_field :impressions %>
-          <%= f.hidden_field :event_questionnaires_question_id %>
-          <div><%= f.submit '送信', class: "btn btn-success" %></div>
-        <% end %>
-        </div>
-
-        <div>
-        <%#= form_with model: @event_questionnaires_answer, url: new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) do |f| %>
-          <%#= f.hidden_field :gender %>
-          <%#= f.hidden_field :reason %>
-          <%#= f.hidden_field :satisfaction %>
-          <%#= f.hidden_field :reason_for_satisfaction %>
-          <%#= f.hidden_field :participation %>
-          <%#= f.hidden_field :impressions %>
-          <div><%#= f.submit '入力画面に戻る', class: "btn btn-info" %></div>
-        <%# end %>
+        	<%= form_with model: @event_questionnaires_answer do |f| %>
+          		<%= f.hidden_field :gender %>
+          		<%= f.hidden_field :reason %>
+          		<%= f.hidden_field :satisfaction %>
+          		<%= f.hidden_field :reason_for_satisfaction %>
+          		<%= f.hidden_field :participation %>
+          		<%= f.hidden_field :impressions %>
+          		<%= f.hidden_field :event_questionnaires_question_id %>
+          		<div>
+          			<%= f.submit '送信', class: "btn btn-success" %>
+          		</div>
+        	<% end %>
         </div>
       </div>
     </div>
   </div>
+ </div>
 </div>

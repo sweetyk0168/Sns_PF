@@ -1,17 +1,16 @@
-<h3>イベント投稿フォーム</h3>
-<%= form_for(@post, url: posts_path) do |f| %>
-  <%= f.label :タイトル %><br>
-  <%= f.text_field :title, autofocus: true, autocomplete: "title" %><br>
-  <label>■画像選択</label>
-  <%= f.file_field :image, accept:"image/*" %><br>
-  <label>■本文</label><br>
-  <%= f.collection_select :event_id, Event.all, :id, :introduction, {include_blank: "選択してください"} %><br>
-  <%= f.collection_select :event_questionnaires_question_id, EventQuestionnairesQuestion.all, :id, :content, {include_blank: "選択してください"} %><br>
-  <%= f.text_area :body %><br>
-  <%# if flash[:error].present? %>
-  <!--<div class="alert alert-danger">-->
-  <!--  <%#= flash[:error] %>-->
-  <!--</div>-->
-  <%# end %>
-  <%= f.submit '投稿' %>
-<% end %>
+<div class="container height">
+  <h3>イベント投稿フォーム</h3>
+  <%= form_for(@post, url: posts_path) do |f| %>
+    <%= f.label :タイトル %><br>
+    <%= f.text_field :title, autofocus: true, autocomplete: "title" %><br>
+    <%= f.label :■画像選択 %><br>
+    <%= f.file_field :image, accept:"image/*" %><br>
+    <%= f.label :■本文 %><br>
+    <%= f.collection_select :event_id, Event.all, :id, :introduction, {include_blank: "選択してください"} %><br>
+    <%= f.collection_select :event_questionnaires_question_id, EventQuestionnairesQuestion.all, :id, :content, {include_blank: "選択してください"} %><br>
+    <%= f.text_area :body %><br>
+
+    <%= f.submit '投稿' %>
+  <% end %>
+</div>
+
