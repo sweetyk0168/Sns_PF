@@ -41,7 +41,7 @@ class Public::PostsController < ApplicationController
 
   def index
     # @posts = Post.page(params[:page])
-    @posts = Post.order(id: "DESC")
+    @posts = Post.order(id: "DESC").page(params[:page])
     @customer = current_customer
     @post_comments = PostComment.all
   end

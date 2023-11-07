@@ -1,44 +1,47 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-3">
-      <h3>■投稿一覧</h3>
-		  <% @posts.each do |post| %>
-  			<p>タイトル：<%= post.title %></p>
-  			<%= link_to post_path(post.id) do %>
-    			<%= image_tag post.get_image(100,100) %><br>
-  			<% end %>
-  			<% if post.event.present? %>
-    			<%= post.event.introduction %>
-    			<%= link_to post.event.url_strings, events_path %>
-  			<% end %>
+<div class="card-list-container py-5">
+  <h1>■投稿一覧</h1>
+	<% @posts.each do |post| %>
+	  <div class="card w-50 mx-auto mt-4 shadow-lg">
+	   <div class="card-body">
+	     <div class="row">
+	       <div class="col-3">
+  		     <%= link_to post_path(post.id) do %>
+    		     <%= image_tag post.get_image(100,100) , class:"card-img-top"; %><br>
+  		     <% end %>
+	       </div>
 
-  			<%#イベントアンケート情報の投稿内容の表示について %>
-  			<% if post.event_questionnaires_question.present? %>
-    			<label>▽イベントアンケートはこちらから</label>
-          <br>
-    			<%= link_to post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) %>
-  			<% end %>
+           <div class="col-9">
+              <p class="card-text">タイトル：<%= post.title %></p>
+                <% if post.event.present? %>
+      	         <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
+      	         <%= link_to post.event.name, event_path(post.event.id) %>
+  		          <% end %>
 
-  			<% if post.present? %>
-    			<!--<label>▽イベントレポート情報はこちらから</label>-->
-    			<%# post.event_repos.each do |event_repo| %>
-      			<%= post.body %><br>
-       			<%#= link_to post.event_repo.event_repos_title, event_repos_path %><br>
-      			<%# end %>
-  			<% end %>
+  		          <%#イベントアンケート情報の投稿内容の表示について %>
+  		          <% if post.event_questionnaires_question.present? %>
+    		           <label>▽イベントアンケートはこちらから</label>
+    		           <%= link_to post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) %>
+  		          <% end %>
 
-  			<% if post.favorited?(current_customer) %>
-   				<!--一致するレコードが存在する＝既にいいね済の場合はdestroyアクションへ-->
-    			<%= link_to post_favorites_path(post.id), method: :delete do %>
-      				<span style="color:red;">❤︎</span>
-    			<% end %>
-  			<% else %>
-  				<!-- 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-    			<%= link_to post_favorites_path(post.id), method: :post do %>
-      			<span>❤︎</span>
-    		  <% end %>
-  		  <% end %>
-	    <% end %>
+  		          <% if post.present? %>
+      	          <%= post.body %><br>
+  		          <% end %><br>
+                <sapn><i class="fas fa-user"></i><%= post.customer.last_name %>|</sapn>
+  		          <% if post.favorited?(current_customer) %>
+      	          <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
+      	          <%= link_to post_favorites_path(post.id), method: :delete do %>
+                    <span style="color:red;">❤︎</span>
+      	          <% end %>
+  		          <% else %>
+      	           <!-- # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ -->
+      	          <%= link_to post_favorites_path(post.id), method: :post do %>
+                    <span>❤︎</span>
+      	          <% end %>
+  	            <% end %>
+              <p>コメント数: <%= post.post_comments.count %></p>
+	         </div>
+	     </div>
+     </div>
     </div>
-  </div>
+  <% end %>
 </div>

@@ -2,38 +2,42 @@
 <html>
   <head>
     <title>Special Event</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
+    <header class="shadow-sm">
       <div class ="container">
-        <nav class="nav navbar-nav navbar-left" >
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav ml-auto">
+             <% if customer_signed_in? %>
+                ようこそ！<%= current_customer.last_name %>さん！
+                <li class="nav-item"><%= link_to "投稿フォーム", new_post_path, class: 'nav-link text-dark' %></li>
+                <!--<li class="nav-item"><%#= link_to "イベントNEWS", events_path,  class: 'nav-link text-dark' %></li>
+                <li class="nav-item"><%#= link_to "グッズ情報",goods_path,  class: 'nav-link text-dark' %></li>-->
+                <!--<li><%#= link_to "イベントレポート投稿フォーム",  new_event_repo_path %></li>-->
+                <!--<li><%#= link_to "アンケート" %></li>-->
+                <li class="nav-item"><%= link_to "マイページ", customers_path,  class: 'nav-link text-dark' %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,  class: 'nav-link text-dark' %></li>
+              <%# else %>
+                <%#= link_to "イベントNEWS", events_path %>
+                <%#= link_to "新規登録", new_customer_registration_path %>
+                <%#= link_to "ログイン", customer_session_path %>
+                <%#= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %>
+              <% end %>
+          </ul>
         </nav>
-        <% if customer_signed_in? %>
-          <li>ようこそ！<%= current_customer.last_name %>さん！</li><br>
-
-          <li><%= link_to "投稿フォーム", new_post_path %></li>
-          <li><%= link_to "イベントNEWS", events_path %></li>
-          <li><%= link_to "グッズ情報",goods_path %></li>
-          <!--<li><%#= link_to "イベントレポート投稿フォーム",  new_event_repo_path %></li>-->
-          <!--<li><%#= link_to "アンケート" %></li>-->
-          <li><%= link_to "マイページ", customers_path %></li>
-          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "イベントNEWS", events_path %></li>
-          <li><%= link_to "新規登録", new_customer_registration_path %></li>
-          <li><%= link_to "ログイン", customer_session_path %></li>
-          <li><%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %></li>
-        <% end %>
       </div>
     </header>
-    <%= yield %>
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
     </div>
   </body>
 </html>

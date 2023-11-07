@@ -1,50 +1,58 @@
-<div class="container height">
-  <div class="row">
-    <p>タイトル：<%= @post.title %></p>
-	  <%= image_tag @post.get_image(100,100) %><br>
-	  <% if @post.event.present? %>
-  		<%= safe_join(@post.event.introduction.split("\n"),tag(:br)) %><br>
-  		<%= link_to @post.event.url_strings,event_tickets_path %><br>
+<div class="card-list-container py-5">
+	<div class="card w-50 mx-auto mt-4 shadow-lg">
+		<div class="card-body">
+			 <div class="row">
+			 	<div class="col-3">
+	  			<%= image_tag @post.get_image(200,200), class:"card-img-top"; %><br>
+	  		</div>
+	  			<div class="col-9">
+	  					<p class="card-title">タイトル：<%= @post.title %></p>
 
-  		<p>▼グッズ情報はこちらから</p>
-  		<%= link_to "グッズ情報", goods_path %>
-  	<% end %>
+	  					<% if @post.event.present? %>
+  							<%= safe_join(@post.event.introduction.split("\n"),tag(:br)) %><br>
+  							<%= link_to @post.event.url_strings,event_tickets_path %><br>
 
-	  <% if @post.event_questionnaires_question.present? %>
-  		<label>▽イベントレポートアンケートはこちらから</label>
-  		<%= link_to @post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: @post.event_questionnaires_question.id) %>
-	  <% end %>
+  							<p class="card-text">▼グッズ情報はこちらから</p>
+  							<%= link_to "グッズ情報", goods_path %>
+  						<% end %>
 
-	  <% if @post.present? %>
-  		<%= @post.body %>
-	  <% end %>
+	  					<% if @post.event_questionnaires_question.present? %>
+  							<label>▽イベントレポートアンケートはこちらから</label>
+  							<%= link_to @post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: @post.event_questionnaires_question.id) %>
+	  					<% end %>
 
-	  <% if @post.favorited?(current_customer) %>
-  		<!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
-  		<%= link_to post_favorites_path(@post.id), method: :delete do %>
-    		<span style="color:red;">❤︎</span>
-  		<% end %>
-	  <% else %>
-  		<!-- # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ -->
-  		<%= link_to post_favorites_path(@post.id), method: :post do %>
-    		<span>❤︎</span>
-  		<% end %>
-	  <% end %>
+	  					<% if @post.present? %>
+  							<%= @post.body %>
+	  					<% end %><br>
 
-	  <div>
-  		<p>コメント一覧</p>
-  		<% @post_comments.each do |post_comment| %>
-    		<div>
-      			<%= post_comment.customer.last_name unless post_comment.customer.blank? %><br />
-      			<%= post_comment.comment %>
-    		</div>
-  		<% end %>
-  		<% if customer_signed_in? %>
-      		<%= form_with(model: [@post, @post_comment], local: true) do |f| %>
-        		<%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %><br>
-        		<%= f.submit "送信" %>
-      		<% end %>
-  		<% end %>
-	  </div>
+							<span><i class="fas fa-user"></i><%= @post.customer.last_name %>|</span>
+
+	  					<% if @post.favorited?(current_customer) %>
+  							<!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
+  							<%= link_to post_favorites_path(@post.id), method: :delete do %>
+    							<span style="color:red;">❤︎</span>
+  							<% end %>
+	  					<% else %>
+  							<!-- # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ -->
+  							<%= link_to post_favorites_path(@post.id), method: :post do %>
+    							<span>❤︎</span>
+  							<% end %>
+	  					<% end %><br>
+
+  						<label>コメント一覧</label>
+  						<% @post_comments.each do |post_comment| %>
+      					<%= post_comment.customer.last_name unless post_comment.customer.blank? %><br />
+      					<%= post_comment.comment %>
+  						<% end %>
+  						<% if customer_signed_in? %>
+      					<%= form_with(model: [@post, @post_comment], local: true) do |f| %>
+        					<%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %><br>
+        					<%= f.submit "送信", class:"btn btn-lg btn-block btn-info mt-4"%>
+      					<% end %>
+  						<% end %>
+	  			</div>
+				</div>
+			</div>
+ 	  </div>
   </div>
 </div>

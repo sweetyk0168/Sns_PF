@@ -1,16 +1,30 @@
-<div class="container height">
-  <h3>イベント投稿フォーム</h3>
-  <%= form_for(@post, url: posts_path) do |f| %>
-    <%= f.label :タイトル %><br>
-    <%= f.text_field :title, autofocus: true, autocomplete: "title" %><br>
-    <%= f.label :■画像選択 %><br>
-    <%= f.file_field :image, accept:"image/*" %><br>
-    <%= f.label :■本文 %><br>
-    <%= f.collection_select :event_id, Event.all, :id, :introduction, {include_blank: "選択してください"} %><br>
-    <%= f.collection_select :event_questionnaires_question_id, EventQuestionnairesQuestion.all, :id, :content, {include_blank: "選択してください"} %><br>
-    <%= f.text_area :body %><br>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h3 class="text-dark bg-light p-4 mb-0">投稿フォーム</h3>
+      <div class="form-body p-4">
+        <%= form_with model:@post, url: posts_path do |f| %>
+              <%= f.label :■画像選択 %><br>
+              <%= f.file_field :image, accept:"image/*", class: "w-100" %>
 
-    <%= f.submit '投稿' %>
-  <% end %>
+              <%= f.label :タイトル %><br>
+              <div class="mb-3">
+                <%= f.text_field :title,　class:"form-control", autofocus: true, autocomplete: "title", placeholder:"投稿タイトルをここに入力してください" %><br>
+              </div>
+               <%= f.label :■本文 %><br>
+              <div class="mb-3">
+                <%= f.collection_select :event_id, Event.all, :id, :introduction, {include_blank: "本文を選択してください"} %>
+              </div>
+              <div class="mb-3">
+                <%= f.collection_select :event_questionnaires_question_id, EventQuestionnairesQuestion.all, :id, :content, {include_blank: "本文を選択してください"} %>
+              </div>
+              <div class="mb-3">
+                <%= f.text_area :body, class:"form-control", rows:"3", placeholder:"本文をここに入力してください" %>
+              </div>
+
+              <%= f.submit '投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-

@@ -1,14 +1,18 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-3">
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
       <% if @event.present? %>
-        <h3><%= @event.name %>概要</h3><br>
+        <h3 class="p-4 mb-0"><%= @event.name %>概要</h3><br>
         <%= safe_join(@event.introduction.split("\n"),tag(:br)) %><br>
         <%= link_to "チケット情報", event_tickets_path %><br><br>
 
         <p>▼グッズ情報はこちらから</p>
         <%= link_to "グッズ情報", goods_path %><br>
-        <%= link_to '戻る', root_path %>
+
+        <div class="p-4 mb-0">
+          <%= image_tag @event.get_image(200,200) %>
+        </div>
+        <%= link_to '戻る', root_path, class:"btn btn-primary" %>
       <% end %>
     </div>
   </div>
