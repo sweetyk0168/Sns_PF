@@ -1,32 +1,40 @@
-<h3>イベント情報一覧</h3>
-<div>
-  <%= link_to new_admin_event_path do %>
-    <button type="button">+</button>
-  <% end %>
-</div>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>イベント名</th>
-      <th>ジャンル</th>
-      <th>投稿状況</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.id %></td>
-        <td><%= link_to event.name, admin_event_path(event) %></td>
-        <td><%= event.genre.name %></td>
-        <td><% if event.post_status %>
-              投稿中
-            <% else %>
-              投稿完了
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
+      <h3 class="p-3 my-2">イベント情報一覧</h3>
+      <div class="mb-3">
+        <%= link_to new_admin_event_path do %>
+          <button type="button">+</button>
+        <% end %>
+      </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>イベント名</th>
+              <th>ジャンル</th>
+              <th>投稿状況</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @events.each do |event| %>
+              <tr>
+                <td><%= event.id %></td>
+                <td><%= link_to event.name, admin_event_path(event) %></td>
+                <td><%= event.genre.name %></td>
+                <td>
+                  <% if event.post_status %>
+                    投稿中
+                  <% else %>
+                    投稿完了
+                  <% end %>
+                </td>
+              </tr>
             <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @events %>
+          </tbody>
+        </table>
+      <%= paginate @events %>
+    </div>
+  </div>
+</div>
+

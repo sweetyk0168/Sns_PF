@@ -12,6 +12,7 @@ class EventTicket < ApplicationRecord
   validates :ticket_introduction, presence: true
   validates :ticket_price, presence: true
   validates :sales_status, inclusion:[true, false]
+  validates :performance_date, presence: true
 
   def add_tax_ticket_price
     (self.ticket_price * 1.10).round

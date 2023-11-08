@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :ticket_orders, only:[:index, :show, :update]
     resources :ticket_order_details, only:[:update]
     resources :event_questionnaires_questions, only:[:create, :new, :index, :show, :edit, :update]
-    resources :event_questionnaires_answers, only:[:create, :new, :show]
+    # resources :event_questionnaires_answers, only:[:create, :new, :show]
   end
 
   #ゲストログイン機能のroot

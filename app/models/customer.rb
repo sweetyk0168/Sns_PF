@@ -32,6 +32,14 @@ class Customer < ApplicationRecord
    validates :postal_code, presence: true
    validates :address, presence: true
 
+  def customer_status
+    if is_deleted == true
+      "退会"
+    else
+      "有効"
+    end
+  end
+
   #enum設定
   #enum is_deleted: { 有効: 0, 無効: 1}
   def active_for_authentication?
