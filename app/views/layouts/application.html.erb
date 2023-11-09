@@ -13,9 +13,10 @@
 
   <body>
     <header class="shadow-sm">
-      <div class ="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <ul class="navbar-nav ml-auto">
+      <!--<div id ="header-image" style="background-image: url('/assets/live.jpg'); background-position: center;">-->
+        <div class ="container">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <ul class="navbar-nav ml-auto">
              <% if customer_signed_in? %>
                 ようこそ！<%= current_customer.last_name %>さん！
                 <li class="nav-item"><%= link_to "投稿フォーム", new_post_path, class: 'nav-link text-dark' %></li>
@@ -25,19 +26,19 @@
                 <!--<li><%#= link_to "アンケート" %></li>-->
                 <li class="nav-item"><%= link_to "マイページ", customers_path,  class: 'nav-link text-dark' %></li>
                 <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,  class: 'nav-link text-dark' %></li>
-              <%# else %>
-                <%#= link_to "イベントNEWS", events_path %>
-                <%#= link_to "新規登録", new_customer_registration_path %>
-                <%#= link_to "ログイン", customer_session_path %>
-                <%#= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %>
               <% end %>
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
-    <main class="mb-auto">
-      <%= yield %>
-    </main>
-    </div>
+
+      <main class="mb-auto">
+            <div id ="main-image" style="background-image: url('/assets/live.jpg'); background-position: center;">
+        <%= yield %>
+            </div>
+      </main>
+
+    <!--</div>-->
   </body>
 </html>

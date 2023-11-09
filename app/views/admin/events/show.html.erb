@@ -74,13 +74,17 @@
               </tr>
             </thead>
             <tbody>
-              <% @posts.each do | post | %>
-                <tr>
-                  <td><%= post.title %></td>
-                  <td><%= post.body %></td>
-                  <td><%= link_to '削除する', admin_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-                  <!--<td><%#= event_repos.genre.name %></td>-->
-                </tr>
+              <% if @posts.present? %>
+                <% @posts.each do | post | %>
+                  <tr>
+                    <td><%= post.title %></td>
+                    <td><%= post.body %></td>
+                    <td><%= link_to '削除する', admin_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                    <!--<td><%#= event_repos.genre.name %></td>-->
+                  </tr>
+                <% end %>
+              <% else %>
+                <p>まだ回答がありません</p>
               <% end %>
             </tbody>
           </table>
