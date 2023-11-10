@@ -1,31 +1,32 @@
-<div class="container p-5">
-  <div class="row">
-    <div class="col-md-10 offset-md-1">
-      <table class="table">
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
+      <h3 class="p-3 my-2">■アンケート回答内容確認</h3>
+      <table class="table table-bordered">
         <tbody>
           <tr>
-            <td class="text-right" style="width: 30%;">性別</td>
+            <th>性別</th>
             <td><%= @event_questionnaires_answer.gender %></td>
           </tr>
           <tr>
-            <td class="text-right mt-3" style="width: 30%;">〇〇イベントに参加したきっかけ</td>
+            <th>〇〇イベントに参加したきっかけ</th>
             <td><%= @event_questionnaires_answer.reason %></td>
           </tr>
           <tr>
-            <td class="text-right mt-3" style="width: 30%;">満足度</td>
+            <th>〇〇イベントに対する満足度</th>
             <td><%= @event_questionnaires_answer.satisfaction %></td>
           </tr>
           <tr>
-            <td class="text-right mt-3">満足度の理由</td>
-            <td style="white-space: pre-wrap;"><%= @event_questionnaires_answer.reason_for_satisfaction %></td>
+            <th>〇〇イベントの満足度の理由</th>
+            <td><%= @event_questionnaires_answer.reason_for_satisfaction %></td>
           </tr>
           <tr>
-            <td class="text-right mt-3">参加決意</td>
-            <td style="white-space: pre-wrap;"><%= @event_questionnaires_answer.participation %></td>
+            <th>参加決意</th>
+            <td><%= @event_questionnaires_answer.participation %></td>
           </tr>
           <tr>
-            <td class="text-right mt-3">イベントの感想</td>
-            <td style="white-space: pre-wrap;"><%= @event_questionnaires_answer.impressions %></td>
+            <th>〇〇イベントに対するご意見・ご要望</th>
+            <td><%= @event_questionnaires_answer.impressions %></td>
           </tr>
         </tbody>
       </table>
