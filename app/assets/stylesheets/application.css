@@ -24,6 +24,9 @@
   background-size: 50% auto;
 }
 
+/*.link {*/
+/*  color :white;*/
+/*}*/
 /*.container {*/
 /*  background-image: url('/assets/live.jpg');*/
 /*}*/
@@ -40,13 +43,13 @@
 /*  background-size: 25% auto;*/
 /*}*/
 
-.blog {
-  background-color: white;
-}
+/*.blog {*/
+/*  background-color: white;*/
+/*}*/
 
-.sidebar {
-  background-color: white;
-}
+/*.sidebar {*/
+/*  background-color: white;*/
+/*}*/
 
 .hwrapper {
   width: 100%;

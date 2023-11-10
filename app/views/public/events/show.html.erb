@@ -2,8 +2,8 @@
   <div class="row no-gutters">
     <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
       <% if @event.present? %>
-       <div class="bg-light">
-        <h3 class="p-4 mb-0">■<%= @event.name %>概要</h3><br>
+       <div class="bg-light py-5 px-5">
+        <h3 class="p-43mb-0">■<%= @event.name %>概要</h3><br>
         <%= safe_join(@event.introduction.split("\n"),tag(:br)) %><br>
         <%= link_to "チケット情報", event_tickets_path %><br><br>
 

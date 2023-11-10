@@ -1,23 +1,24 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
-      <h3 class="p-4 mb-0">■イベント情報新規投稿</h3>
+      <div class="bg-light py-5 px-5">
+              <h3 class="p-4 mb-0">■イベント情報新規投稿</h3>
         <div class="form-body p-4">
           <%= form_with model: @event, url:admin_events_path do |f| %>
-            <%= f.label :'イベント名' %>
+            <%= f.label :'■イベント名' %>
             <%= f.text_field:name, class:"form-control", autofocus:true, placeholder:"イベントタイトルをここに入力してください" %><br>
 
-            <%= f.label :'イベント説明文' %>
+            <%= f.label :'■イベント説明文' %>
             <%= f.text_area:introduction, class:"form-control", rows:"3", autofocus:true, placeholder:"イベント説明文をここに入力してください" %><br>
 
-            <%= f.label :'イベントURL' %>
+            <%= f.label :'■イベントURL' %>
             <%= f.text_field:url_strings, class:"form-control",autofocus:true, placeholder:"イベントURLをここに入力してください" %><br>
 
-            <%= f.label :'ジャンル' %>
+            <%= f.label :'■ジャンル' %>
             <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %><br>
 
             <div class="my-3">
-              <%= f.label :'投稿ステータス' %>
+              <%= f.label :'■投稿ステータス' %>
               <%= f.radio_button :post_status, true %>
               <%= f.label :post_status,"投稿中",{value: :true,style: "display: inline-block;"} %>
               <%= f.radio_button :post_status, false %>
@@ -26,6 +27,8 @@
 
             <%= f.submit '新規投稿', class:"btn btn-success" %>
           <% end %>
+
+      </div>
         </div>
     </div>
   </div>

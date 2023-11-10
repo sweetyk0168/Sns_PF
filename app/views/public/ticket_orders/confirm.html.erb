@@ -1,19 +1,20 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
-      <h3 class="mt-3">注文情報確認</h3>
-    	  <table class="table table-bordered">
-      		<thead>
-        		<tr>
-          		<th>チケットタイトル名</th>
-          		<th>単価(税込）</th>
-          		<th>枚数</th>
-          		<th>小計</th>
-        		</tr>
-      		</thead>
-      		<tbody>
-        		<% total = 0 %>
-        		<% @cart_tickets.each do |cart_ticket| %>
+      <div class="bg-light py-5 px-5">
+        <h3 class="mb-3">注文情報確認</h3>
+    	    <table class="table table-bordered">
+      		  <thead class="table-dark">
+        		  <tr>
+          		  <th>チケットタイトル名</th>
+          		  <th>単価(税込）</th>
+          		  <th>枚数</th>
+          	    <th>小計</th>
+        		  </tr>
+      		  </thead>
+      		  <tbody>
+        		  <% total = 0 %>
+        		  <% @cart_tickets.each do |cart_ticket| %>
           			<tr>
             			<td><%= cart_ticket.event_ticket.event_title %></td>
             			<td><%= (cart_ticket.event_ticket.add_tax_ticket_price*1.1).to_i %></td>
@@ -21,36 +22,36 @@
             			<td><%= ((cart_ticket.event_ticket.add_tax_ticket_price*cart_ticket.amount)*1.1).to_i %>
             			<% total += ((cart_ticket.event_ticket.add_tax_ticket_price*cart_ticket.amount)*1.1).to_i %></td>
           			</tr>
-        		<% end %>
-      		</tbody>
-    	  </table>
-
-    	   <table class="table table-bordered">
-      		  <tr>
-        		  <th>送料</th>
-        		  <th>800</th>
-      		  </tr>
-      	    <tbody>
-        	    <tr>
-          	    <th>チケット合計</th>
-          	    <td><%= total %></td>
-        	    </tr>
-        	    <tr>
-          	    <th>請求金額</th>
-          	    <td><%= total + 800 %></td>
-        	    </tr>
-      	    </tbody>
+        		  <% end %>
+      		  </tbody>
     	    </table>
 
-        <p>
-          <strong>支払方法</strong>
-          <%= @ticketorder.payment_method %><br>
-        </p>
-        <p>
-          <strong>お届け先</strong>
-          〒<%= @ticketorder.postcode %><%= @ticketorder.address %><br>
-          <%= @ticketorder.name %><br>
-        </p>
+    	     <table class="table table-bordered">
+      		    <tr>
+        		    <th class="table-dark">送料</th>
+        		    <th>800</th>
+      		    </tr>
+      	      <tbody>
+        	      <tr>
+          	      <th class="table-dark">チケット合計</th>
+          	      <td><%= total %></td>
+        	      </tr>
+        	      <tr>
+          	      <th class="table-dark">請求金額</th>
+          	      <td><%= total + 800 %></td>
+        	      </tr>
+      	      </tbody>
+    	    </table>
+
+          <p>
+            <strong>支払方法</strong>
+            <%= @ticketorder.payment_method %><br>
+          </p>
+          <p>
+            <strong>お届け先</strong>
+            〒<%= @ticketorder.postcode %><%= @ticketorder.address %><br>
+            <%= @ticketorder.name %><br>
+          </p>
 
           <%= form_with model: @ticketorder, url: ticket_orders_path, method: :post, local: true do |f| %>
             <%= f.hidden_field :payment_method %>
@@ -63,5 +64,6 @@
               <%= f.submit "注文を確定する", class:"btn btn-success" %>
             </div>
           <% end %>
+      </div>
   </div>
 </div>

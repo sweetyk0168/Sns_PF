@@ -1,38 +1,40 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
-    	<h3 class="p-4 my-3">■〇〇イベントチケット情報</h3>
-		  	<table class="table table-hover">
-  				<thead>
-    				<tr>
-      				<th>公演名</th>
-      				<th>販売期間</th>
-      				<th>公演会場</th>
-      				<th></th>
-      				<th></th>
-    				</tr>
-  				</thead>
-  				<tbody>
-    				<% @eventtickets.each do |event_tickets| %>
-      				<tr>
-				        <td><%= event_tickets.ticket_name %></td>
-				        <td><%= event_tickets.ticket_startday %>～<%= event_tickets.ticket_endday %></td>
-				        <td><%= event_tickets.ticket_place %></td>
-				        <td>
-				          <% if event_tickets.sales_status == true %>
-				            <p class="text-danger">販売中</p>
-				          <% else %>
-				            <p class="text-secondary">販売終了</p>
-				          <% end %>
-        				</td>
-				        <td>
-				          <%= link_to '詳細へ',  event_ticket_path(event_tickets.id) , class:"btn btn-primary" %>
-				        </td>
-				      </tr>
-				    <% end %>
-  			</tbody>
-		  </table>
-		<%= paginate @eventtickets %>
-    </div>
-  </div>
+  	<div class="bg-light py-5 px-5">
+  		<div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
+    		<h3 class="p-4 my-3">■〇〇イベントチケット情報</h3>
+		  		<table class="table table-hover">
+  					<thead>
+    					<tr>
+      						<th>公演名</th>
+      						<th>販売期間</th>
+      						<th>公演会場</th>
+      						<th></th>
+      						<th></th>
+    					</tr>
+  					</thead>
+  					<tbody>
+    					<% @eventtickets.each do |event_tickets| %>
+      						<tr>
+				        		<td><%= event_tickets.ticket_name %></td>
+				        		<td><%= event_tickets.ticket_startday %>～<%= event_tickets.ticket_endday %></td>
+				        		<td><%= event_tickets.ticket_place %></td>
+				        		<td>
+				          			<% if event_tickets.sales_status == true %>
+				            			<p class="text-danger">販売中</p>
+				          			<% else %>
+				            			<p class="text-secondary">販売終了</p>
+				          			<% end %>
+        						</td>
+				        		<td>
+				          			<%= link_to '詳細へ',  event_ticket_path(event_tickets.id) , class:"btn btn-primary" %>
+				        		</td>
+				      		</tr>
+				    	<% end %>
+  					</tbody>
+		  		</table>
+  		</div>
+			<%= paginate @eventtickets %>
+    	</div>
+  	</div>
 </div>

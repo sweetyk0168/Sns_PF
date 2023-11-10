@@ -1,39 +1,41 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
-      <h3 class="p-3 my-2">■イベントチケット情報一覧</h3>
-        <div class="mb-3">
-          <%= link_to new_admin_event_ticket_path do %>
-            <button type="button">+</button>
-          <% end %>
-        </div>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>イベントチケット名</th><br>
-                <th>ジャンル名</th>
-                <th>販売ステータス</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @eventtickets.each do |event_ticket| %>
+      <div class="bg-light py-5 px-5">
+        <h3 class="p-3 my-2">■イベントチケット情報一覧</h3>
+          <div class="mb-3">
+            <%= link_to new_admin_event_ticket_path do %>
+              <button type="button">+</button>
+            <% end %>
+          </div>
+            <table class="table table-bordered">
+              <thead class="table-dark">
                 <tr>
-                  <td><%= event_ticket.id %></td>
-                  <td><%= link_to event_ticket.ticket_name, admin_event_ticket_path(event_ticket) %></td>
-                  <td><%= event_ticket.genre.name %></td>
-                  <td>
-                    <% if event_ticket.sales_status %>
-                      販売中
-                    <% else %>
-                      販売完了
-                    <% end %>
-                  </td>
+                  <th>ID</th>
+                  <th>イベントチケット名</th><br>
+                  <th>ジャンル名</th>
+                  <th>販売ステータス</th>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
-      <%= paginate @eventtickets %>
+              </thead>
+              <tbody>
+                <% @eventtickets.each do |event_ticket| %>
+                  <tr>
+                    <td><%= event_ticket.id %></td>
+                    <td><%= link_to event_ticket.ticket_name, admin_event_ticket_path(event_ticket) %></td>
+                    <td><%= event_ticket.genre.name %></td>
+                    <td>
+                      <% if event_ticket.sales_status %>
+                        販売中
+                      <% else %>
+                        販売完了
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <%= paginate @eventtickets %>
+      </div>
     </div>
   </div>
 </div>

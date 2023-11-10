@@ -13,31 +13,33 @@
 
   <body>
     <header class="shadow-sm">
-      <!--<div id ="header-image" style="background-image: url('/assets/live.jpg'); background-position: center;">-->
+      <div id ="header-image" style="background-image: url('/assets/live.jpg'); background-position: bottom;">
+        <!--<div>Logo created by <a href="https://www.designevo.com/" title="Free Online Logo Maker">DesignEvo logo maker</a></div>-->
         <div class ="container">
           <nav class="navbar navbar-expand-lg navbar-light">
+            <%= link_to image_tag( '/assets/logo-transparent.png', size: '150x150'), root_path %>
             <ul class="navbar-nav ml-auto">
              <% if customer_signed_in? %>
-                ようこそ！<%= current_customer.last_name %>さん！
-                <li class="nav-item"><%= link_to "投稿フォーム", new_post_path, class: 'nav-link text-dark' %></li>
+                <p class="text-light">ようこそ！<%= current_customer.last_name %>さん！</p>
+                <li class="nav-item"><%= link_to "投稿フォーム", new_post_path, class: 'nav-link text-light' %></li>
                 <!--<li class="nav-item"><%#= link_to "イベントNEWS", events_path,  class: 'nav-link text-dark' %></li>
                 <li class="nav-item"><%#= link_to "グッズ情報",goods_path,  class: 'nav-link text-dark' %></li>-->
                 <!--<li><%#= link_to "イベントレポート投稿フォーム",  new_event_repo_path %></li>-->
                 <!--<li><%#= link_to "アンケート" %></li>-->
-                <li class="nav-item"><%= link_to "マイページ", customers_path,  class: 'nav-link text-dark' %></li>
-                <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,  class: 'nav-link text-dark' %></li>
+                <li class="nav-item"><%= link_to "マイページ", customers_path,  class: 'nav-link text-light' %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,  class: 'nav-link text-light' %></li>
               <% end %>
             </ul>
           </nav>
         </div>
       </div>
     </header>
-    <div id ="main-image" style="background-image: url('/assets/live.jpg'); background-position: center;">
+    <div id ="main-image" style="background-image: url('/assets/live.jpg'); background-position: bottom;">
       <main class="mb-auto">
         <%= yield %>
       </main>
       <footer></footer>
-        </div>
-    <!--</div>-->
+      </div>
+    </div>
   </body>
 </html>
