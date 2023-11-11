@@ -25,6 +25,7 @@
   							<%= @post.body %>
 	  					<% end %><br>
 
+              <%= image_tag @post.customer.get_profile_image(50,50) %>
 							<span><i class="fas fa-user"></i><%= @post.customer.last_name %>|</span>
 
 	  					<% if @post.favorited?(current_customer) %>

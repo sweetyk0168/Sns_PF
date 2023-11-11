@@ -23,6 +23,17 @@
     					<td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
   					</tr>
   					<tr>
+  						<th class="table-dark">プロフィール画像</th>
+  						<td><%= link_to customer_path(@customer.id) do %>
+              	<%= image_tag @customer.get_profile_image(100,100) %>
+              	<% end %>
+              </td>
+  					</tr>
+  					<tr>
+  						<th class="table-dark">自己紹介</th>
+  						<td><%= @customer.customer_introduction %></td>
+  					</tr>
+  					<tr>
     					<th class="table-dark">メールアドレス</th>
     					<td><%= @customer.email %></td>
   					</tr>

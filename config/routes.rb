@@ -40,10 +40,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :customers, only: [:index, :show, :edit] do
-      member do
-        get :follows, :followers
-      end
-      resource :relationships, only: [:create, :destroy]
+      # member do
+      #   get :follows, :followers
+      # end
+      # resource :relationships, only: [:create, :destroy]
     end
     resources :events, only: [:new, :create, :index, :show]
     resources :goods, only: [:index, :show]

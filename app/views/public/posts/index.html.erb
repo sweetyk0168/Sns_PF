@@ -10,7 +10,7 @@
   		     <% end %>
 	       </div>
 
-           <div class="col-9">
+           <div class="col-7">
               <p class="card-title">タイトル：<%= post.title %></p>
                 <% if post.event.present? %>
       	         <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
@@ -26,7 +26,10 @@
   		          <% if post.present? %>
       	          <%= post.body %><br>
   		          <% end %><br>
-                <span><i class="fas fa-user"></i><%= post.customer.last_name %>|</span>
+
+                  <%= image_tag post.customer.get_profile_image(50,50) %>
+                  <span><i class="fas fa-user"></i><%= post.customer.last_name %>|</span>
+
   		          <% if post.favorited?(current_customer) %>
       	          <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
       	          <%= link_to post_favorites_path(post.id), method: :delete do %>

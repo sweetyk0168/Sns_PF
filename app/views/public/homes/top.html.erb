@@ -27,6 +27,8 @@
   		          <% if post.present? %>
       	          <%= post.body %><br>
   		          <% end %><br>
+
+                <%= image_tag post.customer.get_profile_image(50,50) %>
                 <sapn><i class="fas fa-user"></i><%= post.customer.last_name %>|</sapn>
   		          <% if post.favorited?(current_customer) %>
       	          <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
