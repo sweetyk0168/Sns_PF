@@ -1,5 +1,5 @@
 class EventTicket < ApplicationRecord
-  belongs_to :genre
+  belongs_to :event
   has_many :cart_tickets, dependent: :destroy
   has_many :ticket_orders, through: :ticket_order_details
   has_many :ticket_order_details, dependent: :destroy

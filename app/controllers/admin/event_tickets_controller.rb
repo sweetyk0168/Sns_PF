@@ -3,34 +3,38 @@ class Admin::EventTicketsController < ApplicationController
   before_action :authenticate_admin!
 
   def new
-    @eventticket = EventTicket.new
+    @event_ticket = EventTicket.new
   end
 
   def create
-    @eventticket = EventTicket.new(event_ticket_params)
-    if @eventticket.save
-      redirect_to admin_event_ticket_path(@eventticket)
+    @event = Event.find(params[:event_id])
+    @event_ticket = EventTicket.new(event_ticket_params)
+     @event_ticket.event_id = @event.id
+    if @event_ticket.save
+      flash[:notice] = "イベントチケット情報が登録されました"
+      redirect_to admin_event_path(@event)
     else
       render 'new'
     end
   end
 
   def index
-    @eventtickets = EventTicket.page(params[:page]).per(10)
+    @event_tickets = EventTicket.page(params[:page]).per(10)
   end
 
   def show
-    @eventticket = EventTicket.find(params[:id])
+    @event_ticket = EventTicket.find(params[:id])
   end
 
   def edit
-    @eventticket = EventTicket.find(params[:id])
+    @event_ticket = EventTicket.find(params[:id])
   end
 
   def update
-    @eventticket = EventTicket.find(params[:id])
-    if @eventticket.update(event_ticket_params)
-      redirect_to admin_event_ticket_path(@eventticket)
+    @event_ticket = EventTicket.find(params[:id])
+    if @event_ticket.update(event_ticket_params)
+      flash[:notice] = "イベントチケット情報が更新されました"
+      redirect_to admin_event_path(@event_ticket)
     else
       render 'edit'
     end

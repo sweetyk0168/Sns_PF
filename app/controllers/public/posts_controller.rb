@@ -27,6 +27,7 @@ class Public::PostsController < ApplicationController
     end
 
     if @post.save
+      flash[:notice] = "新規投稿されました"
         # byebug
       # PostEventRepo.create(post_id: @post.id, event_repo_id: params[:post][:event_repo_ids])
       redirect_to posts_path

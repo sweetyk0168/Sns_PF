@@ -7,11 +7,13 @@ class Public::CartTicketsController < ApplicationController
   end
 
   def create
+    @event = EventTicket.find(params[:cart_ticket][:event_ticket_id]).event
     #カート内に同一チケットがあるか？
     @in_cart_ticket = current_customer.cart_tickets.find_by(event_ticket_id: params[:cart_ticket][:event_ticket_id])
     if @in_cart_ticket
        @sum_amount = @in_cart_ticket.amount + params[:cart_ticket][:amount].to_i
        @in_cart_ticket.update(amount: @sum_amount)
+        flash[:notice] = "カート内のチケットが更新されました"
        redirect_to cart_tickets_path
     else
       #新しいカートの作成

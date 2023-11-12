@@ -5,10 +5,10 @@
        <div class="bg-light py-5 px-5">
         <h3 class="p-43mb-0">■<%= @event.name %>概要</h3><br>
         <%= safe_join(@event.introduction.split("\n"),tag(:br)) %><br>
-        <%= link_to "チケット情報", event_tickets_path %><br><br>
+        <%= link_to "チケット情報", event_event_tickets_path(@event.id) %><br><br>
 
         <p>▼グッズ情報はこちらから</p>
-        <%= link_to "グッズ情報", goods_path %><br>
+        <%= link_to "グッズ情報", event_goods_path(@event.id) %><br>
 
         <div class="p-4 mb-0">
           <%= image_tag @event.get_image(200,200) %>

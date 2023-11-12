@@ -14,27 +14,27 @@
     					</tr>
   					</thead>
   					<tbody>
-    					<% @eventtickets.each do |event_tickets| %>
+    					<% @event_tickets.each do |event_ticket| %>
       						<tr>
-				        		<td><%= event_tickets.ticket_name %></td>
-				        		<td><%= event_tickets.ticket_startday %>～<%= event_tickets.ticket_endday %></td>
-				        		<td><%= event_tickets.ticket_place %></td>
+				        		<td><%= event_ticket.ticket_name %></td>
+				        		<td><%= event_ticket.ticket_startday %>～<%= event_ticket.ticket_endday %></td>
+				        		<td><%= event_ticket.ticket_place %></td>
 				        		<td>
-				          			<% if event_tickets.sales_status == true %>
+				          			<% if event_ticket.sales_status == true %>
 				            			<p class="text-danger">販売中</p>
 				          			<% else %>
 				            			<p class="text-secondary">販売終了</p>
 				          			<% end %>
         						</td>
 				        		<td>
-				          			<%= link_to '詳細へ',  event_ticket_path(event_tickets.id) , class:"btn btn-primary" %>
+				          			<%= link_to '詳細へ',  event_event_ticket_path(event_ticket.event_id, event_ticket.id) , class:"btn btn-primary" %>
 				        		</td>
 				      		</tr>
 				    	<% end %>
   					</tbody>
 		  		</table>
   		</div>
-			<%= paginate @eventtickets %>
+			<%= paginate @event_tickets %>
     	</div>
   	</div>
 </div>

@@ -3,8 +3,16 @@
     <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
       <div class="bg-light py-5 px-5">
         <h3 class="mt-3">■イベントチケット情報編集</h3>
+          <% if @event_ticket.errors.any? %>
+            <%= @event_ticket.errors.count %>errors occurred
+              <ul>
+                  <% @event_ticket.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+              </ul>
+          <% end %>
           <div class="form-body p-4">
-            <%= form_with model:@eventticket, url: admin_event_ticket_path do |f| %>
+            <%= form_with model:@event_ticket, url: admin_event_event_ticket_path do |f| %>
               <%= f.label :"■イベントタイトル名" %>
               <%= f.text_field:event_title, class:"form-control", autofocus:true %>
 
@@ -30,9 +38,6 @@
               <%= f.text_field :ticket_price, class:"form-control" %>
 
               <div class="mt-3">
-                <%= f.label :"■ジャンル名" %>
-                <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択してください--"} %><br>
-
                 <%= f.label :"■販売ステータス" %>
                 <%= f.radio_button :sales_status, true %>
                 <%= f.label :sales_status, "販売中", {value: :true, style: "display: inline-block;" } %>

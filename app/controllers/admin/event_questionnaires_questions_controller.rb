@@ -8,6 +8,7 @@ class Admin::EventQuestionnairesQuestionsController < ApplicationController
   def create
     @event_questionnaires_question =  EventQuestionnairesQuestion.new(event_questionnaires_question_params)
     if @event_questionnaires_question.save
+      flash[:notice] = "イベントアンケート説明情報が登録されました"
       redirect_to admin_event_questionnaires_questions_path
     else
       render 'new'
@@ -30,6 +31,7 @@ class Admin::EventQuestionnairesQuestionsController < ApplicationController
   def update
     @event_questionnaires_question = EventQuestionnairesQuestion.find(params[:id])
     if @event_questionnaires_question.update(event_questionnaires_question_params)
+      flash[:notice] = "イベントアンケート説明情報が更新されました"
       redirect_to admin_event_questionnaires_question_path(@event_questionnaires_question)
     else
       render 'edit'

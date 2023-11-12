@@ -12,6 +12,7 @@ class Admin::TicketOrderDetailsController < ApplicationController
     if @ticket_order_details.where(ticket_status: "チケット手配中").count >= 1
       @ticketorder.order_status = "発送準備中"
       @ticketorder.save
+      flash[:notice] = "チケット手配ステータスが更新されました"
       redirect_to admin_ticket_order_path(@ticket_order_detail.ticket_order.id)
     end
 
@@ -19,6 +20,7 @@ class Admin::TicketOrderDetailsController < ApplicationController
     if @ticketorder.ticket_order_details.count == @ticket_order_details.where(ticket_status: "チケット手配完了").count
       @ticketorder.order_status = "発送済み"
       @ticketorder.save
+      flash[:notice] = "チケット手配ステータスが更新されました"
       redirect_to admin_ticket_order_path(@ticketorder.id)
     end
   end

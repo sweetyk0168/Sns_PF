@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :genre
+  has_many :event_tickets, dependent: :destroy
   has_many :event_repos, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :goods, dependent: :destroy
@@ -12,7 +13,7 @@ class Event < ApplicationRecord
   validates :introduction, presence: true
   validates :post_status, inclusion:[true, false]
   validate :url_strings
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

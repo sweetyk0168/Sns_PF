@@ -20,6 +20,7 @@ class Admin::TicketOrdersController < ApplicationController
         @ticket_order_details.each do |ticket_order_detail|
         ticket_order_detail.ticket_status = "チケット手配中"
         ticket_order_detail.save
+        flash[:notice] = "チケット手配ステータスが更新されました"
       end
     end
     redirect_to admin_ticket_order_path(@ticketorder.id)

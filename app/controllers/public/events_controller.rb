@@ -8,6 +8,8 @@ class Public::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @goods = @event.goods.page(params[:page])
+    @event_tickets = @event.event_tickets.page(params[:page])
   end
 
     def event_params

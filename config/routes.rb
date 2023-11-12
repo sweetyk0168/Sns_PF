@@ -23,10 +23,10 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
     resources :events, only:[:new, :create, :index, :show, :edit, :update] do
       resources :goods, only:[:new, :create, :index, :show, :edit, :update]
+      resources :event_tickets, only:[:create, :new, :index, :show, :edit, :update]
     #   resources :event_repos, only:[:index, :show, :edit, :update, :destroy]
     end
     resources :posts, only: [:destroy]
-    resources :event_tickets, only:[:create, :new, :index, :show, :edit, :update]
     resources :ticket_orders, only:[:index, :show, :update]
     resources :ticket_order_details, only:[:update]
     resources :event_questionnaires_questions, only:[:create, :new, :index, :show, :edit, :update]
@@ -45,13 +45,15 @@ Rails.application.routes.draw do
       # end
       # resource :relationships, only: [:create, :destroy]
     end
-    resources :events, only: [:new, :create, :index, :show]
-    resources :goods, only: [:index, :show]
+    resources :events, only: [:new, :create, :index, :show] do
+      resources :goods, only: [:index, :show]
+      resources :event_tickets, only:[:index, :show, :new]
+    end
+
     resources :posts, only: [:create, :new, :index, :show] do
       resource :favorites, only: [:create, :destroy]
       resource :post_comments, only: [:create, :destroy]
     end
-    resources :event_tickets, only:[:index, :show, :new]
     resources :cart_tickets, only:[:create, :index, :update, :destroy] do
       collection do
         delete 'destroy_all'

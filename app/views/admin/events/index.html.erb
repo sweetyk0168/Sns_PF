@@ -4,9 +4,7 @@
       <div class="bg-light py-5 px-5">
         <h3 class="p-1 my-2">■イベント情報一覧</h3>
           <div class="mb-3">
-            <%= link_to new_admin_event_path do %>
-              <button type="button">+</button>
-            <% end %>
+            <%= link_to '新規作成はこちらから' , new_admin_event_path, class:"btn btn-primary" %>
           </div>
           <table class="table table-bordered">
             <thead class="table-dark">

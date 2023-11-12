@@ -11,6 +11,7 @@ class Admin::GoodsController < ApplicationController
     @good = Good.new(good_params)
     @good.event_id = @event.id
     if @good.save
+      flash[:notice] = "グッズ情報が登録されました"
         # byebug
       redirect_to admin_event_path(@event)
     else
@@ -34,6 +35,7 @@ class Admin::GoodsController < ApplicationController
   def update
     @good = Good.find(params[:id])
     if @good.update(good_params)
+      flash[:notice] = "グッズ情報が更新されました"
       redirect_to admin_event_good_path(@good)
     else
       render 'edit'

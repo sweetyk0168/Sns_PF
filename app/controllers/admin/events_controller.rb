@@ -13,6 +13,7 @@ class Admin::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
+      flash[:notice] = "イベント情報が登録されました"
       redirect_to admin_events_path
     else
       render 'new'
@@ -22,6 +23,7 @@ class Admin::EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @goods = @event.goods.page(params[:page])
+    @event_tickets = @event.event_tickets.page(params[:page])
     @posts = @event.posts.page(params[:page])
     # @posts = Post.where(event_id: @event.id).page(params[:page])
     # @eventrepos = EventRepo.where(id: @posts.pluck(:event_repo_id)).page(params[:page])
@@ -34,6 +36,7 @@ class Admin::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
+      flash[:notice] = "イベント情報が更新されました"
       redirect_to admin_event_path(@event)
     else
       render 'edit'

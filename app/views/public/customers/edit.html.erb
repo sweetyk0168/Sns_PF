@@ -3,6 +3,14 @@
     <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
       <div class="bg-light py-5 px-5">
         <h3 class="p-4 mb-0"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+          <% if @customer.errors.any? %>
+            <%= @customer.errors.count %>errors occurred
+              <ul>
+                <% @customer.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          <% end %>
           <div class="form-body p-4">
             <%= form_with model: @customer, url: customers_information_path, local: true do |f| %>
               <div class="field">

@@ -10,6 +10,7 @@ class Public::EventQuestionnairesAnswersController < ApplicationController
     @event_questionnaires_answer = EventQuestionnairesAnswer.new(event_questionnaires_answer_params)
     @event_questionnaires_answer.event_questionnaires_question_id = event_questionnaires_answer_params[:event_questionnaires_question_id]
     if @event_questionnaires_answer.save
+      flash[:notice] = "イベントアンケート情報が投稿されました"
       redirect_to complete_event_questionnaires_answers_path
     else
       render 'new'

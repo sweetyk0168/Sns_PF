@@ -3,6 +3,14 @@
     <div class="col-md-20 col-sm-30 mx-10 mx-sm-auto">
       <div class="bg-light py-5 px-5">
         <h3 class="text-dark bg-light p-4 mb-0">■グッズ情報編集</h3>
+          <% if @good.errors.any? %>
+            <%= @good.errors.count %>errors occurred
+              <ul>
+                <% @good.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          <% end %>
           <div class="form-body p-4">
           <%= form_with model:@good, url:admin_event_good_path(@good) do |f| %>
             <%= f.label :"■グッズ画像" %>

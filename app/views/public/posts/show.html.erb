@@ -6,7 +6,7 @@
 	  			<%= image_tag @post.get_image(200,200), class:"card-img-top"; %><br>
 	  		</div>
 	  			<div class="col-9">
-	  					<p class="card-title">タイトル：<%= @post.title %></p>
+	  					<p class="card-title"><%= @post.title %></p><br>
 
 	  					<% if @post.event.present? %>
   							<%= safe_join(@post.event.introduction.split("\n"),tag(:br)) %><br>
@@ -17,7 +17,7 @@
   						<% end %>
 
 	  					<% if @post.event_questionnaires_question.present? %>
-  							<label>▽イベントレポートアンケートはこちらから</label>
+  							<label>▽イベントレポートアンケートはこちらから</label><br>
   							<%= link_to @post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: @post.event_questionnaires_question.id) %>
 	  					<% end %>
 
