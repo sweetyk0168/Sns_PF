@@ -15,7 +15,8 @@
               <p class="card-text"><%= post.title %></p>
                 <% if post.event.present? %>
       	         <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
-      	         <%= link_to post.event.name, event_path(post.event.id) %>
+      	         <%#= link_to post.event.name, event_path(post.event.id) %>
+      	         <%= link_to post.event.name, events_path %>
   		          <% end %><br>
 
   		          <%#イベントアンケート情報の投稿内容の表示について %>

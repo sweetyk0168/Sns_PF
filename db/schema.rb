@@ -168,13 +168,6 @@ ActiveRecord::Schema.define(version: 2023_11_12_100514) do
     t.integer "event_questionnaires_question_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followerd_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "ticket_order_details", force: :cascade do |t|
     t.integer "event_ticket_id", null: false
     t.integer "ticket_order_id", null: false

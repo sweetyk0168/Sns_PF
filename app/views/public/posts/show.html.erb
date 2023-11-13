@@ -10,10 +10,11 @@
 
 	  					<% if @post.event.present? %>
   							<%= safe_join(@post.event.introduction.split("\n"),tag(:br)) %><br>
-  							<%= link_to @post.event.url_strings,event_tickets_path %><br>
+  							<!--<%#= link_to @post.event.url_strings,event_event_tickets_path(@post.event.id) %><br>-->
+  							 <%= link_to @post.event.url_strings,events_path(@post.event.id) %><br>
 
   							<p class="card-text">▼グッズ情報はこちらから</p>
-  							<%= link_to "グッズ情報", goods_path %>
+  							<%= link_to "グッズ情報", event_goods_path(@post.event.id) %>
   						<% end %>
 
 	  					<% if @post.event_questionnaires_question.present? %>
