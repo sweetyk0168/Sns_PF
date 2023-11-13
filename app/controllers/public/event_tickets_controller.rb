@@ -1,8 +1,9 @@
 class Public::EventTicketsController < ApplicationController
   def index
-    # # @event_tickets = EventTicket.page(params[:page])
-    # @event = Event.find(params[:id])
-    @event_tickets = EventTicket.page(params[:page]).per(10)
+    @events = Event.all
+    @event_tickets = Event.find(params[:event_id]).event_tickets.page(params[:page]).per(10)
+    # @event_tickets = EventTicket.page(params[:page]).per(10)
+    # @event_event_tickets = EventTicket.where(event_id: params[:event_id])
   end
 
   def show

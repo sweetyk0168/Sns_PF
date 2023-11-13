@@ -13,22 +13,23 @@
            <div class="col-7">
               <p class="card-title"><%= post.title %></p>
                 <% if post.event.present? %>
-      	         <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
-      	         <%#= link_to post.event.name, event_path(post.event.id) %>
-      	         <%= link_to post.event.name, events_path(post.event.id) %>
-  		          <% end %>
+                  <% if post.present? %>
+                    <%= post.body %><br>
+      	           <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
+      	             <p>イベント詳細情報を公開しました。</p>
+      	             <%#= link_to post.event.name, event_path(post.event.id) %>
+      	             <%= link_to post.event.name, events_path(post.event.id) %>
+      	          <% end %>
+      	        <% elsif post.event_questionnaires_question.present? %>
+      	         <p>イベントにご参加いただきましてありがとうございました。</p>
+  		           <p>アンケートのご協力お願いいたします。</p>
+    		         <label>▽イベントアンケートはこちらから</label><br>
+    		         <%= link_to post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) %>
+    		       <% else %>
+    		        <%= post.body %>
+  		         <% end %><br>
 
-  		          <%#イベントアンケート情報の投稿内容の表示について %>
-  		          <% if post.event_questionnaires_question.present? %>
-    		           <label>▽イベントアンケートはこちらから</label><br>
-    		           <%= link_to post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) %>
-  		          <% end %>
-
-  		          <% if post.present? %>
-      	          <%= post.body %><br>
-  		          <% end %><br>
-
-                  <%= image_tag post.customer.get_profile_image(50,50) %>
+                <%= image_tag post.customer.get_profile_image(50,50) %>
                   <span><i class="fas fa-user"></i><%= post.customer.last_name %>|</span>
 
   		          <% if post.favorited?(current_customer) %>

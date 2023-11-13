@@ -5,12 +5,9 @@
         <div class="w-50 mx-auto mt-4 shadow-lg">
           <div class="body">
             <div class="row">
-              <div class="col-3">
-                <%= image_tag event.get_image(100,100) %>
-              </div>
               <div class="col-9">
                 <%= event.created_at.strftime("%Y/%m/%d") %><br>
-                <%= link_to 'イベント開催決定！！', event_path(event.id) %>
+                <%= link_to event.name, event_path(event.id) %>
               </div>
             </div>
           </div>

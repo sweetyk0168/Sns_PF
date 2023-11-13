@@ -27,11 +27,11 @@ class Customer < ApplicationRecord
    validates :first_name, presence: true
    validates :last_name_kana, presence: true
    validates :first_name_kana, presence: true
-   validates :customer_introduction, presence: true
    validates :email, presence: true
    validates :telephone_number, presence: true
    validates :postal_code, presence: true
    validates :address, presence: true
+
 
   def customer_status
     if is_deleted == true
@@ -58,6 +58,7 @@ class Customer < ApplicationRecord
       customer.postal_code = "1234567"
       customer.address = "a県a市△-△-△"
       customer.is_deleted = false
+      customer.customer_introduction = "ゲストユーザーです。"
     end
   end
 

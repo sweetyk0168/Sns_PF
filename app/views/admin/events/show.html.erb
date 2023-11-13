@@ -80,7 +80,8 @@
                 <% @event_tickets.each do | event_ticket | %>
                   <tr>
                     <td><%= event_ticket.id %></td>
-                    <td><%= link_to event_ticket.ticket_name, admin_event_event_ticket_path(event_ticket) %></td>
+                    <td><%= link_to event_ticket.ticket_name, admin_event_event_ticket_path(event_ticket.event, event_ticket) %></td>
+                    <!--<td><%#= link_to event_ticket.ticket_name, admin_event_event_ticket_path(event_ticket) %></td>-->
                     <td>
                       <% if event_ticket.sales_status %>
                         販売中
@@ -94,13 +95,13 @@
             </table>
           <%= paginate @event_tickets %>
 
-          <h3 class="mt-3">■イベントレポート情報一覧</h3>
+          <h3 class="mt-3">■イベント投稿情報一覧</h3>
           <div>
             <table class="table table-bordered">
               <thead class="table-dark">
                 <tr>
-                  <th>イベントレポートタイトル</th>
-                  <th>イベントレポート内容</th>
+                  <th>イベント投稿タイトル</th>
+                  <th>イベント投稿内容</th>
                   <th></th>
                 </tr>
               </thead>
@@ -115,7 +116,7 @@
                     </tr>
                   <% end %>
                 <% else %>
-                  <p>まだ回答がありません</p>
+                  <p>まだイベント投稿がありません</p>
                 <% end %>
               </tbody>
             </table>

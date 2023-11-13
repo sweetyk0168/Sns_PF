@@ -15,7 +15,7 @@
               <%= form_with model:@post, url: posts_path do |f| %>
                 <%= f.label :■画像選択 %><br>
                 <%= f.file_field :image, accept:"image/*", class: "w-100" %>
-  
+
                 <div class="mt-3">
                   <%= f.label :■投稿タイトル %><br>
                 </div>
@@ -34,7 +34,7 @@
                   <%= f.label :■イベントレポート内容 %>
                   <%= f.text_area :body, class:"form-control", rows:"3", placeholder:"投稿されたいイベントレポート本文をこちらに入力してください" %>
                 </div>
-  
+
                 <%= f.submit '投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
               <% end %>
           </div>

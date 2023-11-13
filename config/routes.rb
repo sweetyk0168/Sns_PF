@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
-  root 'public/homes#top'
+  # root 'public/homes#top'
   get '/customers/information/edit' => 'public/customers#edit'
   patch '/customers/information' => 'public/customers#update'
   get '/customers/confirm_withdraw' => 'public/customers#confirm_withdraw'
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    root 'homes#top'
     resources :customers, only: [:index, :show, :edit] do
       # member do
       #   get :follows, :followers
@@ -47,13 +48,15 @@ Rails.application.routes.draw do
     end
     resources :events, only: [:new, :create, :index, :show] do
       resources :goods, only: [:index, :show]
-      resources :event_tickets, only:[:index, :show, :new]
+      resources :event_tickets, only:[:index, :show]
     end
 
     resources :posts, only: [:create, :new, :index, :show] do
+      resources :events, only: [:new, :create, :index, :show]
       resource :favorites, only: [:create, :destroy]
       resource :post_comments, only: [:create, :destroy]
     end
+
     resources :cart_tickets, only:[:create, :index, :update, :destroy] do
       collection do
         delete 'destroy_all'
@@ -65,11 +68,7 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
-    # resources :event_questionnaires_questions, only:[:new, :create, :index, :show] do
-    #   collection do
-    #     get 'complete'
-    #   end
-    # end
+
     resources :event_questionnaires_answers, only:[:new, :create] do
       collection do
         post 'confirm'
