@@ -51,12 +51,12 @@
                   <tr>
                     <td><%= ticket_order_detail.event_ticket.event_title %></td>
                     <%#= order_detail.item.add_tax_sales_price.to_s(:dalimited) %>
-                    <td><%= (ticket_order_detail.event_ticket.add_tax_ticket_price*1.1).to_i %></td>
+                    <td><%= ticket_order_detail.event_ticket.add_tax_ticket_price.to_i %></td>
                     <td><%= ticket_order_detail.amount %></td>
                     <%#= (order_detail.item.add_tax_sales_price * order_detail.amount).to_s(:dalimited) %>
                     <td>
-                      <%= ((ticket_order_detail.event_ticket.add_tax_ticket_price * ticket_order_detail.amount)*1.1).to_i %>
-                      <% total += ((ticket_order_detail.event_ticket.add_tax_ticket_price*ticket_order_detail.amount)*1.1).to_i %>
+                      <%= (ticket_order_detail.event_ticket.add_tax_ticket_price * ticket_order_detail.amount).to_i %>
+                      <% total += (ticket_order_detail.event_ticket.add_tax_ticket_price*ticket_order_detail.amount).to_i %>
                     </td>
                     <td>
                         <%= form_with model: ticket_order_detail, url: admin_ticket_order_detail_path(ticket_order_detail), local: true do |f| %>

@@ -9,6 +9,7 @@
                 <div class="w-50 mx-auto">
                   <!--<div class="card-header p-0">-->
                     <%= image_tag good.get_image(100,100) %>
+                    <%#= image_tag good.image.variant(resize_to_limit: [100, 100]).processed if good.image.attached? %>
                   <!--</div>-->
                 </div>
               <% end %>

@@ -20,9 +20,9 @@
             <%= link_to image_tag( '/assets/logo-transparent.png', size: '150x150'), root_path %>
             <ul class="navbar-nav ml-auto">
              <% if customer_signed_in? %>
-                <p class="text-light">ようこそ！<%= current_customer.last_name %>さん！</p>
+                <li class="nav-item"><p class="text-light nav-link">ようこそ！<%= current_customer.last_name %>さん！</p></li>
                 <li class="nav-item"><%= link_to "投稿フォーム", new_post_path, class: 'nav-link text-light' %></li>
-                <li class="nav-item"><%= link_to "投稿一覧", posts_path,  class: 'nav-link text-light' %></li>->
+                <li class="nav-item"><%= link_to "投稿一覧", posts_path,  class: 'nav-link text-light' %></li>
                 <li class="nav-item"><%= link_to "マイページ", customers_path,  class: 'nav-link text-light' %></li>
                 <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,  class: 'nav-link text-light' %></li>
               <% end %>

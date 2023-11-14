@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   # root 'public/homes#top'
   get '/customers/information/edit' => 'public/customers#edit'
   patch '/customers/information' => 'public/customers#update'
-  get '/customers/confirm_withdraw' => 'public/customers#confirm_withdraw'
-  patch '/customers/withdraw' => 'public/customers#withdraw'
+  get 'customers/confirm_withdraw' => 'public/customers#confirm_withdraw'
+  patch 'customers/confirm_withdraw' => 'public/customers#withdraw'
   # get '/admin/event_questionnaires_answers/index' => '/admin/event_questionnaires_answers/event_questionnaires_questions_id'
 
   namespace :admin do
@@ -62,7 +62,7 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-    resources :ticket_orders, only:[:new, :index, :show, :create] do
+    resources :ticket_orders, only:[:new, :create] do
       collection do
         post 'confirm'
         get 'complete'

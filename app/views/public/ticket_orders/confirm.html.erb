@@ -17,10 +17,10 @@
         		  <% @cart_tickets.each do |cart_ticket| %>
           			<tr>
             			<td><%= cart_ticket.event_ticket.event_title %></td>
-            			<td><%= (cart_ticket.event_ticket.add_tax_ticket_price*1.1).to_i %></td>
+            			<td><%= cart_ticket.event_ticket.add_tax_ticket_price.to_i %></td>
             			<td><%= cart_ticket.amount %></td>
-            			<td><%= ((cart_ticket.event_ticket.add_tax_ticket_price*cart_ticket.amount)*1.1).to_i %>
-            			<% total += ((cart_ticket.event_ticket.add_tax_ticket_price*cart_ticket.amount)*1.1).to_i %></td>
+            			<td><%= (cart_ticket.event_ticket.add_tax_ticket_price*cart_ticket.amount).to_i %>
+            			<% total += (cart_ticket.event_ticket.add_tax_ticket_price*cart_ticket.amount).to_i %></td>
           			</tr>
         		  <% end %>
       		  </tbody>

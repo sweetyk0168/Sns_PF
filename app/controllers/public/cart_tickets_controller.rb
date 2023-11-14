@@ -13,7 +13,6 @@ class Public::CartTicketsController < ApplicationController
     if @in_cart_ticket
        @sum_amount = @in_cart_ticket.amount + params[:cart_ticket][:amount].to_i
        @in_cart_ticket.update(amount: @sum_amount)
-        flash[:notice] = "カート内のチケットが更新されました"
        redirect_to cart_tickets_path
     else
       #新しいカートの作成
