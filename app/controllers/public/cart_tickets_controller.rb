@@ -16,25 +16,25 @@ class Public::CartTicketsController < ApplicationController
        redirect_to cart_tickets_path
     else
       #新しいカートの作成
-    @cart_ticket = CartTicket.new(cart_ticket_params)
-    #誰のカートか紐づけ
-    @cart_ticket.customer_id = current_customer.id
-    #情報を保存できるか？
-    @cart_ticket.save!
-    #カートページ遷移
-    flash[:notice] = "チケットをカートに追加しました。"
-    redirect_to cart_tickets_path
+      @cart_ticket = CartTicket.new(cart_ticket_params)
+      #誰のカートか紐づけ
+      @cart_ticket.customer_id = current_customer.id
+      #情報を保存できるか？
+      @cart_ticket.save!
+      #カートページ遷移
+      flash[:notice] = "チケットをカートに追加しました。"
+      redirect_to cart_tickets_path
     end
   end
 
  def update
     @cart_tickets = CartTicket.find(params[:id])
     if @cart_tickets.update(cart_ticket_params)
-      flash[:notice] = "個数を変更しました。"
-      redirect_to cart_tickets_path
+       flash[:notice] = "個数を変更しました。"
+       redirect_to cart_tickets_path
     else
-      flash[:notice] = "個数の変更に失敗しました。"
-      render 'index'
+       flash[:notice] = "個数の変更に失敗しました。"
+       render 'index'
     end
  end
 
@@ -59,6 +59,7 @@ class Public::CartTicketsController < ApplicationController
       render 'index'
     end
   end
+
   private
 
   def cart_ticket_params

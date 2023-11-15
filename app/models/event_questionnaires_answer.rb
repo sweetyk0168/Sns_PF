@@ -16,5 +16,4 @@ class EventQuestionnairesAnswer < ApplicationRecord
   def event_questionnaires_question
     return EventQuestionnairesQuestion.find_by(id: self.event_questionnaires_question_id)
   end
-
 end

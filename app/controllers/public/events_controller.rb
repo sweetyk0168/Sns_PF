@@ -13,7 +13,7 @@ class Public::EventsController < ApplicationController
     @event_tickets = @event.event_tickets.page(params[:page])
   end
 
-    def event_params
-      params.require(:event).permit(:genre_id, :name, :introduction, :post_status, :url_strings, :customer_id)
-    end
+  def event_params
+    params.require(:event).permit(:genre_id, :name, :introduction, :post_status, :url_strings, :customer_id)
+  end
 end

@@ -1,6 +1,7 @@
 class Admin::EventQuestionnairesQuestionsController < ApplicationController
   before_action :authenticate_admin!
   layout 'admin_header'
+
   def new
     @event_questionnaires_question = EventQuestionnairesQuestion.new
   end

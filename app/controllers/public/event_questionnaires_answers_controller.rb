@@ -36,6 +36,8 @@ class Public::EventQuestionnairesAnswersController < ApplicationController
   #   @event_questionnaires_question = EventQuestionnairesQuestion.find(params[:id])
   # end
 
+  private
+
   def event_questionnaires_answer_params
     params.require(:event_questionnaires_answer).permit(:gender, :reason, :satisfaction, :reason_for_satisfaction, :participation, :impressions, :event_questionnaires_question_id)
   end

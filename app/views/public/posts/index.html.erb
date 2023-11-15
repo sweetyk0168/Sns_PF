@@ -1,56 +1,55 @@
 <div class="card-list-container py-5">
-    <h3 class="p-4 mb-3 text-center">■投稿一覧</h3>
+  <h3 class="p-4 mb-3 text-center">■投稿一覧</h3>
   	<% @posts.each do |post| %>
   	  <div class="card w-50 mx-auto mt-4 shadow-lg">
-  	   <div class="card-body">
-  	     <div class="row">
-  	       <div class="col-3">
-    		     <%= link_to post_path(post.id) do %>
-      		     <%= image_tag post.get_image(100,100) , class:"card-img-top"; %><br>
-    		     <% end %>
-  	       </div>
+  	    <div class="card-body">
+  	      <div class="row">
+  	        <div class="col-3">
+    		      <%= link_to post_path(post.id) do %>
+      		      <%= image_tag post.get_image(100,100) , class:"card-img-top"; %><br>
+    		      <% end %>
+  	        </div>
 
-             <div class="col-7">
-                <p class="card-title"><%= post.title %></p>
-                  <% if post.event.present? %>
-                    <% if post.present? %>
-                      <%= post.body %><br>
-        	           <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
-        	             <p>イベント詳細情報を公開しました。</p>
-        	             <%#= link_to post.event.name, event_path(post.event.id) %>
-        	             <%= link_to post.event.name, events_path(post.event.id) %>
-        	          <% end %>
-        	        <% elsif post.event_questionnaires_question.present? %>
-        	         <p>イベントにご参加いただきましてありがとうございました。</p>
-    		           <p>アンケートのご協力お願いいたします。</p>
-      		         <label>▽イベントアンケートはこちらから</label><br>
-      		         <%= link_to post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) %>
-      		       <% else %>
-      		        <%= post.body %>
-    		         <% end %><br>
+            <div class="col-7">
+              <p class="card-title"><%= post.title %></p>
+              <% if post.event.present? %>
+                <% if post.present? %>
+                  <%= post.body %><br>
+        	        <%= post.event.created_at.strftime("%Y/%m/%d") %><br>
+        	        <p>イベント詳細情報を公開しました。</p>
+        	        <%= link_to post.event.name, events_path(post.event.id) %>
+        	      <% end %>
+        	    <% elsif post.event_questionnaires_question.present? %>
+        	      <p>イベントにご参加いただきましてありがとうございました。</p>
+    		        <p>アンケートのご協力お願いいたします。</p>
+      		      <label>▽イベントアンケートはこちらから</label><br>
+      		      <%= link_to post.event_questionnaires_question.title, new_event_questionnaires_answer_path(question_id: post.event_questionnaires_question.id) %>
+      		    <% else %>
+      		      <%= post.body %>
+    		      <% end %><br>
 
-                  <%= image_tag post.customer.get_profile_image(50,50) %>
-                    <span><i class="fas fa-user"></i><%= post.customer.last_name %>|</span>
+              <%= image_tag post.customer.get_profile_image(50,50) %>
+              <span><i class="fas fa-user"></i><%= post.customer.last_name %>|</span>
 
-    		          <% if post.favorited?(current_customer) %>
-        	          <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
-        	          <%= link_to post_favorites_path(post.id), method: :delete do %>
-                      <span style="color:red;">❤いいね！︎</span>
-        	          <% end %>
-    		          <% else %>
-        	           <!-- # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ -->
-        	          <%= link_to post_favorites_path(post.id), method: :post do %>
-                      <span>❤︎いいね！</span>
-        	          <% end %>
-    	            <% end %>
-                <p>コメント数: <%= post.post_comments.count %></p>
-  	         </div>
-  	     </div>
-       </div>
+    		      <% if post.favorited?(current_customer) %>
+        	      <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
+        	      <%= link_to post_favorites_path(post.id), method: :delete do %>
+                  <span style="color:red;">❤いいね！︎</span>
+        	      <% end %>
+    		      <% else %>
+        	       <!-- # 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ -->
+        	       <%= link_to post_favorites_path(post.id), method: :post do %>
+                   <span>❤︎いいね！</span>
+        	       <% end %>
+    	        <% end %>
+
+              <p>コメント数: <%= post.post_comments.count %></p>
+  	        </div>
+  	      </div>
+        </div>
       </div>
     <% end %>
     <div class="pagination justify-content-center">
       <%= paginate @posts %>
     </div>
 </div>
-

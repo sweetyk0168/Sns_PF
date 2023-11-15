@@ -5,5 +5,4 @@ class CartTicket < ApplicationRecord
   validates :amount, presence:true
   validates :event_ticket_id, presence:true
   validates :customer_id, presence:true
-
 end

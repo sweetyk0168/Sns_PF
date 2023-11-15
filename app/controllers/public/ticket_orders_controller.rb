@@ -5,7 +5,6 @@ class Public::TicketOrdersController < ApplicationController
     @ticketorder = TicketOrder.new
   end
 
-
   def confirm
     @cart_tickets = current_customer.cart_tickets
 
@@ -55,16 +54,14 @@ class Public::TicketOrdersController < ApplicationController
     redirect_to complete_ticket_orders_path
   end
 
-def index
-  @ticketorders = current_customer.ticketorders.all.page(params[:page]).per(6).order('created_at DESC')
-end
+  def index
+    @ticketorders = current_customer.ticketorders.all.page(params[:page]).per(6).order('created_at DESC')
+  end
 
-def show
-  @ticketorder = TicketOrder.find(params[:id])
-  @ticket_order_details = @ticketorder.ticket_order_details.all
-end
-
-
+  def show
+    @ticketorder = TicketOrder.find(params[:id])
+    @ticket_order_details = @ticketorder.ticket_order_details.all
+  end
 
   private
 

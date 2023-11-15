@@ -22,17 +22,17 @@
                   <td><%= link_to event.name, admin_event_path(event) %></td>
                   <td><%= event.genre.name %></td>
                   <td>
-                  <% if event.post_status %>
-                    投稿中
-                  <% else %>
-                    投稿完了
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <%= paginate @events %>
+                    <% if event.post_status %>
+                      投稿中
+                    <% else %>
+                      投稿完了
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <%= paginate @events %>
       </div>
     </div>
   </div>

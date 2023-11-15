@@ -25,7 +25,7 @@
                 <li class="nav-item"><%= link_to "投稿一覧", posts_path,  class: 'nav-link text-light' %></li>
                 <li class="nav-item"><%= link_to "マイページ", customers_path,  class: 'nav-link text-light' %></li>
                 <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,  class: 'nav-link text-light' %></li>
-              <% end %>
+             <% end %>
             </ul>
           </nav>
         </div>
@@ -36,7 +36,6 @@
         <%= yield %>
       </main>
     </div>
-    <div class="bg-black"></div>
    </div>
   </body>
 </html>
