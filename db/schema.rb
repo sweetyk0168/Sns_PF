@@ -83,14 +83,13 @@ ActiveRecord::Schema.define(version: 2023_11_12_100514) do
 
   create_table "event_questionnaires_answers", force: :cascade do |t|
     t.integer "gender", null: false
-    t.text "reason", default: "", null: false
+    t.text "reason", null: false
     t.integer "satisfaction", null: false
-    t.text "reason_for_satisfaction", default: "", null: false
+    t.text "reason_for_satisfaction", null: false
     t.integer "participation", null: false
-    t.text "impressions", default: "", null: false
+    t.text "impressions", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "event_questionnaires_question_id"
   end
 
   create_table "event_questionnaires_questions", force: :cascade do |t|
