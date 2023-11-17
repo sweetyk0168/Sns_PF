@@ -20,9 +20,12 @@
   box-sizing: border-box;
 }
 
-#header-image {
+.image {
   background-size: 50% auto;
+  background-image: image-url("live.jpg");
+  background-position: bottom;
 }
+
 
 /*.link {*/
 /*  color :white;*/
