@@ -21,9 +21,10 @@
 }
 
 .image {
-  background-size: 50% auto;
   background-image: image-url("live.jpg");
   background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
