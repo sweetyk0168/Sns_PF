@@ -18,9 +18,10 @@ Customer.find_or_create_by!(email: "guest@example.com") do |customer|
     customer.postal_code = "1234567"
     customer.address = "a県a市△-△-△"
     customer.telephone_number = "12345678910"
-    customer.deleted = false
+    customer.is_deleted = false
     customer.customer_introduction = "ゲストユーザーです"
     customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/logo.jpg"), filename:"logo.jpg")
+    customer.password = "aichan0168"
 end
 
 Customer.find_or_create_by!(email: "test1@gmail.com") do |customer|
@@ -31,13 +32,18 @@ Customer.find_or_create_by!(email: "test1@gmail.com") do |customer|
     customer.postal_code = "1234567"
     customer.address = "a県a市〇〇△-△-△"
     customer.telephone_number = "12345678910"
-    customer.deleted = false
+    customer.is_deleted = false
     customer.customer_introduction = "テストユーザー用アカウントです"
     customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/logo.jpg"), filename:"logo.jpg")
+    customer.password = "aichan0168"
+end
+
+Genre.find_or_create_by!(id: 1) do |genre|
+    genre.name = "ライブ"
 end
 
 Event.find_or_create_by!(id: 1) do |event|
-    event.genre.genre_id = 1
+    event.genre_id = 1
     event.name = "〇〇イベント"
     event.introduction = "本日より〇〇イベントのチケット受付開始！\r\n詳細は下記サイトをご確認ください。"
     event.post_status = true
@@ -49,7 +55,7 @@ Good.find_or_create_by!(id: 1) do |good|
     good.introduction = "使い勝手の良いスポーツタオル。\r\n■サイズ：〇〇×〇〇〇ｍｍ\r\n"
     good.post_status = true
     good.price = 1500
-    good.event.event_id = 1
+    good.event_id = 1
     good.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/towel.jpg"), filename:"towel.jpg")
 end
 
@@ -58,7 +64,7 @@ Good.find_or_create_by!(id: 2) do |good|
     good.introduction = "〇〇イベント限定dawnTシャツ\r\nサイズ：S、M、L、XLまであります。"
     good.post_status = true
     good.price = 1500
-    good.event.event_id = 1
+    good.event_id = 1
     good.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/t-shirt.jpg"), filename:"t-shirt.jpg")
 end
 
@@ -67,7 +73,7 @@ Good.find_or_create_by!(id: 3) do |good|
     good.introduction = "〇〇イベント限定キャップ\r\nサイズ：フリーサイズ（頭囲〇〇cm～〇cm）"
     good.post_status = true
     good.price = 6000
-    good.event.event_id = 1
+    good.event_id = 1
     good.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/black_cap.jpg"), filename:"black_cap.jpg")
 end
 
@@ -76,7 +82,7 @@ Good.find_or_create_by!(id: 4) do |good|
     good.introduction = "〇〇イベント限定dawn黒Tシャツ\r\nサイズ：S、M、L、XLまであります。"
     good.post_status = true
     good.price = 4500
-    good.event.event_id = 1
+    good.event_id = 1
     good.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/black_t-shirt.jpg"), filename:"black_t-shirt.jpg")
 end
 
@@ -90,7 +96,7 @@ EventTicket.find_or_create_by!(id: 1) do |event_ticket|
     event_ticket.ticket_place = "渋谷特設会場"
     event_ticket.event_title = "〇〇イベント"
     event_ticket.performance_date = "2023年12月8日"
-    event_ticket.event.event_id = 1
+    event_ticket.event_id = 1
 end
 
 EventTicket.find_or_create_by!(id: 2) do |event_ticket|
@@ -103,10 +109,10 @@ EventTicket.find_or_create_by!(id: 2) do |event_ticket|
     event_ticket.ticket_place = "渋谷特設会場"
     event_ticket.event_title = "〇〇イベント"
     event_ticket.performance_date = "2023年12月8日"
-    event_ticket.event.event_id = 1
+    event_ticket.event_id = 1
 end
 
-EventQuestionnairesQuestion.find_or_create_by!(id: 2) do |event_ticket|
-    event_ticket.ticket_name = "〇〇イベントアンケート"
-    event_ticket.ticket_introduction = "この度は〇〇イベントに参加いただき、誠にありがとうございました。\r\nよろしければアンケートにご協力ください。"
+EventQuestionnairesQuestion.find_or_create_by!(id: 2) do |event_questionnaires_question|
+    event_questionnaires_question.title = "〇〇イベントアンケート"
+    event_questionnaires_question.content = "この度は〇〇イベントに参加いただき、誠にありがとうございました。\r\nよろしければアンケートにご協力ください。"
 end

@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2023_11_12_100514) do
     t.text "impressions", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event_questionnaires_question_id"
   end
 
   create_table "event_questionnaires_questions", force: :cascade do |t|
@@ -158,7 +159,7 @@ ActiveRecord::Schema.define(version: 2023_11_12_100514) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "customer_id", null: false
+    t.integer "customer_id"
     t.string "body", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
