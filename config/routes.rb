@@ -46,15 +46,16 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     resources :customers, only: [:index, :show, :edit] do
-      resource :relationships, only: [:create, :destroy]
-        get 'followings' => 'relationships#followings', as: 'followings'
-        get 'followers'  =>  'relationships#followers', as: 'followers'
       # member do
       #   get :follows, :followers
       # end
       # resource :relationships, only: [:create, :destroy]
     end
-
+    resources :customers do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers'  =>  'relationships#followers', as: 'followers'
+    end
 
     resources :events, only: [:new, :create, :index, :show] do
       resources :goods, only: [:index, :show]
