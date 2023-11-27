@@ -8,15 +8,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
 
     @customer = Customer.find(params[:id])
-    # @following_customers = @customer.following_customers
-    # @follower_customers = @customer.follower_customers
     #@post_images = @customer.post_images
-  end
-
-  def index
-    @customers = Customer.all
-    @customer = current_customer
-    @favorites = Favorite.where(customer_id: current_customer.id)
   end
 
   def edit
@@ -44,16 +36,25 @@ class Public::CustomersController < ApplicationController
  end
 
   #フォロー一覧
-  # def follows
-  #   customer = Customer.find(params[:id])
-  #   @customers = customer.following_customers
-  # end
+  def follows
+    customer = Customer.find(params[:id])
+    @customers = customer.following_customers
+  end
 
   #フォロワー一覧
-  # def followers
-  #   customer = Customer.find(params[:id])
-  #   @customer = customer.follower_customers
-  # end
+  def followers
+    customer = Customer.find(params[:id])
+    @customers = customer.follower_customers
+  end
+
+ def index
+    @customers = Customer.where.not(id: current_customer.id)
+    #@customer = current_customer
+    @favorites = Favorite.where(customer_id: current_customer.id)
+    @following_customers = current_customer.following_customers
+    @follower_customers = current_customer.follower_customers
+  end
+
 
   private
 

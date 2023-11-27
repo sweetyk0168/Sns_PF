@@ -26,8 +26,12 @@
   		        <%= post.body %>
 		        <% end %><br>
 
+
             <%= image_tag post.customer.get_profile_image(50,50) %>
-            <sapn><i class="fas fa-user"></i><%= post.customer.last_name %>|</sapn>
+            <%= link_to customers_path do %>
+              <sapn><i class="fas fa-user"></i><%= post.customer.last_name %>|</sapn>
+            <% end %>
+
 		        <% if post.favorited?(current_customer) %>
     	          <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ -->
     	          <%= link_to post_favorites_path(post.id), method: :delete do %>
