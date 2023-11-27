@@ -38,14 +38,24 @@ Rails.application.routes.draw do
     post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+  # namespace :public do
+  #   get 'relationships/followings'
+  #   get 'relationships/followers'
+  # end
+
   scope module: :public do
     root 'homes#top'
     resources :customers, only: [:index, :show, :edit] do
+      resource :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers'  =>  'relationships#followers', as: 'followers'
       # member do
       #   get :follows, :followers
       # end
       # resource :relationships, only: [:create, :destroy]
     end
+
+
     resources :events, only: [:new, :create, :index, :show] do
       resources :goods, only: [:index, :show]
       resources :event_tickets, only:[:index, :show]
