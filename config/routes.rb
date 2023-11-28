@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'notifications/index'
+  end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -85,6 +88,10 @@ Rails.application.routes.draw do
         post 'confirm'
         get 'complete'
       end
+    end
+    resources :notifications, only: [:index] do
+      patch :checked, on: :member
+      delete :destroy_all, on: :collection
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

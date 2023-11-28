@@ -20,9 +20,10 @@
     			    </tr>
     			    <tr>
                 <th class="table-dark">フォロー</th>
-                <td><%= link_to follows_customer_path(current_customer) do %>
-                        <%= current_customer.followers.count %>
-                    <% end %>
+                <td>
+                  <%= link_to follows_customer_path(current_customer) do %>
+                      <%= current_customer.followers.count %>
+                  <% end %>
                 </td>
               </tr>
               <tr>
