@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
     get 'notifications/index'
+    get "search" => "searches#search"
   end
+
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
